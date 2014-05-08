@@ -63,6 +63,10 @@ The Kazoo API defines a webhook configuration as a JSON object with the followin
    }
 }
 ```
+### Webhook Custom Data
+One of the properties on a webhook configuration is "custom_data".  This is an optional property, that when present should be a simple JSON object.  In this object non-string values are not current supported, but should be well handled.  If a non-string value is encountered the application should skip the offending property but still display the valid properties of custom data.
+
+The application should show the user a list of the key/value pairs currently configured when updating a webhook.  When the user is  adding or updating a webhook configuartion the application needs to provide a means to also add new or remove existing custom data properties.  Both the key and value of custom data properties will be arbitrary, but the key can be assumed to be less than 35 characters when displayed.
 
 ### Listing Webhooks
 The application needs to provide the developer with the ability to list existing webhook configurations, using the following Kazoo API:
@@ -112,7 +116,7 @@ The application needs to provide a developer with the ability to add a new webho
 
 PUT accounts/{accountId}/webhooks
 
-The user should be limited to known values for the "http_verb" and "hook" properties.  Both of these parameters can be hardcoded in the application.  However, the "hook" property should be easily maintainable by 2600hz engineers as it is likely to change frequently.
+The user should be limited to known values for the "http_verb" and "hook" properties.  Both of these parameters can be hardcoded in the application.  However, the "hook" property should be easily maintainable by 2600hz engineers as it is likely to be extended frequently.
 
 ### Updating a Webhook
 The application needs to provide a developer with the ability to update an existing webhook configuration, using the following Kazoo API:
@@ -128,13 +132,6 @@ DELETE accounts/{accountId}/webhooks/{webhookId}
 The application needs to provide a developer with the ability to list the history (log) an existing webhook, using the following Kazoo API:
 
 GET accounts/{accountId}/webhooks/{webhookId}/attempts
-
-### Custom Data
-One of the properties on a the webhook configuration is "custom_data".  This is an option property, that when present should be a simple JSON object.  In this object non-string values are not current supported.
-
-The application should show the user a list of the key/value pairs currently configured when updating a webhook.  When the user is updating a webhook configuartion or adding a new they should be able to easily add new or remove existing a key/value pair.  Both the key and value of the "custome_data" object will be arbitrary.
-
-In the event that a non-string value is encountered the application should skip that property.
 
 ## Supporting Work
 ### Webhook History
