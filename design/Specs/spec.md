@@ -135,3 +135,7 @@ One of the properties on a the webhook configuration is "custom_data".  This is 
 The application should show the user a list of the key/value pairs currently configured when updating a webhook.  When the user is updating a webhook configuartion or adding a new they should be able to easily add new or remove existing a key/value pair.  Both the key and value of the "custome_data" object will be arbitrary.
 
 In the event that a non-string value is encountered the application should skip that property.
+
+## Supporting Work
+### Webhook History
+When attempting to create this specification it was determined that the webhook history API is not working.  This will need to be resolved.
