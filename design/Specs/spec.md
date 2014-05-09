@@ -41,9 +41,15 @@ The Kazoo API defines a webhook configuration as a JSON object with the followin
 * name: A friendly name for the webhook.
 * uri: The URI of the HTTP server.
 * http_verb: What HTTP method to use when contacting the server.  This can only be either "get" or "post".
-* hook: The trigger event for a request being made to 'callback_uri'.  There are specific values for this property which depend on the version of Kazoo.
+* hook: The trigger event for a request being made to the URI.  There are specific values for this property which depend on the version of Kazoo.
 * retries: An integer value which controls the number of retires that should be made if the receiving server does not accept the connection.
 * custom_data:  These are additional static properties that will be added to the resulting webhook request.
+
+The current valid values for the hook property are:
+* channel_create: This occurs anytime a channel is created in the system.  A call is comprised of one or more channels.
+* channel_answer: This occurs anytime a channel is answered.
+* channel_destroy: This occurs anytime a channel is destroyed, normally a user hanging up. 
+* all: This special value sends all current and future events to the URI.
 
 #### Example Webhook Configuration
 ```
