@@ -1,0 +1,246 @@
+#webhooks_wrapper .slider {
+	overflow-y: hidden;
+	max-height: 500px;
+	transition-property: all;
+	transition-duration: .75s;
+	transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+	background-color: #F5F5FF;
+	border-bottom: 1px solid #dcdcdc;
+	padding: 30px;
+	padding-left: 125px;
+	padding-right: 125px;
+	font-size: 12px;
+}
+
+#webhooks_wrapper .slider.closed {
+	max-height: 0;
+	padding: 0;
+}
+
+#webhooks_wrapper #webhooks_container {
+	margin-right: 150px;
+	margin-left: 150px;
+	margin-top: 30px;
+	margin-bottom: 80px;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid {
+	margin-top: 15px;
+	font-family: verdana;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .empty-search-row,
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .no-webhooks-row {
+	display: none;
+	padding: 16px;
+	text-align: center;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar {
+	margin: 10px;
+	height: 60px;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control {
+	color: #22ccff;
+	font-size: 12px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .info-cell {
+	vertical-align: middle;
+	display: inline-block;
+	overflow: hidden;
+	margin-left: 5px;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .help {
+	color: #22ccff;
+	font-size: 12px;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .search-box {
+	margin: 16px 0 16px 15px;
+	display: inline;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells {
+	height: 60px;
+	line-height: 60px;
+	border: 1.5px dashed #dcdcdc;
+	border-radius: 4px;
+	background-color: transparent;
+	cursor: pointer;
+	margin-bottom: 15px;
+
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells .add-webhook {
+	margin-bottom: 15px;
+	color: #B8B8B8;
+	font-size: 14px;
+	padding-left: 25px;
+	text-decoration: none;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .add-webhook:hover {
+	color: #999999;
+	border-color: #999999;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .add-webhook .icon-plus-sign {
+	color: #B8B8B8;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .grid-row {
+	margin-bottom: 15px;
+	border-radius: 4px;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top,  hsl(0,0%,100%) 0%, hsl(0,0%,87%) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(0,0%,100%)), color-stop(100%,hsl(0,0%,87%))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* W3C */
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row.title {
+	height: 60px;
+	line-height: 60px; /* 60 - padding */
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row.title .grid-cell {
+	text-align: center;
+	padding-left: 0;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell {
+	vertical-align: top;
+	border: 1px solid #dcdcdc;
+	border-right: none;
+	border-left: none;
+	display: inline-block;
+	overflow: hidden;
+	padding-left: 10px;
+	width: 20%;
+	height: 100%;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell:first-child {
+	border-left: 1px solid #dcdcdc;
+	border-radius: 4px 0 0 4px;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell:last-child {
+	border-right: 1px solid #dcdcdc;
+	border-radius: 0 4px 4px 0;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.centered {
+	padding: 0;
+	text-align: center;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .webhooks-cells {
+	height: 60px;
+	line-height: 60px;
+}
+
+
+/* Columns */
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-name {
+	width: 20%;
+	color: #999999;
+	font-size: 16px;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-uri {
+	width: 40%;
+	color: #B8B8B8;
+	font-size: 14px;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.disabled i {
+	color: #333333;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-hook {
+	width: 25%;
+	color: #B8B8B8;
+	font-size: 14px;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions {
+	width: 15%;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions .edit,
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions .delete {
+	padding: 10px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions .icon-wrench:hover,
+#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions .icon-trash:hover{
+	color: #000;
+}
+
+/* Create Webhook PopUp */
+
+#webhook_dialog form {
+	width: 370px;
+}
+
+#webhook_dialog form > div {
+	padding: 40px 40px 0px 45px;
+	border-bottom: 1px solid #c1c1c1;
+	
+}
+
+#webhook_dialog label {
+	width: 30px;
+	text-align: left;
+}
+
+#webhook_dialog label.retry {
+	width: 180px;
+}
+
+#webhook_dialog .control-group .controls {
+	margin-left: 30px;
+}
+
+#webhook_dialog div.dialog-buttons-wrapper {
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+#webhook_dialog input {
+	width: 185px;
+	margin-left: 40px;
+}
+
+#webhook_dialog select {
+	width: 200px;
+	margin-left: 40px;
+}
+
+#webhook_dialog select.select-retry {
+	width: 60px;
+	margin-left: 30px;
+}
+
+#webhook_dialog select.select-hook {
+	width: 200px;
+}

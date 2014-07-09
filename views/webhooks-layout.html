@@ -1,0 +1,49 @@
+<div id="webhooks_wrapper">
+	
+	<div class="slider">
+		{{ i18n.webhooks.info }} <br><br>
+		{{ i18n.webhooks.info2 }}
+	</div>
+	
+	<div class="webhooks-list">
+		<div id="webhooks_container">
+			<div class="webhooks-grid">				
+				<div class="webhooks-rows">
+					<div class="info-bar">
+						<div class="info-control">
+							<i class="info-cell icon-question-sign help"></i>
+							<div class="info-cell info-text" >{{ i18n.webhooks.less }}</div>
+							     
+							<span class="info-cell search-box pull-right">
+								<i class="icon-search"></i>
+								<input type="text" class="search-query" placeholder="{{ i18n.webhooks.search }}..."></input>
+							</span>
+						</div>
+					</div>
+					
+					<div class="addWebhook-cells">
+						<a class="add-webhook"><i class="icon-plus-sign"></i> {{ i18n.webhooks.addWebhook }} </a>
+					</div>
+					
+					<div class="empty-search-row">{{ i18n.webhooks.empty-row }} </div>
+					<div class="no-webhooks-row" style="display: none;">{{ i18n.webhooks.no-webhooks }} </div>
+					
+					{{#each webhooks}}
+					<div class="grid-row" data-id="{{ id }}" data-search="{{ name }}">
+						<div class="webhooks-cells">
+								
+							<div class="webhook-name grid-cell centered"> {{ name }} </div>
+							<div class="webhook-uri grid-cell"> {{ uri }} </div>
+							<div class="webhook-hook grid-cell"> {{ hook }} </div>
+							<div class="actions grid-cell">
+								<a class="edit" data-id="{{id}}"><i class="icon-wrench"></i></a>
+								<a class="delete" data-id="{{id}}"><i class="icon-trash"></i></a>
+							</div>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+			</div>		
+		</div>
+	</div>
+</div>
