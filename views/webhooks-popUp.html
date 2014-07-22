@@ -1,7 +1,6 @@
 <div id="webhook_dialog">
     <form class="form-horizontal labels" id="form_webhook">
         <div>
-            
             <div class="control-group">
 	    	<label class="control-label"> {{ i18n.webhooks.dialogWebhook.enterName }}</label>
 	    	<div class="controls">
@@ -23,7 +22,6 @@
                     <option {{#compare http_verb "===" "get"}} selected{{/compare}} value="get">{{ i18n.webhooks.dialogWebhook.Request.get }}</option>
                     <option {{#compare http_verb "===" "post"}} selected{{/compare}} value="post">{{ i18n.webhooks.dialogWebhook.Request.post  }}</option>
                 </select>
-	    
             </div>
             
             <div class="control-group">
@@ -34,8 +32,7 @@
                         <option {{#compare hook "===" "channel_destroy"}} selected{{/compare}} value="channel_destroy">{{ i18n.webhooks.dialogWebhook.Hooks.cd }}</option>
                         <option {{#compare hook "===" "channel_answer"}} selected{{/compare}} value="channel_answer">{{ i18n.webhooks.dialogWebhook.Hooks.ca }}</option>
                         <option {{#compare hook "===" "all"}} selected{{/compare}} value="all">{{ i18n.webhooks.dialogWebhook.Hooks.ALL }}</option>
-                </select>
-                
+                </select>  
             </div>
             
             <div class="control-group">
@@ -46,10 +43,13 @@
                     <option {{#compare retries "===" "2"}} selected{{/compare}}>2</option>
                     <option {{#compare retries "===" "3"}} selected{{/compare}}>3</option>
                     <option {{#compare retries "===" "4"}} selected{{/compare}}>4</option>
-                </select>
-                
+                </select>    
             </div>
             
+            <div class="control-group">
+                <div class="controls custom-info" id="custom-data"></div>
+                <label class="control-label custom">{{ i18n.webhooks.addCD }}</label>
+            </div>  
         </div>
     </form>
     
@@ -61,6 +61,5 @@
                 {{ i18n.webhooks.dialogWebhook.createWebhook }}
             {{/if}}
         </button>
-    </div>
-    
+    </div> 
 </div>

@@ -1,43 +1,45 @@
 {
 	"webhooks": {
-		"info": "WebHooks is a capability where our system can notify your web program anytime something of interest happens. For example, if someone completes a phone call, we can let you know in real-time and tell you who they were talking to, and for how long.",
-		"info2": "To use this feature, configure a URL to your web server and tell us which type of events you want to be notified about, and in what format. This feature applies to your entire account and any apps within this account, but not sub-accounts.",
-		"less": "Less Info On Webhooks",
-		"more": "More Info On Webhooks",
+		"addCD": "+ Add Custom Data",
 		"addWebhook": "Create New Webhook",
-		"search": "Search",
-		"empty-row": "There were no webhooks found mathing your search.",
-		"no-webhooks": "There are no webhooks configured.",
 		"delete": "DELETE",
 		"deleteRequest": "Are you sure you want to delete ",
 		"deleteTitle": "Delete?",
 		"dialogWebhook": {
-			"createWebhook": "CREATE",
-			"save": "SAVE",
 			"addTitle": "Create New Webhook",
+			"createWebhook": "CREATE",
 			"editTitle": "Edit Webhook",
 			"enterName": "Name",
-			"enterURL": "URL",
-			"enterRequest": "Request",
 			"enterHook": "Hook",
+			"enterRequest": "Request",
 			"enterRetries": "Number of re-try attempts",
+			"enterURL": "URL",
+			"Hooks": {
+				"ALL": "all",
+				"ca": "channel_answer",
+				"cc": "channel_create",
+				"cd": "channel_destroy"
+			},
 			"placeholderName": "Custom Name",
 			"Request": {
 				"get": "GET",
 				"post": "POST"
 			},
-			"Hooks": {
-				"cc": "channel_create",
-				"cd": "channel_destroy",
-				"ca": "channel_answer",
-				"ALL": "all"
-			}
+			"save": "SAVE"
 		},
-
+		"editCD": "+ Edit Custom Data",
+		"empty-row": "There were no webhooks found mathing your search.",
+		"info": "WebHooks is a capability where our system can notify your web program anytime something of interest happens. For example, if someone completes a phone call, we can let you know in real-time and tell you who they were talking to, and for how long.",
+		"info2": "To use this feature, configure a URL to your web server and tell us which type of events you want to be notified about, and in what format. This feature applies to your entire account and any apps within this account, but not sub-accounts.",
+		"less": "Hide Info On Webhooks",
+		"more": "More Info On Webhooks",
+		"no-webhooks": "There are no webhooks configured.",
+		"search": "Search",
 		"toastr": {
 			"addSuccess": "You have successfully added ",
 			"deleteSuccess": "You have successfully deleted ",
 			"editSuccess": "You have successfully changed "	
-		}
+		},
+		"warning": "You cannot save Custom Data with the same identifier. Please enter a different identifier."
 	}
 }
