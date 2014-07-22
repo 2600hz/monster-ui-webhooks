@@ -1,4 +1,9 @@
-#webhooks_wrapper .slider {
+#webhooks_wrapper .webhooks-list.show-help .slider {
+	display: block;
+}
+
+#webhooks_wrapper .webhooks-list .slider {
+	display: none;
 	overflow-y: hidden;
 	max-height: 500px;
 	transition-property: all;
@@ -12,43 +17,38 @@
 	font-size: 12px;
 }
 
-#webhooks_wrapper .slider.closed {
-	max-height: 0;
-	padding: 0;
-}
-
-#webhooks_wrapper #webhooks_container {
-	margin-right: 150px;
-	margin-left: 150px;
+#webhooks_wrapper .webhooks_container {
+	margin-right: 110px;
+	margin-left: 110px;
 	margin-top: 30px;
 	margin-bottom: 80px;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid {
+#webhooks_wrapper .webhooks_container .webhooks-grid {
 	margin-top: 15px;
 	font-family: verdana;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .empty-search-row,
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .no-webhooks-row {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .empty-search-row,
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .no-webhooks-row {
 	display: none;
 	padding: 16px;
 	text-align: center;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar {
 	margin: 10px;
 	height: 60px;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control {
 	color: #22ccff;
 	font-size: 12px;
 	cursor: pointer;
 	text-decoration: none;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .info-cell {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .info-cell {
 	vertical-align: middle;
 	display: inline-block;
 	overflow: hidden;
@@ -59,17 +59,30 @@
 	-webkit-box-sizing: border-box;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .help {
+
+#webhooks_wrapper .webhooks-list.show-help .webhooks-grid .webhooks-rows .info-bar .info-control .info-cell .less,
+#webhooks_wrapper .webhooks-grid .webhooks-rows .info-bar .info-control .info-cell .more,
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .empty-search-row.show,
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .no-webhooks-row.show {
+	display: block;
+}
+
+#webhooks_wrapper .webhooks-grid .webhooks-rows .info-bar .info-control .info-cell .less,
+#webhooks_wrapper .webhooks-list.show-help .webhooks-grid .webhooks-rows .info-bar .info-control .info-cell .more {
+	display: none;
+}
+
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .help {
 	color: #22ccff;
 	font-size: 12px;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .search-box {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .search-box {
 	margin: 16px 0 16px 15px;
 	display: inline;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells {
 	height: 60px;
 	line-height: 60px;
 	border: 1.5px dashed #dcdcdc;
@@ -77,10 +90,11 @@
 	background-color: transparent;
 	cursor: pointer;
 	margin-bottom: 15px;
-
+	overflow: hidden;
+	width: 100%;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells .add-webhook {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells .add-webhook {
 	margin-bottom: 15px;
 	color: #B8B8B8;
 	font-size: 14px;
@@ -88,16 +102,16 @@
 	text-decoration: none;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .add-webhook:hover {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .add-webhook:hover {
 	color: #999999;
 	border-color: #999999;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .add-webhook .icon-plus-sign {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .add-webhook .icon-plus-sign {
 	color: #B8B8B8;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .webhooks-rows .grid-row {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .grid-row {
 	margin-bottom: 15px;
 	border-radius: 4px;
 	background: #ffffff; /* Old browsers */
@@ -109,17 +123,17 @@
 	background: linear-gradient(to bottom,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* W3C */
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row.title {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row.title {
 	height: 60px;
 	line-height: 60px; /* 60 - padding */
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row.title .grid-cell {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row.title .grid-cell {
 	text-align: center;
 	padding-left: 0;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell {
 	vertical-align: top;
 	border: 1px solid #dcdcdc;
 	border-right: none;
@@ -135,22 +149,22 @@
 	-webkit-box-sizing: border-box;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell:first-child {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell:first-child {
 	border-left: 1px solid #dcdcdc;
 	border-radius: 4px 0 0 4px;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell:last-child {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell:last-child {
 	border-right: 1px solid #dcdcdc;
 	border-radius: 0 4px 4px 0;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.centered {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.centered {
 	padding: 0;
 	text-align: center;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .webhooks-cells {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .webhooks-cells {
 	height: 60px;
 	line-height: 60px;
 }
@@ -158,41 +172,43 @@
 
 /* Columns */
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-name {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-name {
 	width: 20%;
 	color: #999999;
 	font-size: 16px;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-uri {
-	width: 40%;
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-uri {
+	width: 30%;
 	color: #B8B8B8;
 	font-size: 14px;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.disabled i {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.disabled i {
 	color: #333333;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-hook {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-hook {
 	width: 25%;
 	color: #B8B8B8;
 	font-size: 14px;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions {
-	width: 15%;
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions {
+	width: 25%;
+	text-align: right;
+	padding-right: 10px;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions .edit,
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions .delete {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions .edit,
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions .delete {
 	padding: 10px;
 	cursor: pointer;
 	text-decoration: none;
 }
 
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions .icon-wrench:hover,
-#webhooks_wrapper #webhooks_container .webhooks-grid .grid-row .grid-cell.actions .icon-trash:hover{
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions .icon-wrench:hover,
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions .icon-trash:hover{
 	color: #000;
 }
 
@@ -217,6 +233,11 @@
 	width: 180px;
 }
 
+#webhook_dialog label.custom {
+	width: 180px;
+	font-size: 12px;
+}
+
 #webhook_dialog .control-group .controls {
 	margin-left: 30px;
 }
@@ -229,6 +250,38 @@
 #webhook_dialog input {
 	width: 185px;
 	margin-left: 40px;
+}
+
+#webhook_dialog input.same-line {
+	margin-left: 5px;
+}
+
+#webhook_dialog input.input-small {
+	width: 100px;
+	margin-left:0;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+#webhook_dialog .control-group .controls.custom-info .cd .delete-cd {
+	margin-left: 15px;
+}
+
+#webhook_dialog .control-group .controls.custom-info .cd .delete-cd .icon-trash {
+	text-decoration: none;
+}
+
+#webhook_dialog .control-group .controls.custom-info .cd .delete-cd .icon-trash:hover {
+	color: #000;
+	cursor: pointer;
+}
+
+#webhook_dialog .control-group .controls.custom-info {
+	margin-left: 0;
+}
+
+#webhooks_dialog controls.custom-info.hidden {
+	display: none;
 }
 
 #webhook_dialog select {
