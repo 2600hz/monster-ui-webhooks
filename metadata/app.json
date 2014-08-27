@@ -1,0 +1,25 @@
+{
+	"name": "webhooks",
+	"api_url": "http://10.26.0.41:8000/v2",
+	"source_url": "http://webdev/monster-modules/webhooks",
+	"i18n": {
+		"en-US": {
+			"label": "Webhooks",
+			"description": "Set up and manage your webhooks.",
+			"extended_description": "The purpose of this application is to allow developers to setup their webhooks.",
+			"features": [
+			]
+		}
+	},
+	"tags": [
+		"developer"
+	],
+	"author": "Molly Moser",
+	"version": "1.0",
+	"license": "-",
+	"price": 0,
+	"icon": "",
+	"screenshots": [
+	],
+	"pvt_type": "app"
+}
