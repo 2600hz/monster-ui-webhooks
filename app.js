@@ -15,10 +15,13 @@ define(function(require){
 		toastr = require('toastr');
 
 	var app = {
-
 		name: 'webhooks',
 
-		i18n: [ 'en-US', 'fr-FR' ],
+		css: [ 'app' ],
+
+		i18n: { 
+			'en-US': { customCss: false }
+		},
 
 		requests: {
 			'webhooks.getWebhooks': {
