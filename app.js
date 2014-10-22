@@ -91,7 +91,7 @@ define(function(require){
 				webhooksArray.webhooks = data;
 			
 				webhooksTemplate = $(monster.template(self, 'webhooks-layout', webhooksArray)),
-				parent = _.isEmpty(container) ? $('#ws-content') : container;
+				parent = _.isEmpty(container) ? $('#monster-content') : container;
 				
 				if (webhooksArray.webhooks.length == 0) {
 					webhooksTemplate.find(".no-webhooks-row").toggleClass("show");	
