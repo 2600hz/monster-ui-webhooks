@@ -18,8 +18,11 @@
 	"version": "1.0",
 	"license": "-",
 	"price": 0,
-	"icon": "",
+	"icon": "WebHooks_app.png",
 	"screenshots": [
+	"webhooks1.png",
+	"webhooks2.png"
+],
 	],
 	"pvt_type": "app"
 }
