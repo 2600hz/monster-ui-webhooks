@@ -20,7 +20,8 @@ define(function(require){
 		css: [ 'app' ],
 
 		i18n: { 
-			'en-US': { customCss: false }
+			'en-US': { customCss: false },
+			'ru-RU': { customCss: false }
 		},
 
 		requests: {
