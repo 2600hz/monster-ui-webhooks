@@ -25,35 +25,6 @@ define(function(require){
 		},
 
 		requests: {
-			'webhooks.getWebhooks': {
-				url: 'accounts/{accountId}/webhooks',
-				verb: 'GET'
-			},
-			
-			'webhooks.getWebhooksDetails' : {
-				url: 'accounts/{accountId}/webhooks/{webhookId}',
-				verb: 'GET'
-			},
-			
-			'webhooks.addAWebhook': {
-				url: 'accounts/{accountId}/webhooks',
-				verb: 'PUT'
-			},
-			
-			'webhooks.updateAWebhook': {
-				url: 'accounts/{accountId}/webhooks/{webhookId}',
-				verb: 'POST'
-			},
-			
-			'webhooks.deleteAWebhook': {
-				url: 'accounts/{accountId}/webhooks/{webhookId}',
-				verb: 'DELETE'
-			}
-			
-			//'webhooks.viewWebhookHistory': {
-			//	url: 'accounts/{accountId}/webhooks/{webhookId}/attempts',
-			//	verb: 'GET'
-			//}
 		},
 
 		subscribe: {
@@ -299,8 +270,8 @@ define(function(require){
 		getWebhooks: function(callback){
 			var self=this;
 			
-			monster.request({
-				resource: 'webhooks.getWebhooks',
+			self.callApi({
+				resource: 'webhooks.list',
 				data: {
 					accountId: self.accountId
 				},
@@ -313,8 +284,8 @@ define(function(require){
 		getWebhookDetails: function(webhookId, callback){
 			var self = this;
 			
-			monster.request({
-				resource: 'webhooks.getWebhooksDetails',
+			self.callApi({
+				resource: 'webhooks.get',
 				data: {
 					accountId: self.accountId,
 					webhookId: webhookId
@@ -328,8 +299,8 @@ define(function(require){
 		addAWebhook: function(data, callback){
 			var self = this;
 			
-			monster.request({
-				resource: 'webhooks.addAWebhook',
+			self.callApi({
+				resource: 'webhooks.create',
 				data: {
 					accountId: self.accountId,
 					data: data
@@ -343,8 +314,8 @@ define(function(require){
 		updateAWebhook: function(webhookId, data, callback){
 			var self = this;
 			
-			monster.request({
-				resource: 'webhooks.updateAWebhook',
+			self.callApi({
+				resource: 'webhooks.update',
 				data: {
 					accountId: self.accountId,
 					webhookId: webhookId,
@@ -358,8 +329,8 @@ define(function(require){
 		
 		deleteAWebhook: function(webhookId, callback){
 			var self = this;
-			monster.request({
-				resource: 'webhooks.deleteAWebhook',
+			self.callApi({
+				resource: 'webhooks.delete',
 				data: {
 					accountId: self.accountId,
 					webhookId: webhookId,
@@ -374,8 +345,8 @@ define(function(require){
 		//viewWebhookHistory: function(webhookId, callback){
 		//	var self = this;
 		//	
-		//	monster.request({
-		//		resource: 'webhooks.viewWebhookHistory',
+		//	self.callApi({
+		//		resource: 'webhooks.summary',
 		//		data: {
 		//			accountId: self.accountId,
 		//			webhookId: webhookId
