@@ -256,7 +256,7 @@ define(function(require){
 			});
 			
 			if (isValid == true) {
-				formData = form2object('form_webhook');
+				formData = monster.ui.getFormData('form_webhook');
 				formData.custom_data = customData;
 				delete formData.extra;
 				callback && callback(formData);
