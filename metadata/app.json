@@ -1,7 +1,6 @@
 {
 	"name": "webhooks",
 	"api_url": "http://10.26.0.41:8000/v2",
-	"source_url": "http://webdev/monster-modules/webhooks",
 	"i18n": {
 		"en-US": {
 			"label": "Webhooks",
