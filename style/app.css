@@ -206,8 +206,7 @@
 	text-decoration: none;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions .icon-wrench:hover,
-#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions .icon-trash:hover{
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions [class*="icon-"]:hover {
 	color: #000;
 }
 
