@@ -36,8 +36,8 @@
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar {
-	margin: 10px;
-	height: 60px;
+	margin: 10px 0;
+	height: 40px;
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control {
@@ -76,34 +76,33 @@
 	font-size: 12px;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .search-box {
-	margin: 16px 0 16px 15px;
-	display: inline;
-}
-
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells {
+	color: #999;
 	height: 60px;
 	line-height: 60px;
-	border: 1.5px dashed #dcdcdc;
+	border: 1px dashed #CCC;
 	border-radius: 4px;
-	background-color: transparent;
 	cursor: pointer;
 	margin-bottom: 15px;
-	overflow: hidden;
-	width: 100%;
+	padding-left: 15px;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells .add-webhook {
-	margin-bottom: 15px;
-	color: #B8B8B8;
-	font-size: 14px;
-	padding-left: 25px;
-	text-decoration: none;
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells:hover {
+	background: #F0F0F0;
+	color: #000;
+	border: 1px dashed #999;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .add-webhook:hover {
-	color: #999999;
-	border-color: #999999;
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells i {
+	margin-right: 10px;
+}
+
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells > * {
+	color: #999;
+}
+
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .addWebhook-cells:hover > * {
+	color: #000;
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .add-webhook .icon-plus-sign {
@@ -114,12 +113,12 @@
 	margin-bottom: 15px;
 	border-radius: 4px;
 	background: #ffffff; /* Old browsers */
-	background: -moz-linear-gradient(top,  hsl(0,0%,100%) 0%, hsl(0,0%,87%) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(0,0%,100%)), color-stop(100%,hsl(0,0%,87%))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  hsl(0,0%,100%) 0%,hsl(0,0%,87%) 100%); /* W3C */
+	background: -moz-linear-gradient(top,  hsl(0,0%,100%) 0%, hsl(0,0%,93%) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(0,0%,100%)), color-stop(100%,hsl(0,0%,93%))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,93%) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,93%) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,93%) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  hsl(0,0%,100%) 0%,hsl(0,0%,93%) 100%); /* W3C */
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .grid-row.title {
@@ -173,14 +172,10 @@
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-name {
 	width: 20%;
-	color: #999999;
-	font-size: 16px;
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-uri {
 	width: 30%;
-	color: #B8B8B8;
-	font-size: 14px;
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.disabled i {
@@ -189,8 +184,6 @@
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.webhook-hook {
 	width: 25%;
-	color: #B8B8B8;
-	font-size: 14px;
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions {

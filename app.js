@@ -107,7 +107,7 @@ define(function(require){
 				});
 			});
 			
-			template.find(".add-webhook").on('click', function(e){
+			template.find(".addWebhook-cells").on('click', function(e){
 				self.renderAddPopUp();
 			});
 			
@@ -150,7 +150,7 @@ define(function(require){
 			var self = this;
 			var Name = '<div class="cd"><input required class="input-small identifier" name="extra.id" type="text" placeholder="Custom Name"></input>';
 			var Value = '<input required class="same-line input-small value" name="extra.val" type="text" placeholder="Value"></input>';
-			var Delete = '<a class="delete-cd same-line"><i class="icon-trash"></i></a></div>';
+			var Delete = '<a class="delete-cd same-line"><i class="icon-trash icon-red"></i></a></div>';
 			var addWebhookTemplate = $(monster.template(self, 'webhooks-popUp'));
 			
 			// Dynamically add input boxes for adding custom_data
