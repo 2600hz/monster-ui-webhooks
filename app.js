@@ -53,21 +53,14 @@ define(function(require){
 
 			self.getWebhooks(function(data) {
 				var dataTemplate = {
-					webhooks: data
-				};
+						webhooks: data
+					},
+					webhooksTemplate = $(monster.template(self, 'webhooks-layout', dataTemplate)),
+					parent = _.isEmpty(container) ? $('#monster-content') : container;
 
-				webhooksTemplate = $(monster.template(self, 'webhooks-layout', dataTemplate)),
-				parent = _.isEmpty(container) ? $('#monster-content') : container;
-				/*
-				if (dataTemplate.webhooks.length == 0) {
-					webhooksTemplate.find(".no-webhooks-row").toggleClass("show");
-				}*/
-				
-				self.getAccountInfo(function(data) {
-					if (!data.hasOwnProperty('ui_help') || data.ui_help === true) {
-						webhooksTemplate.find(".webhooks-list").addClass("show-help");
-					}
-				});
+				if(self.helpSettings.user.get('showMainDescription') !== false) {
+					webhooksTemplate.find(".webhooks-list").addClass("show-help");
+				}
 
 				self.bindEvents(webhooksTemplate);
 
@@ -90,21 +83,13 @@ define(function(require){
 			template.find(".less").on('click', function(e){
 				$(".webhooks-list").removeClass("show-help");
 				
-				self.getAccountInfo(function(data) {
-					
-					data.ui_help = false;
-					self.updateAccountInfo(data, function(data){});
-				});
+				self.saveHelpSettings(false);
 			});
 			
 			template.find(".more").on('click', function(e){
 				$(".webhooks-list").addClass("show-help");
 				
-				self.getAccountInfo(function(data) {
-					
-					data.ui_help = true;
-					self.updateAccountInfo(data, function(data){});
-				});
+				self.saveHelpSettings(true);
 			});
 			
 			template.find(".addWebhook-cells").on('click', function(e){
@@ -143,6 +128,15 @@ define(function(require){
 				if(rows.size() > 0) {
 					rows.is(':visible') ? emptySearch.hide() : emptySearch.show();
 				}
+			});
+		},
+
+		saveHelpSettings: function(showHelp, callback) {
+			var self = this,
+				dataUser = self.helpSettings.user.set('showMainDescription', showHelp);
+
+			self.updateUser(dataUser, function(data) {
+				callback && callback(data);
 			});
 		},
 		
@@ -188,7 +182,7 @@ define(function(require){
 				var webhookInfo = data,
 					editWebhookTemplate = $(monster.template(self, 'webhooks-popUp', webhookInfo)),
 					webhookForm = editWebhookTemplate.find('#form_webhook');
-				
+
 				// Iterate through custom_data to print current custom_data
 				for (var property in webhookInfo.custom_data){ 
 					var savedName = '<div class="cd"><input required class="input-small identifier" name="extra.id" type="text" value="'+property+'"></input>';
@@ -196,11 +190,11 @@ define(function(require){
 					var Delete = '<a class="delete-cd same-line"><i class="icon-trash"></i></a></div>';
 					editWebhookTemplate.find("#custom-data").append(savedName + savedValue + Delete);
 				}
-				
+
 				var popup = monster.ui.dialog(editWebhookTemplate, {
 					title: self.i18n.active().webhooks.dialogWebhook.editTitle
 				});
-				
+
 				monster.ui.validate(webhookForm, {
 					rules: {
 						'name': {
@@ -213,7 +207,6 @@ define(function(require){
 					}
 				});
 
-
 				// Dynamically add input boxes for adding custom_data
 				editWebhookTemplate.find(".custom").on('click', function(e) {
 					
@@ -223,11 +216,10 @@ define(function(require){
 					editWebhookTemplate.find("#custom-data").append(Name + Value + Delete);
 					
 					editWebhookTemplate.find(".delete-cd").on('click', function(e) {
-					
 						$(this).parent().remove();
 					});
 				});
-				
+
 				// Delete a row of custom_data
 				editWebhookTemplate.find(".delete-cd").on('click', function(e) {
 						
@@ -235,7 +227,7 @@ define(function(require){
 						delete webhookInfo.custom_data[idToDelete];
 						$(this).parent().remove();
 				});
-				
+
 				editWebhookTemplate.find(".save").on('click', function(e) {
 					if(monster.ui.valid(webhookForm)) {
 						self.checkFormData(function(formData) {
@@ -247,9 +239,9 @@ define(function(require){
 						});
 					}
 				});
-			});		
+			});
 		},
-		
+
 		// Helper function
 		checkFormData: function(callback) {
 			var self = this;
@@ -266,9 +258,9 @@ define(function(require){
 				}
 				else {
 					customData[cdName] = cdValue;
-				}	
+				}
 			});
-			
+
 			if (isValid == true) {
 				formData = monster.ui.getFormData('form_webhook');
 				formData.custom_data = customData;
@@ -277,7 +269,7 @@ define(function(require){
 			}
 			else {
 				monster.ui.alert('warning', self.i18n.active().webhooks.warning);
-			}	
+			}
 		},
 
 		//utils
@@ -394,6 +386,22 @@ define(function(require){
 				resource: 'account.update',
 				data: {
 					accountId: self.accountId,
+					data: data
+				},
+				success: function(data, status) {
+					callback(data.data);
+				}
+			});
+		},
+
+		updateUser: function(data, callback){
+			var self = this;
+			
+			self.callApi({
+				resource: 'user.update',
+				data: {
+					accountId: monster.apps.auth.originalAccount.id,
+					userId: self.userId,
 					data: data
 				},
 				success: function(data, status) {
