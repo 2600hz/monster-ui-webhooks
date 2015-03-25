@@ -1,5 +1,4 @@
-/* 	Author: Molly Moser
-	Date: June 2014-July 2014
+/* 
 	Left to do:
 		- URL needs to be present in Webhook Summary so that it can
 		be accessed quickly and efficiently
@@ -24,12 +23,9 @@ define(function(require){
 			'ru-RU': { customCss: false }
 		},
 
-		requests: {
-		},
+		requests: {},
 
-		subscribe: {
-			'pbxsManager.activate': '_render'
-		},
+		subscribe: {},
 
 		load: function(callback){
 			var self = this;
@@ -49,25 +45,23 @@ define(function(require){
 			});
 		},
 
-		render: function(container){
-			var self = this;
-			self._render(container);
-		},
+		render: function(args) {
+			var self = this,
+				args = args || {},
+				container = args.container,
+				webhookId = args.webhookId || '';
 
-		// subscription handlers
-		_render: function(container) {
-			var self = this;
-			
 			self.getWebhooks(function(data) {
-				var webhooksArray = {};
-				webhooksArray.webhooks = data;
-			
-				webhooksTemplate = $(monster.template(self, 'webhooks-layout', webhooksArray)),
+				var dataTemplate = {
+					webhooks: data
+				};
+
+				webhooksTemplate = $(monster.template(self, 'webhooks-layout', dataTemplate)),
 				parent = _.isEmpty(container) ? $('#monster-content') : container;
-				
-				if (webhooksArray.webhooks.length == 0) {
-					webhooksTemplate.find(".no-webhooks-row").toggleClass("show");	
-				}
+				/*
+				if (dataTemplate.webhooks.length == 0) {
+					webhooksTemplate.find(".no-webhooks-row").toggleClass("show");
+				}*/
 				
 				self.getAccountInfo(function(data) {
 					if (!data.hasOwnProperty('ui_help') || data.ui_help === true) {
@@ -80,7 +74,13 @@ define(function(require){
 				(parent)
 					.empty()
 					.append(webhooksTemplate);
-			});	
+
+				if(webhookId) {
+					var cells = parent.find('.grid-row[data-id=' + webhookId + ']');
+
+					monster.ui.highlight(cells);
+				}
+			});
 		},
 
 		bindEvents: function(template) {
@@ -168,7 +168,7 @@ define(function(require){
 				
 				self.checkFormData(function(formData) {
 					self.addAWebhook(formData, function(data) {
-						self.render();
+						self.render({ webhookId: data.id });
 						popup.dialog('close').remove();
 						toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.addSuccess + data.name ));
 					});
@@ -185,9 +185,9 @@ define(function(require){
 			var id = webhookId;
 			
 			self.getWebhookDetails(id, function(data) {
-				var webhookInfo = data;
-				console.log(webhookInfo);
-				var editWebhookTemplate = $(monster.template(self, 'webhooks-popUp', webhookInfo));
+				var webhookInfo = data,
+					editWebhookTemplate = $(monster.template(self, 'webhooks-popUp', webhookInfo)),
+					webhookForm = editWebhookTemplate.find('#form_webhook');
 				
 				// Iterate through custom_data to print current custom_data
 				for (var property in webhookInfo.custom_data){ 
@@ -201,6 +201,19 @@ define(function(require){
 					title: self.i18n.active().webhooks.dialogWebhook.editTitle
 				});
 				
+				monster.ui.validate(webhookForm, {
+					rules: {
+						'name': {
+							required: true
+						},
+						'uri': {
+							url: true,
+							required: true
+						}
+					}
+				});
+
+
 				// Dynamically add input boxes for adding custom_data
 				editWebhookTemplate.find(".custom").on('click', function(e) {
 					
@@ -224,14 +237,15 @@ define(function(require){
 				});
 				
 				editWebhookTemplate.find(".save").on('click', function(e) {
-		
-					self.checkFormData(function(formData) {
-						self.updateAWebhook(id, formData, function(data) {
-							self.render();
-							popup.dialog('close').remove();
-							toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.editSuccess + data.name ));
+					if(monster.ui.valid(webhookForm)) {
+						self.checkFormData(function(formData) {
+							self.updateAWebhook(id, formData, function(data) {
+								self.render({ webhookId: data.id });
+								popup.dialog('close').remove();
+								toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.editSuccess + data.name ));
+							});
 						});
-					});
+					}
 				});
 			});		
 		},

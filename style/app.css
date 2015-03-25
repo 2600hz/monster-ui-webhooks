@@ -30,9 +30,12 @@
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .empty-search-row,
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .no-webhooks-row {
-	display: none;
 	padding: 16px;
 	text-align: center;
+}
+
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .empty-search-row {
+	display: none;
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar {
@@ -215,7 +218,7 @@
 	
 }
 
-#webhook_dialog label {
+#webhook_dialog label:not(.monster-invalid) {
 	width: 30px;
 	text-align: left;
 }
@@ -230,7 +233,7 @@
 }
 
 #webhook_dialog .control-group .controls {
-	margin-left: 30px;
+	margin-left: 70px;
 }
 
 #webhook_dialog div.dialog-buttons-wrapper {
@@ -240,7 +243,6 @@
 
 #webhook_dialog input {
 	width: 185px;
-	margin-left: 40px;
 }
 
 #webhook_dialog input.same-line {

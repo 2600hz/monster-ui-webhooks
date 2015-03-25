@@ -28,22 +28,23 @@
 					<div class="addWebhook-cells">
 						<i class="icon-plus-sign"></i>{{ i18n.webhooks.addWebhook }}
 					</div>
-					
+
 					<div class="empty-search-row">{{ i18n.webhooks.empty-row }} </div>
-					<div class="no-webhooks-row">{{ i18n.webhooks.no-webhooks }} </div>
 
 					{{#each webhooks}}
-					<div class="grid-row" data-id="{{ id }}" data-search="{{ name }}">
-						<div class="webhooks-cells">
-							<div class="webhook-name grid-cell centered"> {{ name }} </div>
-							<div class="webhook-uri grid-cell"> {{ uri }} </div>
-							<div class="webhook-hook grid-cell"> {{ hook }} </div>
-							<div class="actions grid-cell">
-								<a class="edit" data-id="{{id}}"><i class="icon-cog"></i></a>
-								<a class="delete" data-id="{{id}}"><i class="icon-trash icon-red"></i></a>
+						<div class="grid-row" data-id="{{ id }}" data-search="{{ name }}">
+							<div class="webhooks-cells">
+								<div class="webhook-name grid-cell centered"> {{ name }} </div>
+								<div class="webhook-uri grid-cell"> {{ uri }} </div>
+								<div class="webhook-hook grid-cell"> {{ hook }} </div>
+								<div class="actions grid-cell">
+									<a class="edit" data-id="{{id}}"><i class="icon-cog"></i></a>
+									<a class="delete" data-id="{{id}}"><i class="icon-trash icon-red"></i></a>
+								</div>
 							</div>
 						</div>
-					</div>
+					{{else}}
+						<div class="no-webhooks-row">{{ i18n.webhooks.no-webhooks }} </div>
 					{{/each}}
 				</div>
 			</div>
