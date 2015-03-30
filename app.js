@@ -77,8 +77,10 @@ define(function(require){
 		},
 
 		bindEvents: function(template) {
-			var self = this;
-			container = parent.find('.new-content');
+			var self = this,
+				container = parent.find('.new-content');
+
+			template.find('[data-toggle="tooltip"]').tooltip();
 			
 			template.find(".less").on('click', function(e){
 				$(".webhooks-list").removeClass("show-help");
@@ -96,11 +98,15 @@ define(function(require){
 				self.renderAddPopUp();
 			});
 			
-			template.find(".edit").on('click', function(e){
+			template.find('.edit').on('click', function(e){
 				var webhookId = $(this).data('id');
 				self.renderEditPopUp(webhookId);
 			});
-			
+
+			template.find('.history').on('click', function(e){
+				self.renderHistoryPopUp($(this).data('id'));
+			});
+
 			template.find(".delete").on('click', function(e) {
 				var webhookId = $(this).data('id');
 				
@@ -149,7 +155,6 @@ define(function(require){
 			
 			// Dynamically add input boxes for adding custom_data
 			addWebhookTemplate.find(".custom").on('click', function(e) {
-				
 				addWebhookTemplate.find("#custom-data").append(Name + Value + Delete);
 				
 				addWebhookTemplate.find(".delete-cd").on('click', function(e) {
@@ -159,7 +164,6 @@ define(function(require){
 			});
 			
 			addWebhookTemplate.find("#save").on('click', function(e) {
-				
 				self.checkFormData(function(formData) {
 					self.addAWebhook(formData, function(data) {
 						self.render({ webhookId: data.id });
@@ -242,6 +246,22 @@ define(function(require){
 			});
 		},
 
+		renderHistoryPopUp: function(webhookId) {
+			var self = this;
+			
+			self.getWebhookHistory(webhookId, function(attempts) {
+				var dataTemplate = {
+						attempts: attempts
+					},
+					historyTemplate = $(monster.template(self, 'webhooks-history', dataTemplate));
+
+				var popup = monster.ui.dialog(historyTemplate, {
+					title: self.i18n.active().webhooks.dialogHistory.title,
+					position: ['center', 20]
+				});
+			});
+		},
+
 		// Helper function
 		checkFormData: function(callback) {
 			var self = this;
@@ -301,6 +321,21 @@ define(function(require){
 				}
 			});
 		},
+
+		getWebhookHistory: function(webhookId, callback){
+			var self = this;
+			
+			self.callApi({
+				resource: 'webhooks.accountAttempts',
+				data: {
+					accountId: self.accountId,
+					webhookId: webhookId
+				},
+				success: function(data) {
+					callback && callback(data.data);
+				}
+			});
+		},
 		
 		addAWebhook: function(data, callback){
 			var self = this;
@@ -347,21 +382,6 @@ define(function(require){
 				}
 			});
 		},
-		
-		//viewWebhookHistory: function(webhookId, callback){
-		//	var self = this;
-		//	
-		//	self.callApi({
-		//		resource: 'webhooks.summary',
-		//		data: {
-		//			accountId: self.accountId,
-		//			webhookId: webhookId
-		//		},
-		//		success: function(data) {
-		//			callback && callback(data.data);
-		//		}
-		//	});
-		//},
 		
 		getAccountInfo: function(callback){
 			var self = this;

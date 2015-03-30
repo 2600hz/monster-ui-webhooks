@@ -1,0 +1,45 @@
+<div id="webhook_history">
+	<div class="header">
+	</div>
+
+	<div class="attempts-wrapper">
+		{{#if attempts}}
+			<div class="attempt title"> 
+				<div class="date">
+					{{ i18n.webhooks.date }}
+				</div>
+
+				<div class="reason">
+					{{ i18n.webhooks.message }}
+				</div>
+
+				<div class="retries-left">
+					{{ i18n.webhooks.retriesLeft }}
+				</div>
+			</div>
+			{{#each attempts}}
+				<div class="attempt" data-result="{{ result }}">
+					<div class="date">
+						{{ toFriendlyDate timestamp }}
+					</div>
+					{{#compare result "===" "failure"}}
+						<div class="reason">
+							{{ reason }}
+						</div>
+						<div class="retries-left">
+							{{ retries_left }}
+						</div>
+					{{else}}
+						<div class="reason">
+							{{ ../../i18n.webhooks.attemptSuccess }}
+						</div>
+					{{/compare}}
+				</div>
+			{{/each}}
+		{{else}}
+			<div class="attempt" data-result="empty">
+				{{ ../i18n.webhooks.noAttempts }}
+			</div>
+		{{/if}}
+	</div>
+</div>

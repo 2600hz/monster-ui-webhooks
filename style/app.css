@@ -195,19 +195,21 @@
 	padding-right: 10px;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions .edit,
-#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions .delete {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions a {
 	padding: 10px;
 	cursor: pointer;
 	text-decoration: none;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions [class*="icon-"]:hover {
-	color: #000;
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions a i {
+	cursor: pointer;
+}
+
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions a:hover i {
+	text-shadow: 0px 0px 2px #BBB;
 }
 
 /* Create Webhook PopUp */
-
 #webhook_dialog form {
 	width: 370px;
 }
@@ -289,4 +291,64 @@
 
 #webhook_dialog select.select-hook {
 	width: 200px;
+}
+
+/* History popup */
+#webhook_history {
+	/*width: 500px;*/
+	padding: 15px;
+}
+
+#webhook_history .attempt {
+	padding: 10px;
+}
+
+#webhook_history .attempt:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+#webhook_history .attempt[data-result="success"] {
+	background: #BFFFBF;
+	border: 1px solid #3FBA3F;
+}
+
+#webhook_history .attempt[data-result="failure"] {
+	background: #FFE4E1;
+	border: 1px solid #f75d59
+}
+
+#webhook_history .attempt[data-result="empty"] {
+	background: #F0F0F0;
+	border: 1px solid #DDD;
+	text-align: center;
+	margin-top: 12px;
+}
+
+#webhook_history .attempt > * {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+}
+
+#webhook_history .attempt .date {
+	width: 150px;
+}
+
+#webhook_history .attempt .reason {
+	margin-left: 30px;
+	width: 300px;
+}
+
+#webhook_history .attempt .retries-left {
+	width: 30px;
+}
+
+#webhook_history .attempt.title .reason {
+	width: 200px;
+}
+
+#webhook_history .attempt.title .retries-left {
+	width: 130px;
+	text-align: right;
 }

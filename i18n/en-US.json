@@ -27,6 +27,9 @@
 			},
 			"save": "SAVE"
 		},
+		"dialogHistory": {
+			"title": "History of attempts on this webhook"
+		},
 		"editCD": "+ Edit Custom Data",
 		"empty-row": "There were no webhooks found mathing your search.",
 		"info": "WebHooks is a capability where our system can notify your web program anytime something of interest happens. For example, if someone completes a phone call, we can let you know in real-time and tell you who they were talking to, and for how long.",
@@ -40,6 +43,16 @@
 			"deleteSuccess": "You have successfully deleted ",
 			"editSuccess": "You have successfully changed "	
 		},
-		"warning": "You cannot save Custom Data with the same identifier. Please enter a different identifier."
+		"warning": "You cannot save Custom Data with the same identifier. Please enter a different identifier.",
+		"__comment": "UI-748: Adding tooltips for actions",
+		"__version": "3.20",
+		"editTooltip": "Edit Settings",
+		"historyTooltip": "View the list of attempts on this webhook",
+		"deleteTooltip": "Delete",
+		"attemptSuccess": "Success!",
+		"message": "Message",
+		"date": "Date",
+		"retriesLeft": "# of Retries Left",
+		"noAttempts": "The system didn't detect any attempt on this webhook..."
 	}
 }
