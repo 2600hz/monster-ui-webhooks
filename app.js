@@ -80,6 +80,8 @@ define(function(require){
 			var self = this,
 				container = parent.find('.new-content');
 
+			setTimeout(function() { template.find('.search-query').focus(); });
+
 			template.find('[data-toggle="tooltip"]').tooltip();
 			
 			template.find(".less").on('click', function(e){
