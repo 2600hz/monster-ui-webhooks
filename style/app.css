@@ -44,7 +44,7 @@
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control {
-	color: #22ccff;
+	color: #22a5ff;
 	font-size: 12px;
 	cursor: pointer;
 	text-decoration: none;
@@ -75,7 +75,7 @@
 }
 
 #webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .info-bar .info-control .help {
-	color: #22ccff;
+	color: #22a5ff;
 	font-size: 12px;
 }
 
