@@ -82,8 +82,8 @@ define(function(require){
 
 			setTimeout(function() { template.find('.search-query').focus(); });
 
-			template.find('[data-toggle="tooltip"]').tooltip();
-			
+			monster.ui.tooltips(template);
+
 			template.find(".less").on('click', function(e){
 				$(".webhooks-list").removeClass("show-help");
 				
@@ -334,6 +334,122 @@ define(function(require){
 					webhookId: webhookId
 				},
 				success: function(data) {
+					var data = {"auth_token": "c89bc20fd8954f6e67614b99e31b4f58",
+					"data": [
+					    {
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    },{
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    },{
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    },{
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    },{
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    },{
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    },{
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    },{
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    },{
+					        "client_error": "nxdomain",
+					        "hook_id": "{HOOK_ID}",
+					        "reason": "kazoo http client error",
+					        "result": "failure",
+					        "retries_left": 2,
+					        "timestamp": 63590996563
+					    },
+					    {
+					        "hook_id": "{HOOK_ID}",
+					        "result": "success",
+					        "timestamp": 63590996562
+					    }
+					],
+					"page_size": 2,
+					"request_id": "{REQUEST_ID}",
+					"status": "success"
+					};
 					callback && callback(data.data);
 				}
 			});
