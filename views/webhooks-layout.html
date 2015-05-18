@@ -42,6 +42,9 @@
 								<div class="webhook-uri grid-cell"> {{ uri }} </div>
 								<div class="webhook-hook grid-cell"> {{ hook }} </div>
 								<div class="actions grid-cell">
+									{{#monsterSwitch}}
+									<input type="checkbox" class="webhook-toggle" data-id="{{ id }}" data-on="{{../../i18n.enabled}}" data-off="{{../../i18n.disabled}}" {{#if enabled}} checked{{/if}}>
+									{{/monsterSwitch}}
 									<a class="edit" data-id="{{id}}"><i class="icon-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.editTooltip }}"></i></a>
 									<a class="history" data-id="{{id}}"><i class="icon-list icon-blue" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.historyTooltip }}"></i></a>
 									<a class="delete" data-id="{{id}}"><i class="icon-trash icon-red" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.deleteTooltip }}"></i></a>
