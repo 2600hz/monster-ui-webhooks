@@ -203,17 +203,17 @@
 	padding-right: 10px;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions a {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions > a {
 	padding: 10px;
 	cursor: pointer;
 	text-decoration: none;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions a i {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions > a i {
 	cursor: pointer;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions a:hover i {
+#webhooks_wrapper .webhooks_container .webhooks-grid .grid-row .grid-cell.actions > a:hover i {
 	text-shadow: 0px 0px 2px #BBB;
 }
 

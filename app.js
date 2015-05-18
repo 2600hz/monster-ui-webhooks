@@ -137,6 +137,16 @@ define(function(require){
 					rows.is(':visible') ? emptySearch.hide() : emptySearch.show();
 				}
 			});
+
+			template.find('.webhook-toggle').on('change', function() {
+				var $this = $(this),
+					webhookId = $this.data('id'),
+					enabled = $this.is(':checked');
+				self.getWebhookDetails(webhookId, function(webhookData) {
+					webhookData.enabled = enabled;
+					self.updateAWebhook(webhookId, webhookData);
+				});
+			});
 		},
 
 		saveHelpSettings: function(showHelp, callback) {
