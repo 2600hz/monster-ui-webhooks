@@ -108,7 +108,7 @@
 	color: #000;
 }
 
-#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .add-webhook .icon-plus-sign {
+#webhooks_wrapper .webhooks_container .webhooks-grid .webhooks-rows .add-webhook .fa-plus-circle {
 	color: #B8B8B8;
 }
 
@@ -270,11 +270,11 @@
 	margin-left: 15px;
 }
 
-#webhook_dialog .control-group .controls.custom-info .cd .delete-cd .icon-trash {
+#webhook_dialog .control-group .controls.custom-info .cd .delete-cd .fa-trash-o {
 	text-decoration: none;
 }
 
-#webhook_dialog .control-group .controls.custom-info .cd .delete-cd .icon-trash:hover {
+#webhook_dialog .control-group .controls.custom-info .cd .delete-cd .fa-trash-o:hover {
 	color: #000;
 	cursor: pointer;
 }

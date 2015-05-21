@@ -162,7 +162,7 @@ define(function(require){
 			var self = this;
 			var Name = '<div class="cd"><input required class="input-small identifier" name="extra.id" type="text" placeholder="Custom Name"></input>';
 			var Value = '<input required class="same-line input-small value" name="extra.val" type="text" placeholder="Value"></input>';
-			var Delete = '<a class="delete-cd same-line"><i class="icon-trash monster-red"></i></a></div>';
+			var Delete = '<a class="delete-cd same-line"><i class="fa fa-trash-o monster-red"></i></a></div>';
 			var addWebhookTemplate = $(monster.template(self, 'webhooks-popUp'));
 			
 			// Dynamically add input boxes for adding custom_data
@@ -203,7 +203,7 @@ define(function(require){
 				for (var property in webhookInfo.custom_data){ 
 					var savedName = '<div class="cd"><input required class="input-small identifier" name="extra.id" type="text" value="'+property+'"></input>';
 					var savedValue = '<input required class="same-line input-small value" name="extra.val" type="text" value="'+data.custom_data[property]+'"></input>';
-					var Delete = '<a class="delete-cd same-line"><i class="icon-trash"></i></a></div>';
+					var Delete = '<a class="delete-cd same-line"><i class="fa fa-trash-o"></i></a></div>';
 					editWebhookTemplate.find("#custom-data").append(savedName + savedValue + Delete);
 				}
 
@@ -228,7 +228,7 @@ define(function(require){
 					
 					var Name = '<div class="cd"><input required class="input-small identifier" name="extra.id" type="text" placeholder="Custom Name"></input>';
 					var Value = '<input required class="same-line input-small value" type="text" name="extra.val" placeholder="Value"></input>';
-					var Delete = '<a class="delete-cd same-line"><i class="icon-trash"></i></a></div>';
+					var Delete = '<a class="delete-cd same-line"><i class="fa fa-trash-o"></i></a></div>';
 					editWebhookTemplate.find("#custom-data").append(Name + Value + Delete);
 					
 					editWebhookTemplate.find(".delete-cd").on('click', function(e) {
