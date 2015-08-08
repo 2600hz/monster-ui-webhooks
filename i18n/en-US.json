@@ -1,12 +1,12 @@
 {
 	"webhooks": {
 		"addCD": "+ Add Custom Data",
-		"addWebhook": "Create New Webhook",
+		"addWebhook": "New Webhook",
 		"delete": "DELETE",
 		"deleteRequest": "Are you sure you want to delete ",
 		"deleteTitle": "Delete?",
 		"dialogWebhook": {
-			"addTitle": "Create New Webhook",
+			"addTitle": "New Webhook",
 			"createWebhook": "CREATE",
 			"editTitle": "Edit Webhook",
 			"enterName": "Name",
@@ -53,6 +53,62 @@
 		"message": "Message",
 		"date": "Date",
 		"retriesLeft": "# of Retries Left",
-		"noAttempts": "The system didn't detect any attempt on this webhook..."
+		"noAttempts": "The system didn't detect any attempt on this webhook...",
+
+		"webhookCounters": {
+			"active": "Active",
+			"disabled": "Disabled",
+			"errors": "Errors"
+		},
+		"webhookFilters": {
+			"all": "All Webhooks",
+			"active": "Active Hooks",
+			"disabled": "Disabled Hooks",
+			"errors": "Errors"
+		},
+		"noWebhooks": "There are no webhook configured on this account.",
+		"emptySearch": "There were no webhook found matching your search.",
+		"reenableButton": "Re-enable all errors",
+		"errorTooltip": "This Webhook has been disabled by the server for the following reason: ",
+		"webhookEdition": {
+			"creationTitle": "Create New Webhook",
+			"editionTitle": "Edit Webhook",
+			"creationSaveButton": "Create Webhook",
+			"editionSaveButton": "Update Webhook",
+			"nameSectionTitle": "Let's name your Webhook and decide what event will trigger it",
+			"methodSectionTitle": "Select a request method, the server to send the info to, and how many re-try attempts the hook should make",
+			"customDataSectionTitle": "Add custom data to your Webhook (Optional)",
+			"groupSectionTitle": "Tag this Webhook to a Group if you want to categorize it further",
+			"nameLabel": "Hook Name",
+			"hookLabel": "Trigger Event",
+			"methodLabel": "Request Type",
+			"urlLabel": "URL",
+			"retriesLabel": "Re-try Attempts",
+			"customDataLabel": "+ Add Data Row",
+			"customDataKey": "Custom Key",
+			"customDataValue": "Custom Value",
+			"groupSelectLabel": "Tag to Group",
+			"noGroupOption": "Do Not Group",
+			"newGroupOption": "+ Create a New Group",
+			"existingOptionGroup": "Existing Groups:",
+			"newGroupLabel": "Create New Group"
+		},
+		"webhookAttempts": {
+			"backButton": "Back to Webhooks",
+			"enableButton": "Re-enable this webhook",
+			"header": "{{webhookName}}'s Request Log",
+			"noAttempts": "The system didn't detect any attempt on this webhook...",
+			"date": "Date",
+			"time": "Time",
+			"sent": "Sent",
+			"received": "Received",
+			"attempts": "Attempts"
+		},
+		"webhookList": {
+			"all": {
+				"name": "All",
+				"description": "This webhook will be triggered by all the events"
+			}
+		}
 	}
 }

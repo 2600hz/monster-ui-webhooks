@@ -1,0 +1,123 @@
+<div class="webhook-edition">
+	<div class="webhook-edition-header">
+	{{#if webhook.id}}
+		{{i18n.webhooks.webhookEdition.editionTitle}}
+	{{else}}
+		{{i18n.webhooks.webhookEdition.creationTitle}}
+	{{/if}}
+	</div>
+	<form id="webhook_edition_form" class="form-horizontal">
+		<div class="webhook-edition-section clearfix">
+			<div class="webhook-edition-title">{{i18n.webhooks.webhookEdition.nameSectionTitle}}</div>
+			<div class="left-col">
+				<div class="control-group">
+					<label class="control-label">{{i18n.webhooks.webhookEdition.nameLabel}}</label>
+					<div class="controls">
+						<input required type="text" name="name" value="{{webhook.name}}" placeholder="{{i18n.webhooks.dialogWebhook.placeholderName}}"/>
+					</div>
+				</div>
+			</div>
+			<div class="right-col">
+				<div class="control-group">
+					<label class="control-label">{{i18n.webhooks.webhookEdition.hookLabel}}</label>
+					<div class="controls">
+						<select required class="select-hook" name="hook">
+							{{#each webhookList}}
+							<option {{#compare webhook.hook "===" id}} selected{{/compare}} value="{{id}}" data-tooltip-content="{{description}}">{{name}}</option>
+							{{/each}}
+							<!-- <option {{#compare webhook.hook "===" "channel_create"}} selected{{/compare}} value="channel_create">{{ i18n.webhooks.dialogWebhook.Hooks.cc }}</option>
+							<option {{#compare webhook.hook "===" "channel_destroy"}} selected{{/compare}} value="channel_destroy">{{ i18n.webhooks.dialogWebhook.Hooks.cd }}</option>
+							<option {{#compare webhook.hook "===" "channel_answer"}} selected{{/compare}} value="channel_answer">{{ i18n.webhooks.dialogWebhook.Hooks.ca }}</option> -->
+							<option {{#compare webhook.hook "===" "all"}} selected{{/compare}} value="all" data-tooltip-content="{{ i18n.webhooks.webhookList.all.description }}">{{ i18n.webhooks.webhookList.all.name }}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="webhook-edition-section clearfix">
+			<div class="webhook-edition-title">{{i18n.webhooks.webhookEdition.methodSectionTitle}}</div>
+			<div class="left-col">
+				<div class="control-group">
+					<label class="control-label">{{i18n.webhooks.webhookEdition.methodLabel}}</label>
+					<div class="controls">
+						<select required name="http_verb" name="http_verb">
+							<option {{#compare webhook.http_verb "===" "get"}} selected{{/compare}} value="get">{{ i18n.webhooks.dialogWebhook.Request.get }}</option>
+							<option {{#compare webhook.http_verb "===" "post"}} selected{{/compare}} value="post">{{ i18n.webhooks.dialogWebhook.Request.post  }}</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{{i18n.webhooks.webhookEdition.retriesLabel}}</label>
+					<div class="controls">
+						<select required class="select-retry" name="retries">
+							<option {{#compare webhook.retries "===" "1"}} selected{{/compare}}>1</option>
+							<option {{#compare webhook.retries "===" "2"}} selected{{/compare}}>2</option>
+							<option {{#compare webhook.retries "===" "3"}} selected{{/compare}}>3</option>
+							<option {{#compare webhook.retries "===" "4"}} selected{{/compare}}>4</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="right-col">
+				<div class="control-group">
+					<label class="control-label">{{i18n.webhooks.webhookEdition.urlLabel}}</label>
+					<div class="controls">
+						<input required type="text" name="uri" value="{{webhook.uri}}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="webhook-edition-section clearfix">
+			<div class="webhook-edition-title">{{i18n.webhooks.webhookEdition.customDataSectionTitle}}</div>
+			<div>
+				<div class="custom-data-container"></div>
+				<a class="monster-link custom-data-link">{{i18n.webhooks.webhookEdition.customDataLabel}}</a>
+			</div>
+		</div>
+
+		<div class="webhook-edition-section clearfix">
+			<div class="webhook-edition-title">{{i18n.webhooks.webhookEdition.groupSectionTitle}}</div>
+			<div class="left-col">
+				<div class="control-group">
+					<label class="control-label">{{i18n.webhooks.webhookEdition.groupSelectLabel}}</label>
+					<div class="controls">
+						<select required class="select-group">
+							<option value="none">{{i18n.webhooks.webhookEdition.noGroupOption}}</option>
+							{{#if groups}}
+							<optgroup label="{{../i18n.webhooks.webhookEdition.existingOptionGroup}}">
+								{{#each ../groups}}
+								<option value="group_{{this}}" {{#compare ../../webhook.group "===" this}}selected{{/compare}}>{{this}}</option>
+								{{/each}}
+							</optgroup>
+							{{/if}}
+							<option value="new">{{i18n.webhooks.webhookEdition.newGroupOption}}</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="right-col">
+				<div class="control-group new-group-container">
+					<label class="control-label">{{i18n.webhooks.webhookEdition.newGroupLabel}}</label>
+					<div class="controls">
+						<input required type="text" class="new-group"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	<div class="action-bar clearfix">
+		<div class="pull-right">
+			<button type="button" class="monster-button cancel">{{i18n.cancel}}</button>
+			<button type="button" class="monster-button-success save">
+				{{#if webhook.id}}
+					{{i18n.webhooks.webhookEdition.editionSaveButton}}
+				{{else}}
+					{{i18n.webhooks.webhookEdition.creationSaveButton}}
+				{{/if}}
+			</button>
+		</div>
+	</div> 
+</div>

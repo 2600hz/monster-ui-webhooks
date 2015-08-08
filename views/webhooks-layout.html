@@ -1,59 +1,101 @@
 <div id="webhooks_wrapper">
-	<div class="webhooks-list">
-
-		<div class="slider">
-			<div class="image-help">
+	<div class="webhooks-header clearfix">
+		<div class="webhooks-counters pull-left">
+			<div class="counter-active">
+				<div class="count">{{#if counters.active}}{{counters.active}}{{else}}0{{/if}}</div>
+				<div class="text">{{i18n.webhooks.webhookCounters.active}}</div>
 			</div>
-			<div class="text">
-				{{ i18n.webhooks.info }} <br><br>
-				{{ i18n.webhooks.info2 }}
+			<div class="counter-disabled">
+				<div class="count">{{#if counters.disabled}}{{counters.disabled}}{{else}}0{{/if}}</div>
+				<div class="text">{{i18n.webhooks.webhookCounters.disabled}}</div>
+			</div>
+			<div class="counter-errors">
+				<div class="count">{{#if counters.error}}{{counters.error}}{{else}}0{{/if}}</div>
+				<div class="text">{{i18n.webhooks.webhookCounters.errors}}</div>
 			</div>
 		</div>
+		<button class="new-webhook monster-button pull-right">
+			<div class="icon"><i class="webhook-plus-sign"></i></div>
+			<div class="text monster-blue">{{ i18n.webhooks.addWebhook }}</div>
+		</button>
+	</div>
+	<div class="webhooks-container">
+		<div class="info-bar clearfix">
+			<div class="filter-box pull-left">
+				<select class="filter-select">
+					<option value="all">{{i18n.webhooks.webhookFilters.all}}</option>
+					<option value="errors">{{i18n.webhooks.webhookFilters.errors}}</option>
+					<option value="disabled">{{i18n.webhooks.webhookFilters.disabled}}</option>
+					<option value="active">{{i18n.webhooks.webhookFilters.active}}</option>
+				</select>
+			</div>
+			<div class="search-box pull-left">
+				<i class="fa fa-search"></i>
+				<input type="text" class="search-query" placeholder="{{ i18n.webhooks.search }}..."></input>
+			</div>
+			<button class="reenable-button monster-button-secondary pull-right">
+				<i class="fa fa-repeat"></i>{{i18n.webhooks.reenableButton}}
+			</button>
+		</div>
+		<div class="webhooks-grid">
 
-		<div class="webhooks_container">
-			<div class="webhooks-grid">
-				<div class="webhooks-rows">
-					<div class="info-bar clearfix">
-						<div class="info-control">
-							<span class="more-info pull-left">
-								<i class="info-cell fa fa-question-circle help"></i>
-								<div class="info-cell info-text">
-									<div class="less">{{i18n.webhooks.less}}</div>
-									<div class="more">{{i18n.webhooks.more}}</div>
-								</div>
-							</span>
-							<span class="info-cell search-box pull-right">
-								<i class="fa fa-search"></i>
-								<input type="text" class="search-query" placeholder="{{ i18n.webhooks.search }}..."></input>
-							</span>
-						</div>
-					</div>
+			<div class="empty-search-row">{{ i18n.webhooks.emptySearch }} </div>
 
-					<div class="addWebhook-cells">
-						<i class="fa fa-plus-circle"></i>{{ i18n.webhooks.addWebhook }}
-					</div>
-
-					<div class="empty-search-row">{{ i18n.webhooks.empty-row }} </div>
-
+			{{#unless isEmpty}}
+				{{#each ../groupedWebhooks}}
+				<div class="grid-row-group">
+					<div class="grid-row-header">{{groupName}}</div>
 					{{#each webhooks}}
-						<div class="grid-row" data-id="{{ id }}" data-search="{{ name }}">
-							<div class="webhooks-cells">
-								<div class="webhook-name grid-cell centered"> {{ name }} </div>
-								<div class="webhook-uri grid-cell"> {{ uri }} </div>
-								<div class="webhook-hook grid-cell"> {{ hook }} </div>
-								<div class="actions grid-cell">
-									{{#monsterSwitch}}
-									<input type="checkbox" class="webhook-toggle" data-id="{{ id }}" data-on="{{../../i18n.enabled}}" data-off="{{../../i18n.disabled}}" {{#if enabled}} checked{{/if}}>
-									{{/monsterSwitch}}
-									<a class="edit" data-id="{{id}}"><i class="fa fa-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.editTooltip }}"></i></a>
-									<a class="history" data-id="{{id}}"><i class="fa fa-list monster-blue" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.historyTooltip }}"></i></a>
-									<a class="delete" data-id="{{id}}"><i class="fa fa-trash-o monster-red" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.deleteTooltip }}"></i></a>
-								</div>
+					<div class="grid-row{{#unless enabled}}{{#if disable_reason}} error{{else}} disabled{{/if}}{{/unless}}" data-id="{{ id }}" data-search="{{ name }}">
+						<div class="webhooks-cells">
+							<div class="grid-cell webhook-name"><i class="webhook-status-icon fa fa-circle"></i>{{ name }}</div>
+							<div class="grid-cell webhook-status-toggle">
+								{{#monsterSwitch}}
+								<input type="checkbox" class="webhook-toggle" data-id="{{ id }}" data-on="{{../../i18n.on}}" data-off="{{../../i18n.off}}" {{#if enabled}} checked{{/if}}>
+								{{/monsterSwitch}}
+								<i class="webhook-error-sign history fa fa-2x fa-warning" data-original-title="{{../../i18n.webhooks.errorTooltip}}<br />{{disable_reason}}" data-html="true" data-placement="top" data-toggle="tooltip"></i>
+							</div>
+							<div class="grid-cell webhook-uri">{{ uri }}</div>
+							<div class="grid-cell webhook-hook">{{ hook }}</div>
+							<div class="grid-cell webhook-actions">
+								<a class="edit" data-id="{{id}}"><i class="fa fa-lg fa-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.editTooltip }}"></i></a>
+								<a class="history" data-id="{{id}}"><i class="fa fa-lg fa-list" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.historyTooltip }}"></i></a>
+								<a class="delete" data-id="{{id}}"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.deleteTooltip }}"></i></a>
 							</div>
 						</div>
-					{{else}}
-						<div class="no-webhooks-row">{{ i18n.webhooks.no-webhooks }} </div>
+					</div>
 					{{/each}}
+				</div>
+				{{/each}}
+
+				{{#each ../ungroupedWebhooks}}
+				<div class="grid-row{{#unless enabled}}{{#if disable_reason}} error{{else}} disabled{{/if}}{{/unless}}" data-id="{{ id }}" data-search="{{ name }}">
+					<div class="webhooks-cells">
+						<div class="grid-cell webhook-name"><i class="webhook-status-icon fa fa-circle"></i>{{ name }}</div>
+						<div class="grid-cell webhook-status-toggle">
+							{{#monsterSwitch}}
+							<input type="checkbox" class="webhook-toggle" data-id="{{ id }}" data-on="{{../../i18n.on}}" data-off="{{../../i18n.off}}" {{#if enabled}} checked{{/if}}>
+							{{/monsterSwitch}}
+							<i class="webhook-error-sign history fa fa-2x fa-warning" data-original-title="{{../i18n.webhooks.errorTooltip}}<br />{{disable_reason}}" data-html="true" data-placement="top" data-toggle="tooltip"></i>
+						</div>
+						<div class="grid-cell webhook-uri">{{ uri }}</div>
+						<div class="grid-cell webhook-hook">{{ hook }}</div>
+						<div class="grid-cell webhook-actions">
+							<a class="edit" data-id="{{id}}"><i class="fa fa-lg fa-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.editTooltip }}"></i></a>
+							<a class="history" data-id="{{id}}"><i class="fa fa-lg fa-list" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.historyTooltip }}"></i></a>
+							<a class="delete" data-id="{{id}}"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.deleteTooltip }}"></i></a>
+						</div>
+					</div>
+				</div>
+				{{/each}}
+			{{else}}
+				<div class="no-webhooks-row">{{ i18n.webhooks.noWebhooks }} </div>
+			{{/unless}}
+
+			<div class="new-webhook-row">
+				<div class="new-webhook">
+					<div class="icon"><i class="webhook-plus-sign"></i></div>
+					<div class="text monster-blue">{{ i18n.webhooks.addWebhook }}</div>
 				</div>
 			</div>
 		</div>

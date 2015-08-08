@@ -1,0 +1,42 @@
+<div class="webhook-attempts">
+	<div class="top-action-bar clearfix">
+		<button type="button" class="monster-button back-button">{{i18n.webhooks.webhookAttempts.backButton}}</button>
+		{{#if isError}}
+		<button type="button" class="monster-button-secondary pull-right enable-button">{{i18n.webhooks.webhookAttempts.enableButton}}</button>
+		{{/if}}
+	</div>
+	<div class="attempts-container">
+		<div class="attempts-header">
+			{{#if name}}
+			<div class="webhook-name">{{name}}</div>
+			{{/if}}
+			<div class="webhook-url">{{url}}</div>
+		</div>
+		{{#if attempts}}
+		<table class="attempts-table">
+			<tr>
+				<td></td>
+				<td>{{i18n.webhooks.webhookAttempts.date}}</td>
+				<td>{{i18n.webhooks.webhookAttempts.time}}</td>
+				<td>{{i18n.webhooks.webhookAttempts.sent}}</td>
+				<td>{{i18n.webhooks.webhookAttempts.received}}</td>
+				<td>{{i18n.webhooks.webhookAttempts.attempts}}</td>
+				<td></td>
+			</tr>
+			{{#each ../attempts}}
+			<tr class="{{#if error}}error{{/if}}">
+				<td></td>
+				<td>{{date}}</td>
+				<td>{{time}}</td>
+				<td>{{sent}}</td>
+				<td>{{received}}</td>
+				<td>{{attempts}}</td>
+				<td></td>
+			</tr>
+			{{/each}}
+		</table>
+		{{else}}
+		<div class="no-attempts">{{i18n.webhooks.webhookAttempts.noAttempts}}</div>
+		{{/if}}
+	</div>
+</div>
