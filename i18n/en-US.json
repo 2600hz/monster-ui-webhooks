@@ -83,6 +83,7 @@
 			"hookLabel": "Trigger Event",
 			"methodLabel": "Request Type",
 			"urlLabel": "URL",
+			"urlPlaceholder": "http://my.server.com/call_answered.php?account_id=123456",
 			"retriesLabel": "Re-try Attempts",
 			"customDataLabel": "+ Add Data Row",
 			"customDataKey": "Custom Key",
