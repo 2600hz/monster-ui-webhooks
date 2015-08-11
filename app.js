@@ -133,17 +133,19 @@ define(function(require){
 			});
 
 			template.find('.delete').on('click', function(e) {
-				var webhookId = $(this).data('id');
-				
-				self.getWebhookDetails(webhookId, function(data) {
-					monster.ui.confirm(self.i18n.active().webhooks.deleteRequest + data.name + "?" , function() {
-					
-						self.deleteWebhook(webhookId, function(data) {
-							self.render();
-							toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.deleteSuccess + data.name ));
-						});
-					});
+				$(this).parents('.grid-row').find('.grid-row-delete').fadeIn();
+			});
+
+			template.find('.confirm-delete').on('click', function(e) {
+				var webhookId = $(this).parents('.grid-row').data('id');
+				self.deleteWebhook(webhookId, function(data) {
+					self.render();
+					toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.deleteSuccess + data.name ));
 				});
+			});
+
+			template.find('.cancel-delete').on('click', function(e) {
+				$(this).parents('.grid-row-delete').fadeOut();
 			});
 			
 			template.find('.search-query').on('keyup', function() {
@@ -220,12 +222,23 @@ define(function(require){
 				};
 
 			getWebhookData(webhookId, function(webhookData) {
-				var template = $(monster.template(self, 'webhooks-edit', {
-					webhookList: webhookData.webhookList,
-					webhook: webhookData.webhookDetails,
-					groups: (Object.keys(monster.util.uiFlags.account.get(self.name, 'groups') || {})).sort()
-				}));
-				console.log(webhookData.webhookList);
+				var webhookListI18n = self.i18n.active().webhooks.webhookList,
+					webhookList = monster.util.sort(_.map(webhookData.webhookList, function(val) {
+						return {
+							id: val.id,
+							name: val.id in webhookListI18n ? webhookListI18n[val.id].name : val.name,
+							description: val.id in webhookListI18n ? webhookListI18n[val.id].description : val.description
+						}
+					})).concat({
+						id: 'all',
+							name: webhookListI18n.all.name,
+							description: webhookListI18n.all.description
+					}),
+					template = $(monster.template(self, 'webhooks-edit', {
+						webhookList: webhookList,
+						webhook: webhookData.webhookDetails,
+						groups: (Object.keys(monster.util.uiFlags.account.get(self.name, 'groups') || {})).sort()
+					}));
 
 				// Iterate through custom_data to print current custom_data
 				if(webhookData.webhookDetails.custom_data) {
@@ -278,21 +291,21 @@ define(function(require){
 			});
 
 			//Displaying tooltips for each option. Currently not working on Chrome & IE
-			template.find('.select-hook').on('mouseover', function(e) {
-				var $e = $(e.target); 
-				if ($e.is('option')) {
-					template.find('.select-hook').popover('destroy');
-					template.find('.select-hook').popover({
-						trigger: 'manual',
-						placement: 'right',
-						title: $e.val(),
-						content: $e.data('tooltip-content')
-					}).popover('show');
-				}
-			});
-			template.find('.select-hook').on('mouseleave', function(e) {
-				template.find('.select-hook').popover('destroy');
-			});
+			// template.find('.select-hook').on('mouseover', function(e) {
+			// 	var $e = $(e.target); 
+			// 	if ($e.is('option')) {
+			// 		template.find('.select-hook').popover('destroy');
+			// 		template.find('.select-hook').popover({
+			// 			trigger: 'manual',
+			// 			placement: 'right',
+			// 			title: $e.val(),
+			// 			content: $e.data('tooltip-content')
+			// 		}).popover('show');
+			// 	}
+			// });
+			// template.find('.select-hook').on('mouseleave', function(e) {
+			// 	template.find('.select-hook').popover('destroy');
+			// });
 
 			template.find('.action-bar .cancel').on('click', function() {
 				self.render();

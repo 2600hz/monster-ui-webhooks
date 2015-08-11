@@ -23,12 +23,8 @@
 					<div class="controls">
 						<select required class="select-hook" name="hook">
 							{{#each webhookList}}
-							<option {{#compare webhook.hook "===" id}} selected{{/compare}} value="{{id}}" data-tooltip-content="{{description}}">{{name}}</option>
+							<option {{#compare ../webhook.hook "===" id}} selected{{/compare}} value="{{id}}" title="{{description}}">{{name}}</option>
 							{{/each}}
-							<!-- <option {{#compare webhook.hook "===" "channel_create"}} selected{{/compare}} value="channel_create">{{ i18n.webhooks.dialogWebhook.Hooks.cc }}</option>
-							<option {{#compare webhook.hook "===" "channel_destroy"}} selected{{/compare}} value="channel_destroy">{{ i18n.webhooks.dialogWebhook.Hooks.cd }}</option>
-							<option {{#compare webhook.hook "===" "channel_answer"}} selected{{/compare}} value="channel_answer">{{ i18n.webhooks.dialogWebhook.Hooks.ca }}</option> -->
-							<option {{#compare webhook.hook "===" "all"}} selected{{/compare}} value="all" data-tooltip-content="{{ i18n.webhooks.webhookList.all.description }}">{{ i18n.webhooks.webhookList.all.name }}</option>
 						</select>
 					</div>
 				</div>

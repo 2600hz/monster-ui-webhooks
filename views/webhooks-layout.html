@@ -33,7 +33,7 @@
 				<i class="fa fa-search"></i>
 				<input type="text" class="search-query" placeholder="{{ i18n.webhooks.search }}..."></input>
 			</div>
-			<button class="reenable-button monster-button-secondary pull-right">
+			<button class="reenable-button monster-button-secondary pull-right" data-original-title="{{i18n.webhooks.reenableTooltip}}" data-placement="top" data-toggle="tooltip">
 				<i class="fa fa-repeat"></i>{{i18n.webhooks.reenableButton}}
 			</button>
 		</div>
@@ -60,8 +60,13 @@
 							<div class="grid-cell webhook-actions">
 								<a class="edit" data-id="{{id}}"><i class="fa fa-lg fa-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.editTooltip }}"></i></a>
 								<a class="history" data-id="{{id}}"><i class="fa fa-lg fa-list" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.historyTooltip }}"></i></a>
-								<a class="delete" data-id="{{id}}"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.deleteTooltip }}"></i></a>
+								<a class="delete"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.deleteTooltip }}"></i></a>
 							</div>
+						</div>
+						<div class="grid-row-delete">
+							<span class="delete-message">{{ ../../i18n.webhooks.deleteMessage }}</span>
+							<button type="button" class="monster-button cancel-delete">{{ ../../i18n.cancel }}</button>
+							<button type="button" class="monster-button-danger confirm-delete">{{ ../../i18n.delete }}</button>
 						</div>
 					</div>
 					{{/each}}
@@ -85,6 +90,11 @@
 							<a class="history" data-id="{{id}}"><i class="fa fa-lg fa-list" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.historyTooltip }}"></i></a>
 							<a class="delete" data-id="{{id}}"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.deleteTooltip }}"></i></a>
 						</div>
+					</div>
+					<div class="grid-row-delete">
+						<span class="delete-message">{{ ../i18n.webhooks.deleteMessage }}</span>
+						<button type="button" class="monster-button cancel-delete">{{ ../i18n.cancel }}</button>
+						<button type="button" class="monster-button-danger confirm-delete">{{ ../i18n.delete }}</button>
 					</div>
 				</div>
 				{{/each}}

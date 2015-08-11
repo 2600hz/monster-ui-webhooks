@@ -143,6 +143,7 @@
 	border: solid 1px #c0c0c9;
 	border-radius: 2px;
 	background-color: #fff;
+	position: relative;
 }
 #webhooks_wrapper .webhooks-container .webhooks-grid .grid-row .webhook-error-sign {
 	cursor: pointer;
@@ -259,6 +260,37 @@
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	user-select: none;
+}
+
+#webhooks_wrapper .webhooks-container .webhooks-grid .grid-row .grid-row-delete {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	line-height: 60px;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.95);
+	border: solid 1px #c0c0c9;
+	box-shadow: 0px 0px 5px 2px #c0c0c9;
+	z-index: 1;
+	display: none;
+}
+
+#webhooks_wrapper .webhooks-container .webhooks-grid .grid-row .grid-row-delete > * {
+	vertical-align: middle;
+}
+
+#webhooks_wrapper .webhooks-container .webhooks-grid .grid-row .grid-row-delete button {
+	margin-left: 10px;
+}
+
+#webhooks_wrapper .webhooks-container .webhooks-grid .grid-row .grid-row-delete .delete-message {
+	font-weight: 600;
+	font-size: 16px;
+	margin-right: 40px;
+	color: #303039;
 }
 
 
