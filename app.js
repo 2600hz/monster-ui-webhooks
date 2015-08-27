@@ -237,7 +237,7 @@ define(function(require){
 					template = $(monster.template(self, 'webhooks-edit', {
 						webhookList: webhookList,
 						webhook: webhookData.webhookDetails,
-						groups: (Object.keys(monster.util.uiFlags.account.get(self.name, 'groups') || {})).sort()
+						groups: (Object.keys(self.uiFlags.account.get('groups') || {})).sort()
 					}));
 
 				// Iterate through custom_data to print current custom_data
@@ -271,7 +271,7 @@ define(function(require){
 
 		bindWebhookEditEvents: function(template, webhookData) {
 			var self = this,
-				webhookGroups = monster.util.uiFlags.account.get(self.name, 'groups') || {};
+				webhookGroups = self.uiFlags.account.get('groups') || {};
 
 			template.find('.select-group').on('change', function() {
 				if($(this).val() === 'new') {
@@ -596,7 +596,7 @@ define(function(require){
 		
 		updateWebhookGroups: function(webhookGroups, callback){
 			var self = this,
-				account = monster.util.uiFlags.account.set(self.name, 'groups', webhookGroups);
+				account = self.uiFlags.account.set('groups', webhookGroups);
 			
 			self.callApi({
 				resource: 'account.update',
