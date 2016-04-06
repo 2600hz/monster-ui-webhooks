@@ -31,14 +31,14 @@
 						</div>
 					{{else}}
 						<div class="reason">
-							{{ ../../i18n.webhooks.attemptSuccess }}
+							{{ @root.i18n.webhooks.attemptSuccess }}
 						</div>
 					{{/compare}}
 				</div>
 			{{/each}}
 		{{else}}
 			<div class="attempt" data-result="empty">
-				{{ ../i18n.webhooks.noAttempts }}
+				{{ @root.i18n.webhooks.noAttempts }}
 			</div>
 		{{/if}}
 	</div>
