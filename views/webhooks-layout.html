@@ -42,7 +42,7 @@
 			<div class="empty-search-row">{{ i18n.webhooks.emptySearch }} </div>
 
 			{{#unless isEmpty}}
-				{{#each ../groupedWebhooks}}
+				{{#each groupedWebhooks}}
 				<div class="grid-row-group">
 					<div class="grid-row-header">{{groupName}}</div>
 					{{#each webhooks}}
@@ -73,7 +73,7 @@
 				</div>
 				{{/each}}
 
-				{{#each ../ungroupedWebhooks}}
+				{{#each ungroupedWebhooks}}
 				<div class="grid-row{{#unless enabled}}{{#if disable_reason}} error{{else}} disabled{{/if}}{{/unless}}" data-id="{{ id }}" data-search="{{ name }}">
 					<div class="webhooks-cells">
 						<div class="grid-cell webhook-name"><i class="webhook-status-icon fa fa-circle"></i>{{ name }}</div>
