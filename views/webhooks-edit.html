@@ -83,8 +83,8 @@
 							<option value="none">{{i18n.webhooks.webhookEdition.noGroupOption}}</option>
 							{{#if groups}}
 							<optgroup label="{{@root.i18n.webhooks.webhookEdition.existingOptionGroup}}">
-								{{#each ../groups}}
-								<option value="group_{{this}}" {{#compare ../../webhook.group "===" this}}selected{{/compare}}>{{this}}</option>
+								{{#each groups}}
+								<option value="group_{{this}}" {{#compare ../webhook.group "===" this}}selected{{/compare}}>{{this}}</option>
 								{{/each}}
 							</optgroup>
 							{{/if}}
