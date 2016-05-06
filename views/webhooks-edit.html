@@ -67,6 +67,27 @@
 
 		<div class="webhook-edition-section clearfix">
 			<div class="webhook-edition-title">{{i18n.webhooks.webhookEdition.customDataSectionTitle}}</div>
+			{{#each webhookList}}
+				{{#if modifiers}}
+					<div class="modifiers-webhooks{{#compare id "===" @root.webhook.hook}} active{{/compare}}" data-webhook="{{id}}">
+						{{#each modifiers}}
+							{{#compare type "===" "array"}}
+								<div class="modifier control-group">
+									<label class="control-label">{{@key}}</label>
+									<div class="controls">
+										<select required class="select-modifier" name="{{@key}}">
+											{{#each items}}
+												<option value="{{this}}" title="{{this}}">{{this}}</option>
+											{{/each}}
+										</select>
+									</div>
+								</div>
+							{{/compare}}
+						{{/each}}
+					</div>
+				{{/if}}
+			{{/each}}
+
 			<div>
 				<div class="custom-data-container"></div>
 				<a class="monster-link custom-data-link">{{i18n.webhooks.webhookEdition.customDataLabel}}</a>
