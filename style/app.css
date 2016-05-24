@@ -433,6 +433,10 @@
 	color: #ff3d24;
 }
 
+#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr.error i {
+	color: #ff3d24;
+}
+
 #webhooks_wrapper .webhook-attempts .attempts-container .attempts-table td {
 	padding: 15px;
 }
@@ -457,6 +461,10 @@
 	text-align: center;
 	background-color: #f0f0f9;
 	font-size: 16px;
+}
+
+#webhooks_wrapper .webhook-attempts .details-attempt {
+	cursor: pointer;
 }
 
 /* History popup */
@@ -517,4 +525,10 @@
 #webhook_history .attempt.title .retries-left {
 	width: 130px;
 	text-align: right;
+}
+
+/* Details attempt popup */
+#webhooks_attempt_details_popup {
+	padding: 15px;
+	width: 750px;
 }

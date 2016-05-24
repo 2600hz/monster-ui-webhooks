@@ -136,6 +136,12 @@
 				"name": "callflow",
 				"description": "Fire a webhook from a callflow"
 			}
+		},
+
+		"__comment": "UI-1943: Cleaning up details of webhooks",
+		"__version": "3.22",
+		"attemptDetailsPopup": {
+			"title": "Details"
 		}
 	}
 }

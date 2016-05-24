@@ -420,7 +420,7 @@ define(function(require){
 				var dataTemplate = self.formatAttemptsHistoryData(results, isError),
 					attemptsTemplate = $(monster.template(self, 'webhooks-attempts', dataTemplate));
 
-				self.bindAttemptsHistoryEvents(attemptsTemplate, results.webhook);
+				self.bindAttemptsHistoryEvents(attemptsTemplate, dataTemplate);
 				parent
 					.find('.webhooks-container')
 					.empty()
@@ -437,29 +437,41 @@ define(function(require){
 				};
 
 			result.attempts = _.map(data.attempts, function(attempt) {
-				var dateTime = monster.util.toFriendlyDate(attempt.timestamp).split(' - ');
+				var dateTime = monster.util.toFriendlyDate(attempt.timestamp).split(' - '),
+					isError = attempt.result === 'failure';
 				return {
 					date: dateTime[0],
 					time: dateTime[1],
 					sent: data.webhook.http_verb.toUpperCase(),
-					received: attempt.reason,
-					attempts: (parseInt(data.webhook.retries)-attempt.retries_left),
-					error: (attempt.result === 'failure')
+					received: isError ? (attempt.reason === 'bad response code' ? (attempt.reason + ' (' + attempt.response_code + ')') : attempt.reason) : attempt.result,
+					attempts: attempt.hasOwnProperty('retries_left') ? (parseInt(data.webhook.retries)-attempt.retries_left) : 1,
+					error: isError,
+					raw: attempt
 				};
 			});
 
 			return result;
 		},
 
-		bindAttemptsHistoryEvents: function(template, webhookData) {
+		bindAttemptsHistoryEvents: function(template, data) {
 			var self = this;
+
+			template.find('.details-attempt').on('click', function() {
+				var dataAttempt = data.attempts[$(this).data('index')].raw;
+				
+				var template = $(monster.template(self, 'webhooks-attemptDetailsPopup'));
+
+				monster.ui.renderJSON(dataAttempt, template.find('#jsoneditor'));
+
+				monster.ui.dialog(template, { title: self.i18n.active().webhooks.attemptDetailsPopup.title });
+			});
 
 			template.find('.top-action-bar .back-button').on('click', function() {
 				self.render();
 			});
 
 			template.find('.top-action-bar .enable-button').on('click', function() {
-				self.enableWebhook(webhookData.id, function() {
+				self.enableWebhook(data.webhook.id, function() {
 					self.render();
 				});
 			});
