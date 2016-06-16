@@ -42,7 +42,7 @@
 			<div class="empty-search-row">{{ i18n.webhooks.emptySearch }} </div>
 
 			{{#unless isEmpty}}
-				{{#each ../groupedWebhooks}}
+				{{#each groupedWebhooks}}
 				<div class="grid-row-group">
 					<div class="grid-row-header">{{groupName}}</div>
 					{{#each webhooks}}
@@ -51,50 +51,50 @@
 							<div class="grid-cell webhook-name"><i class="webhook-status-icon fa fa-circle"></i>{{ name }}</div>
 							<div class="grid-cell webhook-status-toggle">
 								{{#monsterSwitch}}
-								<input type="checkbox" class="webhook-toggle" data-id="{{ id }}" data-on="{{../../i18n.on}}" data-off="{{../../i18n.off}}" {{#if enabled}} checked{{/if}}>
+								<input type="checkbox" class="webhook-toggle" data-id="{{ id }}" data-on="{{@root.i18n.on}}" data-off="{{@root.i18n.off}}" {{#if enabled}} checked{{/if}}>
 								{{/monsterSwitch}}
-								<i class="webhook-error-sign history fa fa-2x fa-warning" data-original-title="{{../../i18n.webhooks.errorTooltip}}<br />{{disable_reason}}" data-html="true" data-placement="top" data-toggle="tooltip"></i>
+								<i class="webhook-error-sign history fa fa-2x fa-warning" data-original-title="{{@root.i18n.webhooks.errorTooltip}}<br />{{disable_reason}}" data-html="true" data-placement="top" data-toggle="tooltip"></i>
 							</div>
 							<div class="grid-cell webhook-uri">{{ uri }}</div>
 							<div class="grid-cell webhook-hook">{{ hook }}</div>
 							<div class="grid-cell webhook-actions">
-								<a class="edit" data-id="{{id}}"><i class="fa fa-lg fa-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.editTooltip }}"></i></a>
-								<a class="history" data-id="{{id}}"><i class="fa fa-lg fa-list" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.historyTooltip }}"></i></a>
-								<a class="delete"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../../i18n.webhooks.deleteTooltip }}"></i></a>
+								<a class="edit" data-id="{{id}}"><i class="fa fa-lg fa-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ @root.i18n.webhooks.editTooltip }}"></i></a>
+								<a class="history" data-id="{{id}}"><i class="fa fa-lg fa-list" data-toggle="tooltip" data-placement="top" data-original-title="{{ @root.i18n.webhooks.historyTooltip }}"></i></a>
+								<a class="delete"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ @root.i18n.webhooks.deleteTooltip }}"></i></a>
 							</div>
 						</div>
 						<div class="grid-row-delete">
-							<span class="delete-message">{{ ../../i18n.webhooks.deleteMessage }}</span>
-							<button type="button" class="monster-button cancel-delete">{{ ../../i18n.cancel }}</button>
-							<button type="button" class="monster-button-danger confirm-delete">{{ ../../i18n.delete }}</button>
+							<span class="delete-message">{{ @root.i18n.webhooks.deleteMessage }}</span>
+							<button type="button" class="monster-button cancel-delete">{{ @root.i18n.cancel }}</button>
+							<button type="button" class="monster-button-danger confirm-delete">{{ @root.i18n.delete }}</button>
 						</div>
 					</div>
 					{{/each}}
 				</div>
 				{{/each}}
 
-				{{#each ../ungroupedWebhooks}}
+				{{#each ungroupedWebhooks}}
 				<div class="grid-row{{#unless enabled}}{{#if disable_reason}} error{{else}} disabled{{/if}}{{/unless}}" data-id="{{ id }}" data-search="{{ name }}">
 					<div class="webhooks-cells">
 						<div class="grid-cell webhook-name"><i class="webhook-status-icon fa fa-circle"></i>{{ name }}</div>
 						<div class="grid-cell webhook-status-toggle">
 							{{#monsterSwitch}}
-							<input type="checkbox" class="webhook-toggle" data-id="{{ id }}" data-on="{{../../i18n.on}}" data-off="{{../../i18n.off}}" {{#if enabled}} checked{{/if}}>
+							<input type="checkbox" class="webhook-toggle" data-id="{{ id }}" data-on="{{@root.i18n.on}}" data-off="{{@root.i18n.off}}" {{#if enabled}} checked{{/if}}>
 							{{/monsterSwitch}}
-							<i class="webhook-error-sign history fa fa-2x fa-warning" data-original-title="{{../i18n.webhooks.errorTooltip}}<br />{{disable_reason}}" data-html="true" data-placement="top" data-toggle="tooltip"></i>
+							<i class="webhook-error-sign history fa fa-2x fa-warning" data-original-title="{{@root.i18n.webhooks.errorTooltip}}<br />{{disable_reason}}" data-html="true" data-placement="top" data-toggle="tooltip"></i>
 						</div>
 						<div class="grid-cell webhook-uri">{{ uri }}</div>
 						<div class="grid-cell webhook-hook">{{ hook }}</div>
 						<div class="grid-cell webhook-actions">
-							<a class="edit" data-id="{{id}}"><i class="fa fa-lg fa-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.editTooltip }}"></i></a>
-							<a class="history" data-id="{{id}}"><i class="fa fa-lg fa-list" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.historyTooltip }}"></i></a>
-							<a class="delete" data-id="{{id}}"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ ../i18n.webhooks.deleteTooltip }}"></i></a>
+							<a class="edit" data-id="{{id}}"><i class="fa fa-lg fa-cog" data-toggle="tooltip" data-placement="top" data-original-title="{{ @root.i18n.webhooks.editTooltip }}"></i></a>
+							<a class="history" data-id="{{id}}"><i class="fa fa-lg fa-list" data-toggle="tooltip" data-placement="top" data-original-title="{{ @root.i18n.webhooks.historyTooltip }}"></i></a>
+							<a class="delete" data-id="{{id}}"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-placement="top" data-original-title="{{ @root.i18n.webhooks.deleteTooltip }}"></i></a>
 						</div>
 					</div>
 					<div class="grid-row-delete">
-						<span class="delete-message">{{ ../i18n.webhooks.deleteMessage }}</span>
-						<button type="button" class="monster-button cancel-delete">{{ ../i18n.cancel }}</button>
-						<button type="button" class="monster-button-danger confirm-delete">{{ ../i18n.delete }}</button>
+						<span class="delete-message">{{ @root.i18n.webhooks.deleteMessage }}</span>
+						<button type="button" class="monster-button cancel-delete">{{ @root.i18n.cancel }}</button>
+						<button type="button" class="monster-button-danger confirm-delete">{{ @root.i18n.delete }}</button>
 					</div>
 				</div>
 				{{/each}}

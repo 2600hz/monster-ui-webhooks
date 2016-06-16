@@ -227,7 +227,8 @@ define(function(require){
 						return {
 							id: val.id,
 							name: val.id in webhookListI18n ? webhookListI18n[val.id].name : val.name,
-							description: val.id in webhookListI18n ? webhookListI18n[val.id].description : val.description
+							description: val.id in webhookListI18n ? webhookListI18n[val.id].description : val.description,
+							modifiers: val.modifiers
 						}
 					})).concat({
 						id: 'all',
@@ -240,16 +241,52 @@ define(function(require){
 						groups: (Object.keys(self.uiFlags.account.get('groups') || {})).sort()
 					}));
 
+				// Since we don't have a "none" state for the hook, if there's no existing webhook, the first webhook of the list will be selected
+				// So we need to had this hack to display the right modifiers div
+				if((_.isEmpty(webhookData.webhookDetails) || !webhookData.webhookDetails.hook) && webhookList.length) {
+					template.find('.modifiers-webhooks[data-webhook="'+ webhookList[0].id + '"]').addClass('active');
+				}
+
+				// Modifiers of a webhook are also using the custom_data field, so if they're set, don't display them as regular custom data fields
+				var protectedCustomData = [],
+					currentModifiers,
+					currentHook = webhookData.webhookDetails.hasOwnProperty('hook') ? webhookData.webhookDetails.hook : undefined;
+
+				_.each(webhookList, function(webhook) {
+					if(webhook.modifiers) {
+						_.each(webhook.modifiers, function(modifier, key) {
+							if(protectedCustomData.indexOf(key) < 0 ) {
+								protectedCustomData.push(key);
+							}
+						});
+
+						// If we're looping over the current webhook we're about to display, save the modifiers so we can select the proper values in the UI later
+						if(webhook.name === currentHook) {
+							currentModifiers = webhook.modifiers;
+						}
+					}
+				});
+
+				if(webhookData.webhookDetails.hasOwnProperty('custom_data')) {
+					_.each(webhookData.webhookDetails.custom_data, function(value, key) {
+						if(currentModifiers.hasOwnProperty(key)) {
+							template.find('.modifiers-webhooks[data-webhook="'+ currentHook + '"] .select-modifier[name="' + key + '"]').val(value);
+						}
+					});
+				}
+
 				// Iterate through custom_data to print current custom_data
 				if(webhookData.webhookDetails.custom_data) {
 					_.each(webhookData.webhookDetails.custom_data, function(val, key) {
-						var customDataTemplate = monster.template(self, 'webhooks-customDataRow', {
-							key: key,
-							value: val
-						});
+						if(protectedCustomData.indexOf(key) < 0) {
+							var customDataTemplate = monster.template(self, 'webhooks-customDataRow', {
+								key: key,
+								value: val
+							});
 
-						template.find('.custom-data-container')
-								.append(customDataTemplate);
+							template.find('.custom-data-container')
+									.append(customDataTemplate);
+						}
 					});
 				}
 
@@ -288,6 +325,11 @@ define(function(require){
 
 			template.find('.custom-data-container').on('click', '.delete-custom-data', function() {
 				$(this).parent().remove();
+			});
+
+			template.find('.select-hook').on('change', function() {
+				template.find('.modifiers-webhooks').removeClass('active');
+				template.find('.modifiers-webhooks[data-webhook="'+ $(this).val() + '"]').addClass('active');
 			});
 
 			//Displaying tooltips for each option. Currently not working on Chrome & IE
@@ -378,7 +420,7 @@ define(function(require){
 				var dataTemplate = self.formatAttemptsHistoryData(results, isError),
 					attemptsTemplate = $(monster.template(self, 'webhooks-attempts', dataTemplate));
 
-				self.bindAttemptsHistoryEvents(attemptsTemplate, results.webhook);
+				self.bindAttemptsHistoryEvents(attemptsTemplate, dataTemplate);
 				parent
 					.find('.webhooks-container')
 					.empty()
@@ -395,29 +437,41 @@ define(function(require){
 				};
 
 			result.attempts = _.map(data.attempts, function(attempt) {
-				var dateTime = monster.util.toFriendlyDate(attempt.timestamp).split(' - ');
+				var dateTime = monster.util.toFriendlyDate(attempt.timestamp).split(' - '),
+					isError = attempt.result === 'failure';
 				return {
 					date: dateTime[0],
 					time: dateTime[1],
 					sent: data.webhook.http_verb.toUpperCase(),
-					received: attempt.reason,
-					attempts: (parseInt(data.webhook.retries)-attempt.retries_left),
-					error: (attempt.result === 'failure')
+					received: isError ? (attempt.reason === 'bad response code' ? (attempt.reason + ' (' + attempt.response_code + ')') : attempt.reason) : attempt.result,
+					attempts: attempt.hasOwnProperty('retries_left') ? (parseInt(data.webhook.retries)-attempt.retries_left) : 1,
+					error: isError,
+					raw: attempt
 				};
 			});
 
 			return result;
 		},
 
-		bindAttemptsHistoryEvents: function(template, webhookData) {
+		bindAttemptsHistoryEvents: function(template, data) {
 			var self = this;
+
+			template.find('.details-attempt').on('click', function() {
+				var dataAttempt = data.attempts[$(this).data('index')].raw;
+				
+				var template = $(monster.template(self, 'webhooks-attemptDetailsPopup'));
+
+				monster.ui.renderJSON(dataAttempt, template.find('#jsoneditor'));
+
+				monster.ui.dialog(template, { title: self.i18n.active().webhooks.attemptDetailsPopup.title });
+			});
 
 			template.find('.top-action-bar .back-button').on('click', function() {
 				self.render();
 			});
 
 			template.find('.top-action-bar .enable-button').on('click', function() {
-				self.enableWebhook(webhookData.id, function() {
+				self.enableWebhook(data.webhook.id, function() {
 					self.render();
 				});
 			});
@@ -429,7 +483,12 @@ define(function(require){
 				isValid = true,
 				groupSelect = template.find('.select-group').val(),
 				newGroup = template.find('.new-group').val();
-				
+
+			// Modifiers are most important customdata, we add them first so they can't be overriden
+			template.find('.modifiers-webhooks[data-webhook="'+ template.find('.select-hook').val()+'"] .select-modifier').each(function() {
+				customData[$(this).attr('name')] = $(this).val();
+			});
+
 			template.find('.custom-data-row').each(function(index){
 				var cdName = $(this).find('.custom-data-key').val(),
 					cdValue = $(this).find('.custom-data-value').val();

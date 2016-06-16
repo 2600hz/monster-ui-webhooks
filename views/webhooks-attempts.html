@@ -22,8 +22,9 @@
 				<td>{{i18n.webhooks.webhookAttempts.received}}</td>
 				<td>{{i18n.webhooks.webhookAttempts.attempts}}</td>
 				<td></td>
+				<td></td>
 			</tr>
-			{{#each ../attempts}}
+			{{#each attempts}}
 			<tr class="{{#if error}}error{{/if}}">
 				<td></td>
 				<td>{{date}}</td>
@@ -31,6 +32,7 @@
 				<td>{{sent}}</td>
 				<td>{{received}}</td>
 				<td>{{attempts}}</td>
+				<td><i data-index="{{@index}}" class="details-attempt fa fa-list"></i></td>
 				<td></td>
 			</tr>
 			{{/each}}

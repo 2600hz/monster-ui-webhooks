@@ -347,6 +347,11 @@
 #webhooks_wrapper .webhook-edition .custom-data-container .custom-data-row input {
 	margin-right: 15px;
 }
+
+#webhooks_wrapper .webhook-edition .custom-data-container .custom-data-row .custom-data-key {
+	width: 150px;
+}
+
 #webhooks_wrapper .webhook-edition .custom-data-container .custom-data-row .delete-custom-data {
 	cursor: pointer;
 }
@@ -366,6 +371,14 @@
 
 #webhooks_wrapper .webhook-edition .action-bar button:not(:first-child) {
 	margin-left: 20px;
+}
+
+#webhooks_wrapper .webhook-edition .modifiers-webhooks {
+	display: none;
+}
+
+#webhooks_wrapper .webhook-edition .modifiers-webhooks.active {
+	display: inline-block;
 }
 
 /* Webhook attempts history page */
@@ -420,6 +433,10 @@
 	color: #ff3d24;
 }
 
+#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr.error i {
+	color: #ff3d24;
+}
+
 #webhooks_wrapper .webhook-attempts .attempts-container .attempts-table td {
 	padding: 15px;
 }
@@ -446,88 +463,8 @@
 	font-size: 16px;
 }
 
-/* Create Webhook PopUp */
-#webhook_dialog form {
-	width: 370px;
-}
-
-#webhook_dialog form > div {
-	padding: 40px 40px 0px 45px;
-	border-bottom: 1px solid #c1c1c1;
-	
-}
-
-#webhook_dialog label:not(.monster-invalid) {
-	width: 30px;
-	text-align: left;
-}
-
-#webhook_dialog label.retry {
-	width: 180px;
-}
-
-#webhook_dialog label.custom {
-	width: 180px;
-	font-size: 12px;
-}
-
-#webhook_dialog .control-group .controls {
-	margin-left: 70px;
-}
-
-#webhook_dialog div.dialog-buttons-wrapper {
-	padding-bottom: 20px;
-	text-align: center;
-}
-
-#webhook_dialog input {
-	width: 185px;
-}
-
-#webhook_dialog input.same-line {
-	margin-left: 5px;
-}
-
-#webhook_dialog input.input-small {
-	width: 100px;
-	margin-left:0;
-	margin-bottom: 5px;
-	margin-right: 5px;
-}
-
-#webhook_dialog .control-group .controls.custom-info .cd .delete-cd {
-	margin-left: 15px;
-}
-
-#webhook_dialog .control-group .controls.custom-info .cd .delete-cd .fa-trash-o {
-	text-decoration: none;
-}
-
-#webhook_dialog .control-group .controls.custom-info .cd .delete-cd .fa-trash-o:hover {
-	color: #000;
+#webhooks_wrapper .webhook-attempts .details-attempt {
 	cursor: pointer;
-}
-
-#webhook_dialog .control-group .controls.custom-info {
-	margin-left: 0;
-}
-
-#webhooks_dialog controls.custom-info.hidden {
-	display: none;
-}
-
-#webhook_dialog select {
-	width: 200px;
-	margin-left: 40px;
-}
-
-#webhook_dialog select.select-retry {
-	width: 60px;
-	margin-left: 30px;
-}
-
-#webhook_dialog select.select-hook {
-	width: 200px;
 }
 
 /* History popup */
@@ -588,4 +525,10 @@
 #webhook_history .attempt.title .retries-left {
 	width: 130px;
 	text-align: right;
+}
+
+/* Details attempt popup */
+#webhooks_attempt_details_popup {
+	padding: 15px;
+	width: 750px;
 }
