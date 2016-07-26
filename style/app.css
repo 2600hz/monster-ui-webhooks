@@ -235,33 +235,6 @@
 	border-bottom: solid 1px #c0c0c9;
 }
 
-#webhooks_wrapper .webhooks-container .webhooks-grid .new-webhook-row {
-	margin-top: 25px;
-	padding-top: 35px;
-	border-top: solid 1px #c0c0c9;
-}
-#webhooks_wrapper .webhooks-container .webhooks-grid .new-webhook-row .new-webhook {
-	border: dashed 1px #c0c0c9;
-	padding: 15px;
-	cursor: pointer;
-}
-#webhooks_wrapper .webhooks-container .webhooks-grid .new-webhook-row .new-webhook:hover:not(:active) {
-	background-color: #e0e0e9;
-}
-
-#webhooks_wrapper .webhooks-container .webhooks-grid .new-webhook-row .new-webhook > div {
-	display: inline-block;
-	line-height: 30px;
-	vertical-align: middle;
-	height: 30px;
-	margin-left: 20px;
-	color: #22a5ff;
-	font-weight: 600;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
-}
-
 #webhooks_wrapper .webhooks-container .webhooks-grid .grid-row .grid-row-delete {
 	position: absolute;
 	top: 0px;
