@@ -3,7 +3,7 @@
 	"api_url": "http://10.26.0.41:8000/v2",
 	"i18n": {
 		"en-US": {
-			"label": "Webhooks",
+			"label": "Webhook Manager",
 			"description": "Set up and manage your webhooks.",
 			"extended_description": "The purpose of this application is to allow developers to setup their webhooks.",
 			"features": [
