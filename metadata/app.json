@@ -4,7 +4,7 @@
 	"i18n": {
 		"en-US": {
 			"label": "Webhook Manager",
-			"description": "Set up and manage your webhooks.",
+			"description": "Learn about Kazoo webhooks, create new webhooks, manage and debug existing webhooks.",
 			"extended_description": "The purpose of this application is to allow developers to setup their webhooks.",
 			"features": [
 			]
