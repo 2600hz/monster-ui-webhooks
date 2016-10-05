@@ -433,7 +433,8 @@ define(function(require){
 				result = {
 					name: data.webhook.name ? monster.template(self, '!' + self.i18n.active().webhooks.webhookAttempts.header, {webhookName:data.webhook.name}) : '',
 					url: data.webhook.uri,
-					isError: isError
+					isError: isError,
+					webhook: data.webhook
 				};
 
 			result.attempts = _.map(data.attempts, function(attempt) {
@@ -444,10 +445,14 @@ define(function(require){
 					time: dateTime[1],
 					sent: data.webhook.http_verb.toUpperCase(),
 					received: isError ? (attempt.reason === 'bad response code' ? (attempt.reason + ' (' + attempt.response_code + ')') : attempt.reason) : attempt.result,
-					attempts: attempt.hasOwnProperty('retries_left') ? (parseInt(data.webhook.retries)-attempt.retries_left) : 1,
+					retriesLeft: attempt.hasOwnProperty('retries') && typeof attempt.retries === 'number' ? attempt.retries - 1 : 0,
 					error: isError,
 					raw: attempt
 				};
+			});
+
+			result.attempts.sort(function(a,b) {
+				return a.raw.timestamp > b.raw.timestamp ? -1 : 1;
 			});
 
 			return result;
@@ -565,7 +570,10 @@ define(function(require){
 				resource: 'webhooks.listAttempts',
 				data: {
 					accountId: self.accountId,
-					webhookId: webhookId
+					webhookId: webhookId,
+					filters: {
+						paginate: false
+					}
 				},
 				success: function(data) {
 					callback && callback(data.data);

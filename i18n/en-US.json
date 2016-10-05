@@ -105,7 +105,7 @@
 			"time": "Time",
 			"sent": "Sent",
 			"received": "Received",
-			"attempts": "Attempts"
+			"retriesLeft": "Retries Left"
 		},
 		"webhookList": {
 			"all": {
