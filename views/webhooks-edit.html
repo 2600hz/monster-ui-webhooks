@@ -29,6 +29,14 @@
 					</div>
 				</div>
 			</div>
+            <div class="left-col">
+                <div class="control-group">
+                    <label class="control-label">include sub-accounts</label>
+                    <div class="controls">
+                        <input type="checkbox" {{#if webhook.include_subaccounts}} checked{{/if}} name="include_subaccounts" placeholder="{{i18n.webhooks.dialogWebhook.placeholderName}}"/>
+                    </div>
+                </div>
+            </div>
 		</div>
 		
 		<div class="webhook-edition-section clearfix">
