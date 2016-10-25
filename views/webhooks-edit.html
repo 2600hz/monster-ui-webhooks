@@ -55,10 +55,12 @@
 					<label class="control-label">{{i18n.webhooks.webhookEdition.retriesLabel}}</label>
 					<div class="controls">
 						<select required class="select-retry" name="retries">
-							<option {{#compare webhook.retries "===" "1"}} selected{{/compare}}>1</option>
-							<option {{#compare webhook.retries "===" "2"}} selected{{/compare}}>2</option>
-							<option {{#compare webhook.retries "===" "3"}} selected{{/compare}}>3</option>
-							<option {{#compare webhook.retries "===" "4"}} selected{{/compare}}>4</option>
+							{{#select webhook.retries}}
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							{{/select}}
 						</select>
 					</div>
 				</div>
