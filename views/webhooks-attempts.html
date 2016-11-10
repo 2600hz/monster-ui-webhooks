@@ -12,33 +12,33 @@
 			{{/if}}
 			<div class="webhook-url">{{url}}</div>
 		</div>
-		{{#if attempts}}
-		<table class="attempts-table">
-			<tr>
-				<td></td>
-				<td>{{i18n.webhooks.webhookAttempts.date}}</td>
-				<td>{{i18n.webhooks.webhookAttempts.time}}</td>
-				<td>{{i18n.webhooks.webhookAttempts.sent}}</td>
-				<td>{{i18n.webhooks.webhookAttempts.received}}</td>
-				<td>{{i18n.webhooks.webhookAttempts.retriesLeft}}</td>
-				<td></td>
-				<td></td>
-			</tr>
-			{{#each attempts}}
-			<tr class="{{#if error}}error{{/if}}">
-				<td></td>
-				<td>{{date}}</td>
-				<td>{{time}}</td>
-				<td>{{sent}}</td>
-				<td>{{received}}</td>
-				<td>{{retriesLeft}}</td>
-				<td><i data-index="{{@index}}" class="details-attempt fa fa-list"></i></td>
-				<td></td>
-			</tr>
-			{{/each}}
-		</table>
-		{{else}}
-		<div class="no-attempts">{{i18n.webhooks.webhookAttempts.noAttempts}}</div>
-		{{/if}}
+
+		<div class="filters">
+			<div class="date-ranges">
+				<span>{{i18n.startDate}}</span>
+				<input id="startDate" type="text" class="date-filter filter-from">
+				<span>{{i18n.endDate}}</span>
+				<input id="endDate" type="text" class="date-filter filter-to">
+				<button type="button" class="apply-filter monster-button monster-button-primary">{{i18n.filter}}</button>
+			</div>
+		</div>
+
+		<div class="table-container">
+			<table id="webhooks_attempts_grid" class="monster-table footable">
+				<thead>
+					<tr>
+						<th data-sorted="true" data-direction="DESC">{{i18n.webhooks.webhookAttempts.date}}</th>
+						<th>{{i18n.webhooks.webhookAttempts.time}}</th>
+						<th>{{i18n.webhooks.webhookAttempts.sent}}</th>
+						<th>{{i18n.webhooks.webhookAttempts.received}}</th>
+						<th>{{i18n.webhooks.webhookAttempts.retriesLeft}}</th>
+						<th data-filterable="false" data-type="html" data-sortable="false" data-breakpoints="xs"></th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
