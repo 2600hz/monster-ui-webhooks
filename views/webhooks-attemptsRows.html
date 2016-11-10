@@ -1,0 +1,10 @@
+{{#each attempts}}
+	<tr class="{{#if error}}error{{/if}}">
+		<td>{{date}}</td>
+		<td>{{time}}</td>
+		<td>{{sent}}</td>
+		<td>{{received}}</td>
+		<td>{{retriesLeft}}</td>
+		<td><i data-index="{{@index}}" class="details-attempt fa fa-list"></i></td>
+	</tr>
+{{/each}}
