@@ -403,6 +403,27 @@ define(function(require){
 			});
 		},
 
+		webhooksInitDatePicker: function(webhookId, parent, template) {
+			var self = this,
+				dates = monster.util.getDefaultRangeDates(),
+				fromDate = dates.from,
+				toDate = dates.to;
+
+			var optionsDatePicker = {
+				container: template,
+				range: 30
+			};
+
+			monster.ui.initRangeDatepicker(optionsDatePicker);
+
+			template.find('#startDate').datepicker('setDate', fromDate);
+			template.find('#endDate').datepicker('setDate', toDate);
+
+			template.find('.apply-filter').on('click', function(e) {
+				self.displayWebhooksAttemptTable(webhookId, template);
+			});
+		},
+
 		renderAttemptsHistory: function(parent, webhookId, isError) {
 			var self = this;
 			
@@ -411,22 +432,91 @@ define(function(require){
 					self.getWebhookDetails(webhookId, function(data) {
 						parallelCallback && parallelCallback(null, data);
 					});
-				},
-				attempts: function(parallelCallback) {
-					self.getWebhookHistory(webhookId, function(data) {
-						parallelCallback && parallelCallback(null, data);
-					});
 				}
 			}, function(err, results) {
 				var dataTemplate = self.formatAttemptsHistoryData(results, isError),
 					attemptsTemplate = $(monster.template(self, 'webhooks-attempts', dataTemplate));
 
+				self.webhooksInitDatePicker(webhookId, parent, attemptsTemplate);
+
+				self.displayWebhooksAttemptTable(webhookId, attemptsTemplate);
+
 				self.bindAttemptsHistoryEvents(attemptsTemplate, dataTemplate);
-				parent
-					.find('.webhooks-container')
-					.empty()
-					.append(attemptsTemplate);
+
+				parent.find('.webhooks-container')
+					  .empty()
+					  .append(attemptsTemplate);
 			});
+		},
+
+		displayWebhooksAttemptTable: function(webhookId, template) {
+			var self = this,
+				fromDate = template.find('input.filter-from').datepicker('getDate'),
+				toDate = template.find('input.filter-to').datepicker('getDate');
+
+			monster.ui.footable(template.find('.footable'), {
+				getData: function(filters, callback) {
+					filters = $.extend(true, filters, {
+						created_from: monster.util.dateToBeginningOfGregorianDay(fromDate),
+						created_to:  monster.util.dateToEndOfGregorianDay(toDate),
+					});
+
+					self.webhooksAttemptsGetRows(filters, webhookId, callback);
+				},
+				backendPagination: {
+					enabled: true
+				}
+			});
+		},
+
+		webhooksAttemptsGetRows: function(filters, webhookId, callback) {
+			var self = this;
+
+			self.webhooksAttemptGetData(filters, webhookId, function(data) {
+				var formattedData = self.webhooksAttemptFormatDataTable(data),
+					$rows = $(monster.template(self, 'webhooks-attemptsRows', formattedData));
+
+				$rows.find('.details-attempt').on('click', function() {
+					var dataAttempt = formattedData.attempts[$(this).data('index')].raw,
+						template = $(monster.template(self, 'webhooks-attemptDetailsPopup'));
+
+						monster.ui.renderJSON(dataAttempt, template.find('#jsoneditor'));
+
+						monster.ui.dialog(template, { title: self.i18n.active().webhooks.attemptDetailsPopup.title });
+				});
+
+				// monster.ui.footable requires this function to return the list of rows to add to the table, as well as the payload from the request, so it can set the pagination filters properly
+				callback && callback($rows, data);
+			});
+		},
+
+		webhooksAttemptFormatDataTable: function(data) {
+			var self = this,
+				formattedData = {
+					attempts: []
+				};
+
+			_.each(data.data, function(attempt) {
+				var dateTime = monster.util.toFriendlyDate(attempt.timestamp).split(' - '),
+					isError = attempt.result === 'failure',
+					attempt = {
+						date: dateTime[0],
+						time: dateTime[1],
+						sent: attempt.method.toUpperCase(),
+						received: isError ? (attempt.reason === 'bad response code' ? (attempt.reason + ' (' + attempt.response_code + ')') : attempt.reason) : attempt.result,
+						retriesLeft: attempt.hasOwnProperty('retries') && typeof attempt.retries === 'number' ? attempt.retries - 1 : 0,
+						error: isError,
+						raw: attempt
+					};
+
+				formattedData.attempts.push(attempt);
+			});
+
+			formattedData.attempts.sort(function(a,b) {
+				return a.raw.timestamp > b.raw.timestamp ? -1 : 1;
+			});
+
+			return formattedData;
 		},
 
 		formatAttemptsHistoryData: function(data, isError) {
@@ -438,39 +528,11 @@ define(function(require){
 					webhook: data.webhook
 				};
 
-			result.attempts = _.map(data.attempts, function(attempt) {
-				var dateTime = monster.util.toFriendlyDate(attempt.timestamp).split(' - '),
-					isError = attempt.result === 'failure';
-				return {
-					date: dateTime[0],
-					time: dateTime[1],
-					sent: data.webhook.http_verb.toUpperCase(),
-					received: isError ? (attempt.reason === 'bad response code' ? (attempt.reason + ' (' + attempt.response_code + ')') : attempt.reason) : attempt.result,
-					retriesLeft: attempt.hasOwnProperty('retries') && typeof attempt.retries === 'number' ? attempt.retries - 1 : 0,
-					error: isError,
-					raw: attempt
-				};
-			});
-
-			result.attempts.sort(function(a,b) {
-				return a.raw.timestamp > b.raw.timestamp ? -1 : 1;
-			});
-
 			return result;
 		},
 
 		bindAttemptsHistoryEvents: function(template, data) {
 			var self = this;
-
-			template.find('.details-attempt').on('click', function() {
-				var dataAttempt = data.attempts[$(this).data('index')].raw;
-				
-				var template = $(monster.template(self, 'webhooks-attemptDetailsPopup'));
-
-				monster.ui.renderJSON(dataAttempt, template.find('#jsoneditor'));
-
-				monster.ui.dialog(template, { title: self.i18n.active().webhooks.attemptDetailsPopup.title });
-			});
 
 			template.find('.top-action-bar .back-button').on('click', function() {
 				self.render();
@@ -523,6 +585,22 @@ define(function(require){
 		},
 
 		//utils
+		webhooksAttemptGetData: function(filters, webhookId, callback) {
+			var self = this;
+
+			self.callApi({
+				resource: 'webhooks.listAttempts',
+				data: {
+					accountId: self.accountId,
+					webhookId: webhookId,
+					filters: filters
+				},
+				success: function(data) {
+					callback && callback(data);
+				}
+			});
+		},
+
 		getWebhooks: function(callback){
 			var self = this;
 			
@@ -557,24 +635,6 @@ define(function(require){
 				data: {
 					accountId: self.accountId,
 					webhookId: webhookId
-				},
-				success: function(data) {
-					callback && callback(data.data);
-				}
-			});
-		},
-
-		getWebhookHistory: function(webhookId, callback){
-			var self = this;
-			
-			self.callApi({
-				resource: 'webhooks.listAttempts',
-				data: {
-					accountId: self.accountId,
-					webhookId: webhookId,
-					filters: {
-						paginate: false
-					}
 				},
 				success: function(data) {
 					callback && callback(data.data);

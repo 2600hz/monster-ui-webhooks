@@ -393,38 +393,13 @@
 	border-radius: 3px;
 	border-collapse: initial;
 }
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr:first-child td:first-child { border-top-left-radius: 2px; }
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr:first-child td:last-child { border-top-right-radius: 2px; }
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr:last-child td:first-child { border-bottom-left-radius: 2px; }
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr:last-child td:last-child { border-bottom-right-radius: 2px; }
 
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr:first-child {
-	background-color: #e0e0e9;
-	font-weight: 600;
-}
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr.error {
+#webhooks_wrapper .webhook-attempts .attempts-container #webhooks_attempts_grid tr.error {
 	color: #ff3d24;
 }
 
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr.error i {
+#webhooks_wrapper .webhook-attempts .attempts-container #webhooks_attempts_grid tr.error i {
 	color: #ff3d24;
-}
-
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table td {
-	padding: 15px;
-}
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr:not(:last-child) td {
-	border-bottom: solid 1px #c0c0c9;
-}
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr:not(:first-child-child) td:first-child,
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table tr:not(:first-child-child) td:last-child {
-	border-bottom: none;
-}
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table td:first-child,
-#webhooks_wrapper .webhook-attempts .attempts-container .attempts-table td:last-child {
-	padding: 0px;
-	width: 10px;
-	min-width: 10px;
 }
 
 #webhooks_wrapper .webhook-attempts .attempts-container .no-attempts {
@@ -434,6 +409,26 @@
 	text-align: center;
 	background-color: #f0f0f9;
 	font-size: 16px;
+}
+
+#webhooks_wrapper .webhook-attempts .filters {
+	position: absolute;
+	z-index: 2;
+	display: block;
+}
+
+#webhooks_wrapper .webhook-attempts .date-ranges > * {
+	margin: 0 10px 0 0;
+	vertical-align: middle;
+}
+
+#webhooks_wrapper .webhook-attempts .date-ranges > span {
+	margin-right: 5px;
+}
+
+#webhooks_wrapper .webhook-attempts .date-ranges input.date-filter {
+	height: 24px;
+	width: 80px;
 }
 
 #webhooks_wrapper .webhook-attempts .details-attempt {
