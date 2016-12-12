@@ -39,11 +39,7 @@
 	padding: 10px;
 }
 
-#webhooks_wrapper .webhooks-header .new-webhook .icon {
-	height: 30px;
-}
-
-#webhooks_wrapper .new-webhook .icon .webhook-plus-sign {
+#webhooks_wrapper .new-webhook .webhook-plus-sign {
 	display: inline-block;
 	font-size: 20px;
 	border: solid 1px;
@@ -54,7 +50,7 @@
 	color: #22a5ff;
 	position: relative;
 }
-#webhooks_wrapper .new-webhook .icon .webhook-plus-sign:before {
+#webhooks_wrapper .new-webhook .webhook-plus-sign:before {
 	position: absolute;
 	content: "";
 	height: 12px;
@@ -63,7 +59,7 @@
 	left: 12px;
 	top: 6px;
 }
-#webhooks_wrapper .new-webhook .icon .webhook-plus-sign:after {
+#webhooks_wrapper .new-webhook .webhook-plus-sign:after {
 	position: absolute;
 	content: "";
 	height: 0px;
