@@ -239,7 +239,7 @@ define(function(require){
 					template = $(monster.template(self, 'webhooks-edit', {
 						webhookList: webhookList,
 						webhook: webhookData.webhookDetails,
-						groups: (Object.keys(self.uiFlags.account.get('groups') || {})).sort()
+						groups: (_.keys(self.uiFlags.account.get('groups') || {})).sort()
 					}));
 
 				// Since we don't have a "none" state for the hook, if there's no existing webhook, the first webhook of the list will be selected
