@@ -48,6 +48,9 @@ rules:
   no-extend-native: off
   no-new-object: error
   no-array-constructor: error
+  quotes:
+    - error
+    - single
   quote-props:
     - warn
     - as-needed
