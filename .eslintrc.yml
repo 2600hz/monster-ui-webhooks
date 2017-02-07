@@ -46,6 +46,7 @@ rules:
   #Deprecated rule.
   no-native-reassign: off
   no-extend-native: off
+  no-new-object: error
 
 ### GIT-DEPENDENT RULES ###
 #Depending on your git settings, these rules may not apply, as git could automatically be enforcing them.
