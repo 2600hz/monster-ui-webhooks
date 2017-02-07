@@ -47,6 +47,13 @@ rules:
   no-native-reassign: off
   no-extend-native: off
   no-new-object: error
+  quote-props:
+    - warn
+    - as-needed
+    - {
+        keywords: true,
+        unnecessary: false
+      }
 
 ### GIT-DEPENDENT RULES ###
 #Depending on your git settings, these rules may not apply, as git could automatically be enforcing them.
