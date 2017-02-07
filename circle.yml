@@ -1,0 +1,17 @@
+dependencies:
+  pre:
+    - |
+      [[ -d ./node_modules/eslint ]] || npm install eslint
+    - |
+      [[ -d ./node_modules/eslint-plugin-promise ]] || npm i eslint-plugin-promise@latest --save-dev
+    - |
+      [[ -d ./node_modules/eslint-config-standard ]] || npm i eslint-config-standard@latest --save-dev
+    - |
+      [[ -d ./node_modules/eslint-plugin-standard ]] || npm i eslint-plugin-standard@latest --save-dev
+
+  cache_directories:
+    - "node_modules"
+
+test:
+  pre:
+    - ./node_modules/.bin/eslint app.js
