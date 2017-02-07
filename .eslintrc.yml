@@ -47,6 +47,7 @@ rules:
   no-native-reassign: off
   no-extend-native: off
   no-new-object: error
+  no-array-constructor: error
   quote-props:
     - warn
     - as-needed
