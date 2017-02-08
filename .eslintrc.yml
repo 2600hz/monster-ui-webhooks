@@ -58,7 +58,27 @@ rules:
         keywords: true,
         unnecessary: false
       }
-
+  no-inner-declarations:
+    - error
+    - both
+  dot-notation: error
+  vars-on-top: error
+  curly:
+    - error
+    - all
+  space-infix-ops:
+    - error
+  comma-style:
+    - error
+    - last
+  comma-dangle:
+    - error
+    - never
+  id-length:
+    - error
+    - {
+        exceptions: ["$", "_", "e"]
+      }
 ### GIT-DEPENDENT RULES ###
 #Depending on your git settings, these rules may not apply, as git could automatically be enforcing them.
 #Only enable these rules if git is configured to commit as-is, or if you are otherwise sure you need to use them.
