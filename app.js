@@ -1,4 +1,4 @@
-/* 
+/*
 	Left to do:
 		- URL needs to be present in Webhook Summary so that it can
 		be accessed quickly and efficiently
@@ -7,7 +7,7 @@
 		part of this UI, the request and util are commented out
 */
 
-define(function(require){
+define(function(require) {
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		monster = require('monster'),
@@ -18,7 +18,7 @@ define(function(require){
 
 		css: [ 'app' ],
 
-		i18n: { 
+		i18n: {
 			'en-US': { customCss: false },
 			'ru-RU': { customCss: false },
 			'es-ES': { customCss: false }
@@ -28,7 +28,7 @@ define(function(require){
 
 		subscribe: {},
 
-		load: function(callback){
+		load: function(callback) {
 			var self = this;
 
 			self.initApp(function() {
@@ -111,8 +111,8 @@ define(function(require){
 			setTimeout(function() { template.find('.search-query').focus(); });
 
 			monster.ui.tooltips(template);
-			
-			template.find('.new-webhook').on('click', function(e){
+
+			template.find('.new-webhook').on('click', function(e) {
 				self.renderWebhookEdit(template);
 			});
 
@@ -121,8 +121,8 @@ define(function(require){
 					self.render();
 				});
 			});
-			
-			template.find('.edit').on('click', function(e){
+
+			template.find('.edit').on('click', function(e) {
 				var webhookId = $(this).data('id');
 				self.renderWebhookEdit(template, webhookId);
 			});
@@ -140,18 +140,18 @@ define(function(require){
 				var webhookId = $(this).parents('.grid-row').data('id');
 				self.deleteWebhook(webhookId, function(data) {
 					self.render();
-					toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.deleteSuccess + data.name ));
+					toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.deleteSuccess + data.name));
 				});
 			});
 
 			template.find('.cancel-delete').on('click', function(e) {
 				$(this).parents('.grid-row-delete').fadeOut();
 			});
-			
+
 			template.find('.search-query').on('keyup', function() {
 				var searchString = $(this).val().toLowerCase(),
 					rows = template.find('.webhooks-grid .grid-row:not(.title)'),
-					emptySearch = template.find('.webhooks-grid .empty-search-row').toggleClass(".show");
+					emptySearch = template.find('.webhooks-grid .empty-search-row').toggleClass('.show');
 
 				_.each(rows, function(row) {
 					var $row = $(row),
@@ -186,11 +186,11 @@ define(function(require){
 							errorsCounter = template.find('.counter-errors .count');
 
 						if(enabled) {
-							activeCounter.html(parseInt(activeCounter.html())+1);
-							disabledCounter.html(parseInt(disabledCounter.html())-1);
+							activeCounter.html(parseInt(activeCounter.html()) + 1);
+							disabledCounter.html(parseInt(disabledCounter.html()) - 1);
 						} else {
-							disabledCounter.html(parseInt(disabledCounter.html())+1);
-							activeCounter.html(parseInt(activeCounter.html())-1);
+							disabledCounter.html(parseInt(disabledCounter.html()) + 1);
+							activeCounter.html(parseInt(activeCounter.html()) - 1);
 						}
 						$this.parents('.grid-row').toggleClass('disabled');
 					});
@@ -218,7 +218,7 @@ define(function(require){
 						}
 					}, function(err, results) {
 						callback && callback(results);
-					})
+					});
 				};
 
 			getWebhookData(webhookId, function(webhookData) {
@@ -229,12 +229,12 @@ define(function(require){
 							name: val.id in webhookListI18n ? webhookListI18n[val.id].name : val.name,
 							description: val.id in webhookListI18n ? webhookListI18n[val.id].description : val.description,
 							modifiers: val.modifiers,
-							include_subaccounts : val.include_subaccounts
-						}
+							include_subaccounts: val.include_subaccounts
+						};
 					})).concat({
 						id: 'all',
-							name: webhookListI18n.all.name,
-							description: webhookListI18n.all.description
+						name: webhookListI18n.all.name,
+						description: webhookListI18n.all.description
 					}),
 					template = $(monster.template(self, 'webhooks-edit', {
 						webhookList: webhookList,
@@ -245,7 +245,7 @@ define(function(require){
 				// Since we don't have a "none" state for the hook, if there's no existing webhook, the first webhook of the list will be selected
 				// So we need to had this hack to display the right modifiers div
 				if((_.isEmpty(webhookData.webhookDetails) || !webhookData.webhookDetails.hook) && webhookList.length) {
-					template.find('.modifiers-webhooks[data-webhook="'+ webhookList[0].id + '"]').addClass('active');
+					template.find('.modifiers-webhooks[data-webhook="' + webhookList[0].id + '"]').addClass('active');
 				}
 
 				// Modifiers of a webhook are also using the custom_data field, so if they're set, don't display them as regular custom data fields
@@ -256,7 +256,7 @@ define(function(require){
 				_.each(webhookList, function(webhook) {
 					if(webhook.modifiers) {
 						_.each(webhook.modifiers, function(modifier, key) {
-							if(protectedCustomData.indexOf(key) < 0 ) {
+							if(protectedCustomData.indexOf(key) < 0) {
 								protectedCustomData.push(key);
 							}
 						});
@@ -271,7 +271,7 @@ define(function(require){
 				if(webhookData.webhookDetails.hasOwnProperty('custom_data')) {
 					_.each(webhookData.webhookDetails.custom_data, function(value, key) {
 						if(currentModifiers.hasOwnProperty(key)) {
-							template.find('.modifiers-webhooks[data-webhook="'+ currentHook + '"] .select-modifier[name="' + key + '"]').val(value);
+							template.find('.modifiers-webhooks[data-webhook="' + currentHook + '"] .select-modifier[name="' + key + '"]').val(value);
 						}
 					});
 				}
@@ -330,12 +330,12 @@ define(function(require){
 
 			template.find('.select-hook').on('change', function() {
 				template.find('.modifiers-webhooks').removeClass('active');
-				template.find('.modifiers-webhooks[data-webhook="'+ $(this).val() + '"]').addClass('active');
+				template.find('.modifiers-webhooks[data-webhook="' + $(this).val() + '"]').addClass('active');
 			});
 
 			//Displaying tooltips for each option. Currently not working on Chrome & IE
 			// template.find('.select-hook').on('mouseover', function(e) {
-			// 	var $e = $(e.target); 
+			// 	var $e = $(e.target);
 			// 	if ($e.is('option')) {
 			// 		template.find('.select-hook').popover('destroy');
 			// 		template.find('.select-hook').popover({
@@ -360,42 +360,42 @@ define(function(require){
 						if(_.isEmpty(webhookData)) {
 							self.addWebhook(formData, function(data) {
 								if(formData.group) {
-									webhookGroups[formData.group] = (webhookGroups[formData.group] || 0)+1;
+									webhookGroups[formData.group] = (webhookGroups[formData.group] || 0) + 1;
 									self.updateWebhookGroups(webhookGroups, function() {
 										self.render({ webhookId: data.id });
-									})
+									});
 								} else {
 									self.render({ webhookId: data.id });
 								}
-								toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.addSuccess + data.name ));
+								toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.addSuccess + data.name));
 							});
 						} else {
 							self.updateWebhook(webhookData.id, formData, function(data) {
 								if(formData.group) {
 									if(formData.group !== webhookData.group) {
-										webhookGroups[formData.group] = (webhookGroups[formData.group] || 0)+1;
-										webhookGroups[webhookData.group] = (webhookGroups[webhookData.group] || 0)-1;
+										webhookGroups[formData.group] = (webhookGroups[formData.group] || 0) + 1;
+										webhookGroups[webhookData.group] = (webhookGroups[webhookData.group] || 0) - 1;
 										if(webhookGroups[webhookData.group] <= 0) {
 											delete webhookGroups[webhookData.group];
 										}
 										self.updateWebhookGroups(webhookGroups, function() {
 											self.render({ webhookId: data.id });
-										})
+										});
 									} else {
 										self.render({ webhookId: data.id });
 									}
 								} if(webhookData.group) {
-									webhookGroups[webhookData.group] = (webhookGroups[webhookData.group] || 0)-1;
+									webhookGroups[webhookData.group] = (webhookGroups[webhookData.group] || 0) - 1;
 									if(webhookGroups[webhookData.group] <= 0) {
 										delete webhookGroups[webhookData.group];
 									}
 									self.updateWebhookGroups(webhookGroups, function() {
 										self.render({ webhookId: data.id });
-									})
+									});
 								} else {
 									self.render({ webhookId: data.id });
 								}
-								toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.editSuccess + data.name ));
+								toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.editSuccess + data.name));
 							});
 						}
 					});
@@ -426,7 +426,7 @@ define(function(require){
 
 		renderAttemptsHistory: function(parent, webhookId, isError) {
 			var self = this;
-			
+
 			monster.parallel({
 				webhook: function(parallelCallback) {
 					self.getWebhookDetails(webhookId, function(data) {
@@ -458,7 +458,7 @@ define(function(require){
 				getData: function(filters, callback) {
 					filters = $.extend(true, filters, {
 						created_from: monster.util.dateToBeginningOfGregorianDay(fromDate),
-						created_to:  monster.util.dateToEndOfGregorianDay(toDate),
+						created_to: monster.util.dateToEndOfGregorianDay(toDate)
 					});
 
 					self.webhooksAttemptsGetRows(filters, webhookId, callback);
@@ -480,9 +480,9 @@ define(function(require){
 					var dataAttempt = formattedData.attempts[$(this).data('index')].raw,
 						template = $(monster.template(self, 'webhooks-attemptDetailsPopup'));
 
-						monster.ui.renderJSON(dataAttempt, template.find('#jsoneditor'));
+					monster.ui.renderJSON(dataAttempt, template.find('#jsoneditor'));
 
-						monster.ui.dialog(template, { title: self.i18n.active().webhooks.attemptDetailsPopup.title });
+					monster.ui.dialog(template, { title: self.i18n.active().webhooks.attemptDetailsPopup.title });
 				});
 
 				// monster.ui.footable requires this function to return the list of rows to add to the table, as well as the payload from the request, so it can set the pagination filters properly
@@ -512,7 +512,7 @@ define(function(require){
 				formattedData.attempts.push(attempt);
 			});
 
-			formattedData.attempts.sort(function(a,b) {
+			formattedData.attempts.sort(function(a, b) {
 				return a.raw.timestamp > b.raw.timestamp ? -1 : 1;
 			});
 
@@ -522,7 +522,7 @@ define(function(require){
 		formatAttemptsHistoryData: function(data, isError) {
 			var self = this,
 				result = {
-					name: data.webhook.name ? monster.template(self, '!' + self.i18n.active().webhooks.webhookAttempts.header, {webhookName:data.webhook.name}) : '',
+					name: data.webhook.name ? monster.template(self, '!' + self.i18n.active().webhooks.webhookAttempts.header, {webhookName: data.webhook.name}) : '',
 					url: data.webhook.uri,
 					isError: isError,
 					webhook: data.webhook
@@ -553,14 +553,14 @@ define(function(require){
 				newGroup = template.find('.new-group').val();
 
 			// Modifiers are most important customdata, we add them first so they can't be overriden
-			template.find('.modifiers-webhooks[data-webhook="'+ template.find('.select-hook').val()+'"] .select-modifier').each(function() {
+			template.find('.modifiers-webhooks[data-webhook="' + template.find('.select-hook').val() + '"] .select-modifier').each(function() {
 				customData[$(this).attr('name')] = $(this).val();
 			});
 
-			template.find('.custom-data-row').each(function(index){
+			template.find('.custom-data-row').each(function(index) {
 				var cdName = $(this).find('.custom-data-key').val(),
 					cdValue = $(this).find('.custom-data-value').val();
-				
+
 				if (customData.hasOwnProperty(cdName)) {
 					isValid = false;
 					return false;
@@ -601,9 +601,9 @@ define(function(require){
 			});
 		},
 
-		getWebhooks: function(callback){
+		getWebhooks: function(callback) {
 			var self = this;
-			
+
 			self.callApi({
 				resource: 'webhooks.list',
 				data: {
@@ -615,7 +615,7 @@ define(function(require){
 			});
 		},
 
-		getAvailableWebhooks: function(callback){
+		getAvailableWebhooks: function(callback) {
 			var self = this;
 
 			self.callApi({
@@ -626,10 +626,10 @@ define(function(require){
 				}
 			});
 		},
-		
-		getWebhookDetails: function(webhookId, callback){
+
+		getWebhookDetails: function(webhookId, callback) {
 			var self = this;
-			
+
 			self.callApi({
 				resource: 'webhooks.get',
 				data: {
@@ -641,10 +641,10 @@ define(function(require){
 				}
 			});
 		},
-		
-		addWebhook: function(data, callback){
+
+		addWebhook: function(data, callback) {
 			var self = this;
-			
+
 			self.callApi({
 				resource: 'webhooks.create',
 				data: {
@@ -656,10 +656,10 @@ define(function(require){
 				}
 			});
 		},
-		
-		updateWebhook: function(webhookId, data, callback){
+
+		updateWebhook: function(webhookId, data, callback) {
 			var self = this;
-			
+
 			self.callApi({
 				resource: 'webhooks.update',
 				data: {
@@ -672,8 +672,8 @@ define(function(require){
 				}
 			});
 		},
-		
-		deleteWebhook: function(webhookId, callback){
+
+		deleteWebhook: function(webhookId, callback) {
 			var self = this;
 			self.callApi({
 				resource: 'webhooks.delete',
@@ -687,8 +687,8 @@ define(function(require){
 				}
 			});
 		},
-		
-		enableWebhook: function(webhookId, callback){
+
+		enableWebhook: function(webhookId, callback) {
 			var self = this;
 			self.callApi({
 				resource: 'webhooks.patch',
@@ -704,16 +704,16 @@ define(function(require){
 				}
 			});
 		},
-		
+
 		//Note: only re-enable webhooks disabled by the server
-		enableAllWebhooks: function(callback){
+		enableAllWebhooks: function(callback) {
 			var self = this;
 			self.callApi({
 				resource: 'webhooks.patchAll',
 				data: {
 					accountId: self.accountId,
 					data: {
-						"re-enable": true
+						're-enable': true
 					}
 				},
 				success: function(data) {
@@ -721,11 +721,11 @@ define(function(require){
 				}
 			});
 		},
-		
-		updateWebhookGroups: function(webhookGroups, callback){
+
+		updateWebhookGroups: function(webhookGroups, callback) {
 			var self = this,
 				account = self.uiFlags.account.set('groups', webhookGroups);
-			
+
 			self.callApi({
 				resource: 'account.update',
 				data: {
