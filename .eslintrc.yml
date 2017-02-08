@@ -62,9 +62,9 @@ rules:
 ### GIT-DEPENDENT RULES ###
 #Depending on your git settings, these rules may not apply, as git could automatically be enforcing them.
 #Only enable these rules if git is configured to commit as-is, or if you are otherwise sure you need to use them.
-#  linebreak-style:
-#    - error
-#    - windows
-#  eol-last:
-#    - error
-#    - always
+  linebreak-style:
+    - error
+    - windows
+  eol-last:
+    - error
+    - always
