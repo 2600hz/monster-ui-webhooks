@@ -38,7 +38,7 @@ rules:
         "_|self|toastr|.*[cC]hart",
       #Allow arguments called status or data to be unused (They are required as arguments to the callbacks provided to monster#request()
         argsIgnorePattern:
-        "status|_status|data|_data"
+        "status|_status|data|_data|e"
       }
   operator-linebreak: 
     - error
