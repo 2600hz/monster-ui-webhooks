@@ -29,7 +29,7 @@ rules:
   spaced-comment: off
   camelcase: off #The 2600Hz Javascript Style Guide states that variable names should be camel case. However, snake case is sometimes required in the existing code.
   no-unneeded-ternary: off
-  eqeqeq: off
+  eqeqeq: error #May need to turn "off" due to intentional use of "==" and "!=" in some files
   no-unused-vars:
     - error
     - {
