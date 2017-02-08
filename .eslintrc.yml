@@ -27,7 +27,7 @@ rules:
     - 1tbs
     - allowSingleLine: true
   spaced-comment: off
-  camelcase: off
+  camelcase: off #The 2600Hz Javascript Style Guide states that variable names should be camel case. However, snake case is sometimes required in the existing code.
   no-unneeded-ternary: off
   eqeqeq: off
   no-unused-vars:
