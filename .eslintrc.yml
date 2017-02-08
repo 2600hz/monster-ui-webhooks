@@ -75,7 +75,7 @@ rules:
     - error
     - never
   id-length:
-    - error
+    - warn
     - {
         exceptions: ["$", "_", "e"]
       }
