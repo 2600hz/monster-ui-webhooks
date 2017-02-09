@@ -62,7 +62,7 @@ rules:
     - error
     - both
   dot-notation: error
-  vars-on-top: error
+  vars-on-top: off #Should be "error" according to 2600Hz style guide. However, this can introduce bugs if enforced through the linter.
   curly:
     - error
     - all
