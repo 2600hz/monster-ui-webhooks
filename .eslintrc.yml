@@ -60,7 +60,7 @@ rules:
       }
   no-inner-declarations:
     - error
-    - both
+    - functions
   dot-notation: error
   vars-on-top: off #Should be "error" according to 2600Hz style guide. However, this can introduce bugs if enforced through the linter.
   curly:
