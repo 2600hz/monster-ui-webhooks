@@ -182,8 +182,7 @@ define(function(require) {
 					webhookData.enabled = enabled;
 					self.updateWebhook(webhookId, webhookData, function() {
 						var activeCounter = template.find('.counter-active .count'),
-							disabledCounter = template.find('.counter-disabled .count'),
-							errorsCounter = template.find('.counter-errors .count');
+							disabledCounter = template.find('.counter-disabled .count');
 
 						if(enabled) {
 							activeCounter.html(parseInt(activeCounter.html()) + 1);
@@ -444,8 +443,8 @@ define(function(require) {
 				self.bindAttemptsHistoryEvents(attemptsTemplate, dataTemplate);
 
 				parent.find('.webhooks-container')
-					  .empty()
-					  .append(attemptsTemplate);
+						.empty()
+						.append(attemptsTemplate);
 			});
 		},
 
