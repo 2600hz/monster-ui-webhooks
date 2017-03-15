@@ -97,11 +97,11 @@ define(function(require) {
 				}
 			});
 			templateData.groupedWebhooks = _.map(groups, function(val, key) {
-				monster.util.sort(val.webhooks, 'name');
+				val.webhooks = _.sortBy(val.webhooks, 'name');
 				return val;
 			});
-			monster.util.sort(templateData.ungroupedWebhooks, 'name');
-			monster.util.sort(templateData.groupedWebhooks, 'groupName');
+			templateData.ungroupedWebhooks = _.sortBy(templateData.ungroupedWebhooks, 'name');
+			templateData.groupedWebhooks = _.sortBy(templateData.groupedWebhooks, 'groupName');
 			return templateData;
 		},
 
@@ -222,15 +222,15 @@ define(function(require) {
 
 			getWebhookData(webhookId, function(webhookData) {
 				var webhookListI18n = self.i18n.active().webhooks.webhookList,
-					webhookList = monster.util.sort(_.map(webhookData.webhookList, function(val) {
+					webhookList = _.chain(webhooks.webhookList).map(function(val) {
 						return {
 							id: val.id,
 							name: val.id in webhookListI18n ? webhookListI18n[val.id].name : val.name,
 							description: val.id in webhookListI18n ? webhookListI18n[val.id].description : val.description,
 							modifiers: val.modifiers,
 							include_subaccounts: val.include_subaccounts
-						};
-					})).concat({
+						}
+					}).sortBy('name').value().concat({
 						id: 'all',
 						name: webhookListI18n.all.name,
 						description: webhookListI18n.all.description
