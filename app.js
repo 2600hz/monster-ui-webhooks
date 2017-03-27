@@ -222,7 +222,7 @@ define(function(require) {
 
 			getWebhookData(webhookId, function(webhookData) {
 				var webhookListI18n = self.i18n.active().webhooks.webhookList,
-					webhookList = _.chain(webhooks.webhookList).map(function(val) {
+					webhookList = _.chain(webhookData.webhookList).map(function(val) {
 						return {
 							id: val.id,
 							name: val.id in webhookListI18n ? webhookListI18n[val.id].name : val.name,
