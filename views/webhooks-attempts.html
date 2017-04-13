@@ -12,18 +12,16 @@
 			{{/if}}
 			<div class="webhook-url">{{url}}</div>
 		</div>
-
-		<div class="filters">
-			<div class="date-ranges">
-				<span>{{i18n.startDate}}</span>
-				<input id="startDate" type="text" class="date-filter filter-from">
-				<span>{{i18n.endDate}}</span>
-				<input id="endDate" type="text" class="date-filter filter-to">
-				<button type="button" class="apply-filter monster-button monster-button-primary">{{i18n.filter}}</button>
+		<div class="monster-table-wrapper">
+			<div class="monster-table-header">
+				<div class="date-ranges">
+					<span>{{i18n.startDate}}</span>
+					<input id="startDate" type="text" class="date-filter filter-from">
+					<span>{{i18n.endDate}}</span>
+					<input id="endDate" type="text" class="date-filter filter-to">
+					<button type="button" class="apply-filter monster-button monster-button-primary">{{i18n.filter}}</button>
+				</div>
 			</div>
-		</div>
-
-		<div class="table-container">
 			<table id="webhooks_attempts_grid" class="monster-table footable">
 				<thead>
 					<tr>
