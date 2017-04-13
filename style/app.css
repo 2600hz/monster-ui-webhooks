@@ -407,12 +407,6 @@
 	font-size: 16px;
 }
 
-#webhooks_wrapper .webhook-attempts .filters {
-	position: absolute;
-	z-index: 2;
-	display: block;
-}
-
 #webhooks_wrapper .webhook-attempts .date-ranges > * {
 	margin: 0 10px 0 0;
 	vertical-align: middle;
