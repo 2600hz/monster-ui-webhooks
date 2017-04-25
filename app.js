@@ -55,7 +55,7 @@ define(function(require) {
 			self.getWebhooks(function(data) {
 				var templateData = self.formatWebhooksData(data),
 					webhooksTemplate = $(monster.template(self, 'webhooks-layout', templateData)),
-					parent = _.isEmpty(container) ? $('#monster-content') : container;
+					parent = _.isEmpty(container) ? $('#monster_content') : container;
 
 				self.bindEvents(webhooksTemplate);
 
