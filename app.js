@@ -227,7 +227,7 @@ define(function(require) {
 							id: val.id,
 							name: val.id in webhookListI18n ? webhookListI18n[val.id].name : val.name,
 							description: val.id in webhookListI18n ? webhookListI18n[val.id].description : val.description,
-							modifiers: val.modifiers,
+							modifiers: val.modifiers || {},
 							include_subaccounts: val.include_subaccounts
 						}
 					}).sortBy('name').value().concat({
