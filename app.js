@@ -9,7 +9,7 @@
 
 define(function(require) {
 	var $ = require('jquery'),
-		_ = require('underscore'),
+		_ = require('lodash'),
 		monster = require('monster'),
 		toastr = require('toastr');
 
