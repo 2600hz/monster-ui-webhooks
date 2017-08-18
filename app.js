@@ -11,7 +11,8 @@ define(function(require) {
 	var $ = require('jquery'),
 		_ = require('lodash'),
 		monster = require('monster'),
-		toastr = require('toastr');
+		toastr = require('toastr'),
+		changeCLRF = true;
 
 	var app = {
 		name: 'webhooks',
