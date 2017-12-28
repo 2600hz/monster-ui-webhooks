@@ -92,6 +92,19 @@
 										</select>
 									</div>
 								</div>
+							{{else}}
+								{{#compare type "===" "object"}}
+									<div class="modifier control-group">
+										<label class="control-label">{{@key}}</label>
+										<div class="controls">
+											<select required class="select-modifier" name="{{@key}}">
+												{{#each items}}
+													<option value="{{@key}}" title="{{this.description}}">{{this.friendly_name}}</option>
+												{{/each}}
+											</select>
+										</div>
+									</div>
+								{{/compare}}
 							{{/compare}}
 						{{/each}}
 					</div>
