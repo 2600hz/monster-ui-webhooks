@@ -112,29 +112,21 @@
 				"name": "All",
 				"description": "This webhook will be triggered by all the events"
 			},
-			"outbound_fax": {
-				"name": "outbound_fax",
-				"description": "Outbound faxes (or errors if they occur)"
-			},
 			"object": {
-				"name": "object",
-				"description": "Receive notifications when objects in Kazoo are changed"
+				"name": "Object",
+				"description": "Receive notifications when objects (like JSON document objects) in Kazoo are changed"
 			},
 			"channel_destroy": {
-				"name": "channel_destroy",
-				"description": "Events when calls end"
+				"name": "Channel Destroy",
+				"description": "This webhook is triggered when a channel is destroyed, usually as a result of a hangup"
 			},
 			"channel_create": {
-				"name": "channel_create",
-				"description": "Events when new calls start"
+				"name": "Channel Create",
+				"description": "This webhook is triggered when a new channel is created"
 			},
 			"channel_answer": {
-				"name": "channel_answer",
-				"description": "Events for when the channel is answered by the endpoint"
-			},
-			"callflow": {
-				"name": "callflow",
-				"description": "Fire a webhook from a callflow"
+				"name": "Channel Answer",
+				"description": "This webhook is triggered when a channel establishes two-way audio, such as a voicemail box or the called party answering"
 			}
 		},
 
