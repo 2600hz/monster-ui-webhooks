@@ -501,7 +501,7 @@ define(function(require) {
 						date: dateTime[0],
 						time: dateTime[1],
 						sent: attempt.method.toUpperCase(),
-						received: isError ? (attempt.reason === 'bad response code' ? (attempt.reason + ' (' + attempt.response_code + ')') : attempt.reason) : attempt.result,
+						received: isError ? (attempt.reason === 'bad response code' ? (attempt.reason + ' (' + attempt.resp_status_code + ')') : attempt.reason) : attempt.result,
 						retriesLeft: attempt.hasOwnProperty('retries') && typeof attempt.retries === 'number' ? attempt.retries - 1 : 0,
 						error: isError,
 						raw: attempt
