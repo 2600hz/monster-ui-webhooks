@@ -248,7 +248,7 @@ define(function(require) {
 
 				// Modifiers of a webhook are also using the custom_data field, so if they're set, don't display them as regular custom data fields
 				var protectedCustomData = [],
-					currentModifiers,
+					currentModifiers = {},
 					currentHook = webhookData.webhookDetails.hasOwnProperty('hook') ? webhookData.webhookDetails.hook : undefined;
 
 				_.each(webhookList, function(webhook) {
