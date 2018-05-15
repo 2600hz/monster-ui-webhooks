@@ -3,7 +3,7 @@
 	"api_url": "http://10.26.0.41:8000/v2",
 	"i18n": {
 		"en-US": {
-			"label": "Webhook Manager",
+			"label": "Webhooks",
 			"description": "Learn about Kazoo webhooks, create new webhooks, manage and debug existing webhooks.",
 			"extended_description": "Webhooks enables developers to build rigorous integrations that rely on real time, non-critical notifications from KAZOO. Webhooks sends a HTTP, GET, or POST notification to a URL defined by you when certain events occur on a system",
 			"features": [
