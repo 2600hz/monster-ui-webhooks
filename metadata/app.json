@@ -30,5 +30,6 @@
 		"webhooks1.png",
 		"webhooks2.png"
 	],
+	"phase": "gold",
 	"pvt_type": "app"
 }
