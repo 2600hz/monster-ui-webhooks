@@ -20,6 +20,7 @@ define(function(require) {
 		i18n: {
 			'en-US': { customCss: false },
 			'ru-RU': { customCss: false },
+			'de-DE': { customCss: false },
 			'es-ES': { customCss: false }
 		},
 

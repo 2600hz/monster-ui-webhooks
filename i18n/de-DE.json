@@ -1,0 +1,135 @@
+{
+    "webhooks": {
+        "__comment": "UI-1943: Bereinigen von Details zu Webhooks",
+        "__version": "3.22",
+        "addCD": "+ Benutzerdefinierte Daten hinzufügen",
+        "addWebhook": "Neuer Webhook",
+        "attemptDetailsPopup": {
+            "title": "Details"
+        },
+        "attemptSuccess": "Erfolg!",
+        "date": "Datum",
+        "delete": "LÖSCHEN",
+        "deleteMessage": "Möchten Sie diesen Webhook wirklich löschen?",
+        "deleteRequest": "Möchten Sie folgendes wirklich löschen: ",
+        "deleteTitle": "Löschen?",
+        "deleteTooltip": "Löschen",
+        "dialogHistory": {
+            "title": "Verlauf der Versuche an diesem Webhook"
+        },
+        "dialogWebhook": {
+            "Hooks": {
+                "ALL": "Alle",
+                "ca": "channel_answer",
+                "cc": "channel_create",
+                "cd": "channel_destroy"
+            },
+            "Request": {
+                "get": "GET",
+                "post": "POST"
+            },
+            "addTitle": "Neuer Webhook",
+            "createWebhook": "ERSTELLEN",
+            "editTitle": "Webhook bearbeiten",
+            "enterHook": "Hook",
+            "enterName": "Name",
+            "enterRequest": "Anforderung",
+            "enterRetries": "Anzahl der Wiederholungsversuche",
+            "enterURL": "URL",
+            "placeholderName": "Benutzerdefinierter Name",
+            "save": "SPEICHERN"
+        },
+        "editCD": "+ Benutzerdefinierte Daten bearbeiten",
+        "editTooltip": "Einstellungen bearbeiten",
+        "empty-row": "Zu Ihren Suchkriterien konnten keine Webhooks gefunden werden.",
+        "emptySearch": "Zu Ihren Suchkriterien konnte kein Webhook gefunden werden.",
+        "errorTooltip": "Dieser Webhook wurde vom Server aus dem folgenden Grund deaktiviert: ",
+        "historyTooltip": "Zeigen Sie eine Liste der Versuche an",
+        "info": "WebHooks bieten unserem System die Möglichkeit, Ihr Webprogramm jedes Mal zu benachrichtigen, wenn etwas Interessantes geschieht. Wenn zum Beispiel jemand ein Telefongespräch beendet, können wir Sie das in Echtzeit wissen lassen und Ihnen auch mitteilen, wer mit wem und wie lange gesprochen hat.",
+        "info2": "Um diese Funktion zu verwenden, müssen Sie eine URL für Ihren Server konfigurieren und uns mitteilen, bei welchen Typen von Ereignissen Sie benachrichtigt werden möchten und in welchem Format dies erfolgen soll. Diese Funktion gilt für Ihren gesamten Konto (außer den Sub-Accounts) und alle darin enthaltenen Apps.",
+        "less": "Informationen über Webhooks ausblenden",
+        "message": "Nachricht",
+        "more": "Mehr Informationen über Webhooks",
+        "no-webhooks": "Es sind keine Webhooks konfiguriert.",
+        "noAttempts": "Das System hat keine Versuche an diesem Webhook bemerkt...",
+        "noWebhooks": "Für dieses Konto sind keine Webhooks konfiguriert.",
+        "reenableButton": "Alle fehlerhaften Webhooks wieder aktivieren",
+        "reenableTooltip": "Webhooks",
+        "retriesLeft": "Anzahl der noch übrigen Versuche",
+        "search": "Suche",
+        "toastr": {
+            "addSuccess": "Sie haben folgendes erfolgreich hinzugefügt: ",
+            "deleteSuccess": "Sie haben folgendes erfolgreich gelöscht: ",
+            "editSuccess": "Sie haben folgendes erfolgreich geändert: "
+        },
+        "warning": "Sie können keine benutzerdefinierten Daten mit demselben Bezeichner speichern. Bitte geben Sie einen anderen Bezeichner ein.",
+        "webhookAttempts": {
+            "backButton": "Zurück zu Webhooks",
+            "date": "Datum",
+            "enableButton": "Diesen Webhook wieder aktivieren",
+            "header": "Anforderungsprotokoll von {{webhookName}}",
+            "noAttempts": "Das System hat keine Versuche an diesem Webhook bemerkt...",
+            "received": "Empfangen",
+            "retriesLeft": "Noch übrige Versuche",
+            "sent": "Gesendet",
+            "time": "Mal"
+        },
+        "webhookCounters": {
+            "active": "Aktiv",
+            "disabled": "Deaktiviert",
+            "errors": "Fehler"
+        },
+        "webhookEdition": {
+            "creationSaveButton": "Webhook erstellen",
+            "creationTitle": "Neuen Webhook erstellen",
+            "customDataKey": "Benutzerdefinierter Schlüssel",
+            "customDataLabel": "+ Datenzeile hinzufügen",
+            "customDataSectionTitle": "Fügen Sie Ihrem Webhook benutzerdefinierte Daten hinzu (optional)",
+            "customDataValue": "Benutzerdefinierter Wert",
+            "editionSaveButton": "Webhook aktualisieren",
+            "editionTitle": "Webhook bearbeiten",
+            "existingOptionGroup": "Vorhandene Gruppen:",
+            "groupSectionTitle": "Heften Sie diesen Webhook an eine Gruppe an",
+            "groupSelectLabel": "An Gruppe anheften",
+            "hookLabel": "Ereignis auslösen",
+            "methodLabel": "Anforderungstyp",
+            "methodSectionTitle": "Wählen Sie eine Anforderungsmethode aus, legen Sie den Server fest, an den die Informationen gesendet werden sollen, und geben Sie an, wie viele Wiederholungsversuche der Hook vornehmen soll",
+            "nameLabel": "Webhook-Name",
+            "nameSectionTitle": "Geben Sie Ihrem Webhook einen Namen und entscheiden Sie",
+            "newGroupLabel": "Neue Gruppe erstellen",
+            "newGroupOption": "+ Eine neue Gruppe erstellen",
+            "noGroupOption": "Nicht gruppieren",
+            "retriesLabel": "Wiederholungsversuche",
+            "urlLabel": "URL",
+            "urlPlaceholder": "http://mein.server.com/call_answered.php?account_id=123456"
+        },
+        "webhookFilters": {
+            "active": "Aktive Hooks",
+            "all": "Alle Webhooks",
+            "disabled": "Deaktivierte Hooks",
+            "errors": "Fehler"
+        },
+        "webhookList": {
+            "all": {
+                "description": "Dieser Webhook wird von sämtlichen Ereignissen ausgelöst",
+                "name": "Alle"
+            },
+            "channel_answer": {
+                "description": "Dieser Webhook wird ausgelöst, wenn ein Kanal eine Zweiwege-Audio-Kommunikation herstellt (z. B. wenn sich eine Voicemailbox meldet oder der angerufene Teilnehmer antwortet)",
+                "name": "Kanalantwort"
+            },
+            "channel_create": {
+                "description": "Dieser Webhook wird ausgelöst",
+                "name": "Kanal erstellen"
+            },
+            "channel_destroy": {
+                "description": "Dieser Webhook wird ausgelöst, wenn ein Kanal zerstört wird (also wenn jemand aufgelegt hat)",
+                "name": "Kanal zerstören"
+            },
+            "object": {
+                "description": "Benachrichtigungen empfangen",
+                "name": "Objekt"
+            }
+        }
+    }
+}
