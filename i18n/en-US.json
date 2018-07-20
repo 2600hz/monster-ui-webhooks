@@ -39,9 +39,9 @@
 		"no-webhooks": "There are no webhooks configured.",
 		"search": "Search",
 		"toastr": {
-			"addSuccess": "You have successfully added ",
-			"deleteSuccess": "You have successfully deleted ",
-			"editSuccess": "You have successfully changed "	
+			"addSuccess": "You have successfully added {{name}}",
+			"deleteSuccess": "You have successfully deleted {{name}}",
+			"editSuccess": "You have successfully changed {{name}}"
 		},
 		"warning": "You cannot save Custom Data with the same identifier. Please enter a different identifier.",
 		"__comment": "UI-748: Adding tooltips for actions",

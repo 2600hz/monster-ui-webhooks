@@ -54,7 +54,10 @@ define(function(require) {
 
 			self.getWebhooks(function(data) {
 				var templateData = self.formatWebhooksData(data),
-					webhooksTemplate = $(monster.template(self, 'webhooks-layout', templateData)),
+					webhooksTemplate = $(self.getTemplate({
+						name: 'webhooks-layout',
+						data: templateData
+					})),
 					parent = _.isEmpty(container) ? $('#monster_content') : container;
 
 				self.bindEvents(webhooksTemplate);
@@ -140,7 +143,12 @@ define(function(require) {
 				var webhookId = $(this).parents('.grid-row').data('id');
 				self.deleteWebhook(webhookId, function(data) {
 					self.render();
-					toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.deleteSuccess + data.name));
+					toastr.success(self.getTemplate({
+						name: '!' + self.i18n.active().webhooks.toastr.deleteSuccess,
+						data: {
+							name: data.name
+						}
+					}));
 				});
 			});
 
@@ -235,10 +243,13 @@ define(function(require) {
 						name: webhookListI18n.all.name,
 						description: webhookListI18n.all.description
 					}),
-					template = $(monster.template(self, 'webhooks-edit', {
-						webhookList: webhookList,
-						webhook: webhookData.webhookDetails,
-						groups: (_.keys(self.uiFlags.account.get('groups') || {})).sort()
+					template = $(self.getTemplate({
+						name: 'webhooks-edit',
+						data: {
+							webhookList: webhookList,
+							webhook: webhookData.webhookDetails,
+							groups: (_.keys(self.uiFlags.account.get('groups') || {})).sort()
+						}
 					}));
 
 				// Since we don't have a "none" state for the hook, if there's no existing webhook, the first webhook of the list will be selected
@@ -279,10 +290,13 @@ define(function(require) {
 				if (webhookData.webhookDetails.custom_data) {
 					_.each(webhookData.webhookDetails.custom_data, function(val, key) {
 						if (protectedCustomData.indexOf(key) < 0) {
-							var customDataTemplate = monster.template(self, 'webhooks-customDataRow', {
-								key: key,
-								value: val
-							});
+							var customDataTemplate = $(self.getTemplate({
+								name: 'webhooks-customDataRow',
+								data: {
+									key: key,
+									value: val
+								}
+							}));
 
 							template.find('.custom-data-container')
 									.append(customDataTemplate);
@@ -320,7 +334,9 @@ define(function(require) {
 
 			template.find('.custom-data-link').on('click', function() {
 				template.find('.custom-data-container')
-						.append(monster.template(self, 'webhooks-customDataRow'));
+						.append($(self.getTemplate({
+							name: 'webhooks-customDataRow'
+						})));
 			});
 
 			template.find('.custom-data-container').on('click', '.delete-custom-data', function() {
@@ -366,7 +382,12 @@ define(function(require) {
 								} else {
 									self.render({ webhookId: data.id });
 								}
-								toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.addSuccess + data.name));
+								toastr.success(self.getTemplate({
+									name: '!' + self.i18n.active().webhooks.toastr.addSuccess,
+									data: {
+										name: data.name
+									}
+								}));
 							});
 						} else {
 							self.updateWebhook(webhookData.id, formData, function(data) {
@@ -394,7 +415,12 @@ define(function(require) {
 								} else {
 									self.render({ webhookId: data.id });
 								}
-								toastr.success(monster.template(self, '!' + self.i18n.active().webhooks.toastr.editSuccess + data.name));
+								toastr.success(self.getTemplate({
+									name: '!' + self.i18n.active().webhooks.toastr.editSuccess,
+									data: {
+										name: data.name
+									}
+								}));
 							});
 						}
 					});
@@ -434,7 +460,10 @@ define(function(require) {
 				}
 			}, function(err, results) {
 				var dataTemplate = self.formatAttemptsHistoryData(results, isError),
-					attemptsTemplate = $(monster.template(self, 'webhooks-attempts', dataTemplate));
+					attemptsTemplate = $(self.getTemplate({
+						name: 'webhooks-attempts',
+						data: dataTemplate
+					}));
 
 				self.webhooksInitDatePicker(webhookId, parent, attemptsTemplate);
 
@@ -473,11 +502,16 @@ define(function(require) {
 
 			self.webhooksAttemptGetData(filters, webhookId, function(data) {
 				var formattedData = self.webhooksAttemptFormatDataTable(data),
-					$rows = $(monster.template(self, 'webhooks-attemptsRows', formattedData));
+					$rows = $(self.getTemplate({
+						name: 'webhooks-attemptsRows',
+						data: formattedData
+					}));
 
 				$rows.find('.details-attempt').on('click', function() {
 					var dataAttempt = formattedData.attempts[$(this).data('index')].raw,
-						template = $(monster.template(self, 'webhooks-attemptDetailsPopup'));
+						template = $(self.getTemplate({
+							name: 'webhooks-attemptDetailsPopup'
+						}));
 
 					monster.ui.renderJSON(dataAttempt, template.find('#jsoneditor'));
 
@@ -521,7 +555,14 @@ define(function(require) {
 		formatAttemptsHistoryData: function(data, isError) {
 			var self = this,
 				result = {
-					name: data.webhook.name ? monster.template(self, '!' + self.i18n.active().webhooks.webhookAttempts.header, {webhookName: data.webhook.name}) : '',
+					name: data.webhook.name
+						? self.getTemplate({
+							name: '!' + self.i18n.active().webhooks.webhookAttempts.header,
+							data: {
+								webhookName: data.webhook.name
+							}
+						})
+						: '',
 					url: data.webhook.uri,
 					isError: isError,
 					webhook: data.webhook
