@@ -9,8 +9,7 @@
 define(function(require) {
 	var $ = require('jquery'),
 		_ = require('lodash'),
-		monster = require('monster'),
-		toastr = require('toastr');
+		monster = require('monster');
 
 	var app = {
 		name: 'webhooks',
@@ -143,12 +142,15 @@ define(function(require) {
 				var webhookId = $(this).parents('.grid-row').data('id');
 				self.deleteWebhook(webhookId, function(data) {
 					self.render();
-					toastr.success(self.getTemplate({
-						name: '!' + self.i18n.active().webhooks.toastr.deleteSuccess,
-						data: {
-							name: data.name
-						}
-					}));
+					monster.ui.toast({
+						type: 'success',
+						message: self.getTemplate({
+							name: '!' + self.i18n.active().webhooks.toastr.deleteSuccess,
+							data: {
+								name: data.name
+							}
+						})
+					});
 				});
 			});
 
@@ -382,12 +384,15 @@ define(function(require) {
 								} else {
 									self.render({ webhookId: data.id });
 								}
-								toastr.success(self.getTemplate({
-									name: '!' + self.i18n.active().webhooks.toastr.addSuccess,
-									data: {
-										name: data.name
-									}
-								}));
+								monster.ui.toast({
+									type: 'success',
+									message: self.getTemplate({
+										name: '!' + self.i18n.active().webhooks.toastr.addSuccess,
+										data: {
+											name: data.name
+										}
+									})
+								});
 							});
 						} else {
 							self.updateWebhook(webhookData.id, formData, function(data) {
@@ -415,12 +420,15 @@ define(function(require) {
 								} else {
 									self.render({ webhookId: data.id });
 								}
-								toastr.success(self.getTemplate({
-									name: '!' + self.i18n.active().webhooks.toastr.editSuccess,
-									data: {
-										name: data.name
-									}
-								}));
+								monster.ui.toast({
+									type: 'success',
+									message: self.getTemplate({
+										name: '!' + self.i18n.active().webhooks.toastr.editSuccess,
+										data: {
+											name: data.name
+										}
+									})
+								});
 							});
 						}
 					});
