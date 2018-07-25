@@ -2,6 +2,21 @@
 	"name": "webhooks",
 	"api_url": "http://10.26.0.41:8000/v2",
 	"i18n": {
+		"de-DE": {
+			"label": "Webhooks",
+			"description": "Erfahren Sie mehr über Kazoo-Webhooks, erstellen Sie neue Webhooks und verwalten und debuggen Sie vorhandene Webhooks.",
+			"extended_description": "Mithilfe von Webhooks können Entwickler konsequente Integrationen erstellen, die auf unkritischen, in Echtzeit erfolgenden Benachrichtigungen aus KAZOO basieren. Webhooks sendet beim Auftreten bestimmter Ereignisse in einem System eine HTTP-, GET- oder POST-Benachrichtigung an eine von Ihnen festgelegte URL",
+			"features": [
+				"Kanalanforderungen protokollieren",
+				"Webhooks aktivieren/deaktivieren",
+				"Benutzerdefinierte Daten hinzufügen",
+				"Live-Ereignisse",
+				"EVNs",
+				"Persönliche Konferenzräume",
+				"Entgegennehmen/Auflegen von Anrufen",
+				"Zu Benachrichtigungen, die Webhooks versenden kann, gehören eingehende/ausgehende Anrufe, Anruf entgegengenommen/beendet, Überbrückte Anrufe, Gespräch geparkt, eingehendes/ausgehendes Fax, Callflow ausgelöst, Objekt ausgelöst"
+			]
+		},
 		"en-US": {
 			"label": "Webhooks",
 			"description": "Learn about Kazoo webhooks, create new webhooks, manage and debug existing webhooks.",
