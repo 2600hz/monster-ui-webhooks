@@ -274,7 +274,7 @@ define(function(require) {
 						});
 
 						// If we're looping over the current webhook we're about to display, save the modifiers so we can select the proper values in the UI later
-						if (webhook.name === currentHook) {
+						if (webhook.id === currentHook) {
 							currentModifiers = webhook.modifiers;
 						}
 					}
