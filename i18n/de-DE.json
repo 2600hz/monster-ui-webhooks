@@ -45,7 +45,7 @@
         "emptySearch": "Zu Ihren Suchkriterien konnte kein Webhook gefunden werden.",
         "errorTooltip": "Dieser Webhook wurde vom Server aus dem folgenden Grund deaktiviert: ",
         "historyTooltip": "Zeigen Sie eine Liste der Versuche an",
-        "info": "WebHooks bieten unserem System die Möglichkeit, Ihr Webprogramm jedes Mal zu benachrichtigen, wenn etwas Interessantes geschieht. Wenn zum Beispiel jemand ein Telefongespräch beendet, können wir Sie das in Echtzeit wissen lassen und Ihnen auch mitteilen, wer mit wem und wie lange gesprochen hat.",
+        "info": "WebHooks bieten unserem System die Möglichkeit, Ihr Webprogramm jedes Mal zu benachrichtigen, wenn etwas interessantes geschieht. Wenn zum Beispiel jemand ein Telefongespräch beendet, können wir Sie in Echtzeit informieren und Ihnen auch mitteilen, wer mit wem und wie lange gesprochen hat.",
         "info2": "Um diese Funktion zu verwenden, müssen Sie eine URL für Ihren Server konfigurieren und uns mitteilen, bei welchen Typen von Ereignissen Sie benachrichtigt werden möchten und in welchem Format dies erfolgen soll. Diese Funktion gilt für Ihren gesamten Konto (außer den Sub-Accounts) und alle darin enthaltenen Apps.",
         "less": "Informationen über Webhooks ausblenden",
         "message": "Nachricht",
@@ -115,7 +115,7 @@
                 "name": "Alle"
             },
             "channel_answer": {
-                "description": "Dieser Webhook wird ausgelöst, wenn ein Kanal eine Zweiwege-Audio-Kommunikation herstellt (z. B. wenn sich eine Voicemailbox meldet oder der angerufene Teilnehmer antwortet)",
+                "description": "Dieser Webhook wird ausgelöst, wenn ein Kanal eine Zweiwege-Audio-Kommunikation herstellt (z. B. wenn sich ein Anrufbeantworter meldet oder der angerufene Teilnehmer antwortet)",
                 "name": "Kanalantwort"
             },
             "channel_create": {
@@ -123,11 +123,11 @@
                 "name": "Kanal erstellen"
             },
             "channel_destroy": {
-                "description": "Dieser Webhook wird ausgelöst, wenn ein Kanal zerstört wird (also wenn jemand aufgelegt hat)",
-                "name": "Kanal zerstören"
+                "description": "Dieser Webhook wird ausgelöst, wenn ein Kanal geschlossen wird (also wenn jemand aufgelegt hat)",
+                "name": "Kanal schliessen"
             },
             "object": {
-                "description": "Benachrichtigungen empfangen",
+                "description": "Benachrichtigungen empfangen, wenn Objekte (wie z. B. JSON-Dokumentobjekte) im System geändert werden",
                 "name": "Objekt"
             }
         }
