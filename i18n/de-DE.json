@@ -1,135 +1,135 @@
 {
-    "webhooks": {
-        "dialogWebhook": {
-            "save": "SPEICHERN",
-            "enterName": "Name",
-            "editTitle": "Webhook bearbeiten",
-            "Hooks": {
-                "cc": "channel_create",
-                "ca": "channel_answer",
-                "cd": "channel_destroy",
-                "ALL": "Alle"
-            },
-            "createWebhook": "ERSTELLEN",
-            "Request": {
-                "get": "GET",
-                "post": "POST"
-            },
-            "enterRetries": "Anzahl der Wiederholungsversuche",
-            "enterRequest": "Anforderung",
-            "enterHook": "Hook",
-            "addTitle": "Neuer Webhook",
-            "enterURL": "URL",
-            "placeholderName": "Benutzerdefinierter Name"
-        },
-        "webhookAttempts": {
-            "header": "Anforderungsprotokoll von {{webhookName}}",
-            "noAttempts": "Das System hat keine Versuche an diesem Webhook bemerkt...",
-            "date": "Datum",
-            "time": "Mal",
-            "retriesLeft": "Noch übrige Versuche",
-            "backButton": "Zurück zu Webhooks",
-            "received": "Empfangen",
-            "enableButton": "Diesen Webhook wieder aktivieren",
-            "sent": "Gesendet"
-        },
-        "dialogHistory": {
-            "title": "Verlauf der Versuche an diesem Webhook"
-        },
-        "webhookEdition": {
-            "customDataSectionTitle": "Fügen Sie Ihrem Webhook benutzerdefinierte Daten hinzu (optional)",
-            "creationSaveButton": "Webhook erstellen",
-            "nameLabel": "Webhook-Name",
-            "nameSectionTitle": "Geben Sie Ihrem Webhook einen Namen und entscheiden Sie",
-            "customDataLabel": "+ Datenzeile hinzufügen",
-            "methodSectionTitle": "|Wählen Sie eine Anforderungsmethode aus",
-            "hookLabel": "Ereignis auslösen",
-            "noGroupOption": "Nicht gruppieren",
-            "groupSelectLabel": "An Gruppe anheften",
-            "groupSectionTitle": "Heften Sie diesen Webhook an eine Gruppe an",
-            "customDataKey": "Benutzerdefinierter Schlüssel",
-            "creationTitle": "Neuen Webhook erstellen",
-            "newGroupOption": "+ Eine neue Gruppe erstellen",
-            "retriesLabel": "Wiederholungsversuche",
-            "newGroupLabel": "Neue Gruppe erstellen",
-            "editionSaveButton": "Webhook aktualisieren",
-            "customDataValue": "Benutzerdefinierter Wert",
-            "urlPlaceholder": "http://mein.server.com/call_answered.php?account_id=123456",
-            "existingOptionGroup": "Vorhandene Gruppen:",
-            "editionTitle": "Webhook bearbeiten",
-            "urlLabel": "URL",
-            "methodLabel": "Anforderungstyp"
-        },
-        "emptySearch": "Zu Ihren Suchkriterien konnte kein Webhook gefunden werden.",
-        "deleteTooltip": "Löschen",
-        "webhookCounters": {
-            "disabled": "Deaktiviert",
-            "errors": "Fehler",
-            "active": "Aktiv"
-        },
-        "more": "Mehr Informationen über Webhooks",
-        "reenableTooltip": "Webhooks",
-        "message": "Nachricht",
-        "webhookList": {
-            "all": {
-                "name": "Alle",
-                "description": "Dieser Webhook wird von sämtlichen Ereignissen ausgelöst"
-            },
-            "channel_answer": {
-                "description": "|Dieser Webhook wird ausgelöst",
-                "name": "Kanalantwort"
-            },
-            "channel_create": {
-                "name": "Kanal erstellen",
-                "description": "Dieser Webhook wird ausgelöst"
-            },
-            "object": {
-                "description": "Benachrichtigungen empfangen",
-                "name": "Objekt"
-            },
-            "channel_destroy": {
-                "description": "|Dieser Webhook wird ausgelöst",
-                "name": "Kanal schliessen"
-            }
-        },
-        "noWebhooks": "Für dieses Konto sind keine Webhooks konfiguriert.",
-        "deleteMessage": "Möchten Sie diesen Webhook wirklich löschen?",
-        "addCD": "+ Benutzerdefinierte Daten hinzufügen",
-        "noAttempts": "Das System hat keine Versuche an diesem Webhook bemerkt...",
-        "addWebhook": "Neuer Webhook",
-        "empty-row": "Zu Ihren Suchkriterien konnten keine Webhooks gefunden werden.",
-        "info": "|WebHooks bieten unserem System die Möglichkeit",
-        "__comment": "UI-1943: Bereinigen von Details zu Webhooks",
-        "errorTooltip": "Dieser Webhook wurde vom Server aus dem folgenden Grund deaktiviert:",
-        "date": "Datum",
-        "warning": "Sie können keine benutzerdefinierten Daten mit demselben Bezeichner speichern. Bitte geben Sie einen anderen Bezeichner ein.",
-        "webhookFilters": {
-            "disabled": "Deaktivierte Hooks",
-            "all": "Alle Webhooks",
-            "active": "Aktive Hooks",
-            "errors": "Fehler"
-        },
-        "less": "Informationen über Webhooks ausblenden",
-        "editTooltip": "Einstellungen bearbeiten",
-        "toastr": {
-            "deleteSuccess": "Sie haben folgendes erfolgreich gelöscht:",
-            "editSuccess": "Sie haben folgendes erfolgreich geändert:",
-            "addSuccess": "Sie haben folgendes erfolgreich hinzugefügt:"
-        },
-        "deleteTitle": "Löschen?",
-        "info2": "|Um diese Funktion zu verwenden",
-        "retriesLeft": "Anzahl der noch übrigen Versuche",
-        "historyTooltip": "Zeigen Sie eine Liste der Versuche an",
-        "attemptDetailsPopup": {
-            "title": "Details"
-        },
-        "search": "Suche",
-        "no-webhooks": "Es sind keine Webhooks konfiguriert.",
-        "editCD": "+ Benutzerdefinierte Daten bearbeiten",
-        "attemptSuccess": "Erfolg!",
-        "__version": 3.22,
-        "reenableButton": "Alle fehlerhaften Webhooks wieder aktivieren",
-        "delete": "LÖSCHEN",
-        "deleteRequest": "Möchten Sie folgendes wirklich löschen:"
-    }
+	"webhooks": {
+		"dialogWebhook": {
+			"save": "SPEICHERN",
+			"enterName": "Name",
+			"editTitle": "Webhook bearbeiten",
+			"Hooks": {
+				"cc": "channel_create",
+				"ca": "channel_answer",
+				"cd": "channel_destroy",
+				"ALL": "Alle"
+			},
+			"createWebhook": "ERSTELLEN",
+			"Request": {
+				"get": "GET",
+				"post": "POST"
+			},
+			"enterRetries": "Anzahl der Wiederholungsversuche",
+			"enterRequest": "Anforderung",
+			"enterHook": "Hook",
+			"addTitle": "Neuer Webhook",
+			"enterURL": "URL",
+			"placeholderName": "Benutzerdefinierter Name"
+		},
+		"webhookAttempts": {
+			"header": "Anforderungsprotokoll von {{webhookName}}",
+			"noAttempts": "Das System hat keine Versuche an diesem Webhook bemerkt...",
+			"date": "Datum",
+			"time": "Mal",
+			"retriesLeft": "Noch übrige Versuche",
+			"backButton": "Zurück zu Webhooks",
+			"received": "Empfangen",
+			"enableButton": "Diesen Webhook wieder aktivieren",
+			"sent": "Gesendet"
+		},
+		"dialogHistory": {
+			"title": "Verlauf der Versuche an diesem Webhook"
+		},
+		"webhookEdition": {
+			"customDataSectionTitle": "Fügen Sie Ihrem Webhook benutzerdefinierte Daten hinzu (optional)",
+			"creationSaveButton": "Webhook erstellen",
+			"nameLabel": "Webhook-Name",
+			"nameSectionTitle": "Geben Sie Ihrem Webhook einen Namen und entscheiden Sie",
+			"customDataLabel": "+ Datenzeile hinzufügen",
+			"methodSectionTitle": "Wählen Sie eine Anforderungsmethode aus",
+			"hookLabel": "Ereignis auslösen",
+			"noGroupOption": "Nicht gruppieren",
+			"groupSelectLabel": "An Gruppe anheften",
+			"groupSectionTitle": "Heften Sie diesen Webhook an eine Gruppe an",
+			"customDataKey": "Benutzerdefinierter Schlüssel",
+			"creationTitle": "Neuen Webhook erstellen",
+			"newGroupOption": "+ Eine neue Gruppe erstellen",
+			"retriesLabel": "Wiederholungsversuche",
+			"newGroupLabel": "Neue Gruppe erstellen",
+			"editionSaveButton": "Webhook aktualisieren",
+			"customDataValue": "Benutzerdefinierter Wert",
+			"urlPlaceholder": "http://mein.server.com/call_answered.php?account_id=123456",
+			"existingOptionGroup": "Vorhandene Gruppen:",
+			"editionTitle": "Webhook bearbeiten",
+			"urlLabel": "URL",
+			"methodLabel": "Anforderungstyp"
+		},
+		"emptySearch": "Zu Ihren Suchkriterien konnte kein Webhook gefunden werden.",
+		"deleteTooltip": "Löschen",
+		"webhookCounters": {
+			"disabled": "Deaktiviert",
+			"errors": "Fehler",
+			"active": "Aktiv"
+		},
+		"more": "Mehr Informationen über Webhooks",
+		"reenableTooltip": "Webhooks",
+		"message": "Nachricht",
+		"webhookList": {
+			"all": {
+				"name": "Alle",
+				"description": "Dieser Webhook wird von sämtlichen Ereignissen ausgelöst"
+			},
+			"channel_answer": {
+				"description": "Dieser Webhook wird ausgelöst",
+				"name": "Kanalantwort"
+			},
+			"channel_create": {
+				"name": "Kanal erstellen",
+				"description": "Dieser Webhook wird ausgelöst"
+			},
+			"object": {
+				"description": "Benachrichtigungen empfangen",
+				"name": "Objekt"
+			},
+			"channel_destroy": {
+				"description": "Dieser Webhook wird ausgelöst",
+				"name": "Kanal schliessen"
+			}
+		},
+		"noWebhooks": "Für dieses Konto sind keine Webhooks konfiguriert.",
+		"deleteMessage": "Möchten Sie diesen Webhook wirklich löschen?",
+		"addCD": "+ Benutzerdefinierte Daten hinzufügen",
+		"noAttempts": "Das System hat keine Versuche an diesem Webhook bemerkt...",
+		"addWebhook": "Neuer Webhook",
+		"empty-row": "Zu Ihren Suchkriterien konnten keine Webhooks gefunden werden.",
+		"info": "WebHooks bieten unserem System die Möglichkeit",
+		"__comment": "UI-1943: Bereinigen von Details zu Webhooks",
+		"errorTooltip": "Dieser Webhook wurde vom Server aus dem folgenden Grund deaktiviert:",
+		"date": "Datum",
+		"warning": "Sie können keine benutzerdefinierten Daten mit demselben Bezeichner speichern. Bitte geben Sie einen anderen Bezeichner ein.",
+		"webhookFilters": {
+			"disabled": "Deaktivierte Hooks",
+			"all": "Alle Webhooks",
+			"active": "Aktive Hooks",
+			"errors": "Fehler"
+		},
+		"less": "Informationen über Webhooks ausblenden",
+		"editTooltip": "Einstellungen bearbeiten",
+		"toastr": {
+			"deleteSuccess": "Sie haben folgendes erfolgreich gelöscht:",
+			"editSuccess": "Sie haben folgendes erfolgreich geändert:",
+			"addSuccess": "Sie haben folgendes erfolgreich hinzugefügt:"
+		},
+		"deleteTitle": "Löschen?",
+		"info2": "Um diese Funktion zu verwenden",
+		"retriesLeft": "Anzahl der noch übrigen Versuche",
+		"historyTooltip": "Zeigen Sie eine Liste der Versuche an",
+		"attemptDetailsPopup": {
+			"title": "Details"
+		},
+		"search": "Suche",
+		"no-webhooks": "Es sind keine Webhooks konfiguriert.",
+		"editCD": "+ Benutzerdefinierte Daten bearbeiten",
+		"attemptSuccess": "Erfolg!",
+		"__version": 3.22,
+		"reenableButton": "Alle fehlerhaften Webhooks wieder aktivieren",
+		"delete": "LÖSCHEN",
+		"deleteRequest": "Möchten Sie folgendes wirklich löschen:"
+	}
 }
