@@ -252,7 +252,8 @@ define(function(require) {
 							webhook: webhookData.webhookDetails,
 							groups: (_.keys(self.uiFlags.account.get('groups') || {})).sort()
 						}
-					}));
+					})),
+					customData;
 
 				// Since we don't have a "none" state for the hook, if there's no existing webhook, the first webhook of the list will be selected
 				// So we need to had this hack to display the right modifiers div
@@ -288,23 +289,21 @@ define(function(require) {
 					});
 				}
 
-				// Iterate through custom_data to print current custom_data
-				if (webhookData.webhookDetails.custom_data) {
-					_.each(webhookData.webhookDetails.custom_data, function(val, key) {
+				customData = _
+					.chain(webhookData.webhookDetails)
+					.get('custom_data', {})
+					.transform(function(data, value, key) {
 						if (protectedCustomData.indexOf(key) < 0) {
-							var customDataTemplate = $(self.getTemplate({
-								name: 'webhooks-customDataRow',
-								data: {
-									key: key,
-									value: val
-								}
-							}));
-
-							template.find('.custom-data-container')
-									.append(customDataTemplate);
+							data[key] = value;
 						}
-					});
-				}
+					}, {})
+					.value();
+
+				monster.ui.keyValueEditor(template.find('.custom-data-container'), {
+					data: customData,
+					keyPlaceholder: self.i18n.active().webhooks.webhookEdition.customDataKey,
+					valuePlaceholder: self.i18n.active().webhooks.webhookEdition.customDataValue
+				});
 
 				monster.ui.validate(template.find('#webhook_edition_form'), {
 					rules: {
@@ -332,17 +331,6 @@ define(function(require) {
 				} else {
 					template.find('.new-group-container').hide();
 				}
-			});
-
-			template.find('.custom-data-link').on('click', function() {
-				template.find('.custom-data-container')
-						.append($(self.getTemplate({
-							name: 'webhooks-customDataRow'
-						})));
-			});
-
-			template.find('.custom-data-container').on('click', '.delete-custom-data', function() {
-				$(this).parent().remove();
 			});
 
 			template.find('.select-hook').on('change', function() {

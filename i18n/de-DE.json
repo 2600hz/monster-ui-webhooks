@@ -41,7 +41,6 @@
 			"creationSaveButton": "Webhook erstellen",
 			"nameLabel": "Webhook-Name",
 			"nameSectionTitle": "Geben Sie Ihrem Webhook einen Namen und entscheiden Sie",
-			"customDataLabel": "+ Datenzeile hinzufügen",
 			"methodSectionTitle": "Wählen Sie eine Anforderungsmethode aus",
 			"hookLabel": "Ereignis auslösen",
 			"noGroupOption": "Nicht gruppieren",
