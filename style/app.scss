@@ -306,9 +306,9 @@
 #webhooks_wrapper .webhook-edition .custom-data-container {
 	width: 431px;
 
-	input.data-key {
-		width: 150px;
+	.data-key {
 		flex: initial;
+		width: 150px;
 	}
 }
 
