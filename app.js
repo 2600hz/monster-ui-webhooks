@@ -301,6 +301,7 @@ define(function(require) {
 
 				monster.ui.keyValueEditor(template.find('.custom-data-container'), {
 					data: customData,
+					inputName: 'custom_data',
 					keyPlaceholder: self.i18n.active().webhooks.webhookEdition.customDataKey,
 					valuePlaceholder: self.i18n.active().webhooks.webhookEdition.customDataValue
 				});
@@ -593,9 +594,9 @@ define(function(require) {
 				customData[$(this).attr('name')] = $(this).val();
 			});
 
-			template.find('.custom-data-row').each(function(index) {
-				var cdName = $(this).find('.custom-data-key').val(),
-					cdValue = $(this).find('.custom-data-value').val();
+			template.find('.monster-key-value-editor-row').each(function(index) {
+				var cdName = $(this).find('.data-key input').val(),
+					cdValue = $(this).find('.data-value input').val();
 
 				if (customData.hasOwnProperty(cdName)) {
 					isValid = false;
