@@ -302,8 +302,7 @@ define(function(require) {
 				monster.ui.keyValueEditor(template.find('.custom-data-container'), {
 					data: customData,
 					inputName: 'custom_data',
-					keyPlaceholder: self.i18n.active().webhooks.webhookEdition.customDataKey,
-					valuePlaceholder: self.i18n.active().webhooks.webhookEdition.customDataValue
+					i18n: self.i18n.active().webhooks.webhookEdition.customDataLabels
 				});
 
 				monster.ui.validate(template.find('#webhook_edition_form'), {

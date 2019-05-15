@@ -46,18 +46,21 @@
 			"noGroupOption": "Nicht gruppieren",
 			"groupSelectLabel": "An Gruppe anheften",
 			"groupSectionTitle": "Heften Sie diesen Webhook an eine Gruppe an",
-			"customDataKey": "Benutzerdefinierter Schlüssel",
 			"creationTitle": "Neuen Webhook erstellen",
 			"newGroupOption": "+ Eine neue Gruppe erstellen",
 			"retriesLabel": "Wiederholungsversuche",
 			"newGroupLabel": "Neue Gruppe erstellen",
 			"editionSaveButton": "Webhook aktualisieren",
-			"customDataValue": "Benutzerdefinierter Wert",
 			"urlPlaceholder": "http://mein.server.com/call_answered.php?account_id=123456",
 			"existingOptionGroup": "Vorhandene Gruppen:",
 			"editionTitle": "Webhook bearbeiten",
 			"urlLabel": "URL",
-			"methodLabel": "Anforderungstyp"
+			"methodLabel": "Anforderungstyp",
+			"customDataLabels": {
+				"addLink": "+ Datenzeile hinzufügen",
+				"keyPlaceholder": "Benutzerdefinierter Schlüssel",
+				"valuePlaceholder": "Benutzerdefinierter Wert"
+			}
 		},
 		"emptySearch": "Zu Ihren Suchkriterien konnte kein Webhook gefunden werden.",
 		"deleteTooltip": "Löschen",
