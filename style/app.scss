@@ -310,6 +310,10 @@
 		flex: initial;
 		width: 150px;
 	}
+
+	label.monster-invalid {
+		position: static;
+	}
 }
 
 #webhooks_wrapper .webhook-edition .select-group > option:last-child {
