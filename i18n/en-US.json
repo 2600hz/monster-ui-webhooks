@@ -87,9 +87,11 @@
 			"urlLabel": "URL",
 			"urlPlaceholder": "http://my.server.com/call_answered.php?account_id=123456",
 			"retriesLabel": "Re-try Attempts",
-			"customDataLabel": "+ Add Data Row",
-			"customDataKey": "Custom Key",
-			"customDataValue": "Custom Value",
+			"customDataLabels": {
+				"addLink": "+ Add Data Row",
+				"keyPlaceholder": "Custom Key",
+				"valuePlaceholder": "Custom Value"
+			},
 			"groupSelectLabel": "Tag to Group",
 			"noGroupOption": "Do Not Group",
 			"newGroupOption": "+ Create a New Group",

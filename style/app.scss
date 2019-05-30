@@ -67,7 +67,7 @@
 	border: solid 1px;
 	left: 6px;
 	top: 12px;
-	
+
 }
 
 #webhooks_wrapper .webhooks-header .webhooks-counters > div:first-child {
@@ -303,26 +303,17 @@
 	margin-left: 140px;
 }
 
-#webhooks_wrapper .webhook-edition .custom-data-link {
-	width: 180px;
-	font-size: 12px;
-}
-#webhooks_wrapper .webhook-edition .custom-data-container .custom-data-row {
-	margin-bottom: 10px;
-}
-#webhooks_wrapper .webhook-edition .custom-data-container .custom-data-row > * {
-	display: inline-block;
-}
-#webhooks_wrapper .webhook-edition .custom-data-container .custom-data-row input {
-	margin-right: 15px;
-}
+#webhooks_wrapper .webhook-edition .custom-data-container {
+	width: 431px;
 
-#webhooks_wrapper .webhook-edition .custom-data-container .custom-data-row .custom-data-key {
-	width: 150px;
-}
+	.data-key {
+		flex: initial;
+		width: 150px;
+	}
 
-#webhooks_wrapper .webhook-edition .custom-data-container .custom-data-row .delete-custom-data {
-	cursor: pointer;
+	label.monster-invalid {
+		position: static;
+	}
 }
 
 #webhooks_wrapper .webhook-edition .select-group > option:last-child {
