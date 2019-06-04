@@ -23,8 +23,13 @@
 			"placeholderName": "Custom Name",
 			"Request": {
 				"get": "GET",
-				"post": "POST"
+				"post": "POST",
+                "put": "PUT"
 			},
+            "Format": {
+                "form_data": "FORM-DATA",
+                "json": "JSON"
+            },
 			"save": "SAVE"
 		},
 		"dialogHistory": {
@@ -84,6 +89,7 @@
 			"nameLabel": "Hook Name",
 			"hookLabel": "Trigger Event",
 			"methodLabel": "Request Type",
+			"formatLabel": "Body Format",
 			"urlLabel": "URL",
 			"urlPlaceholder": "http://my.server.com/call_answered.php?account_id=123456",
 			"retriesLabel": "Re-try Attempts",
