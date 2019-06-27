@@ -75,12 +75,12 @@
 						<input required type="text" name="uri" value="{{webhook.uri}}" placeholder="{{i18n.webhooks.webhookEdition.urlPlaceholder}}"/>
 					</div>
 				</div>
-				<div class="control-group">
+				<div class="control-group" id="format_control_group"{{#unless hasVerbWithFormat}} style="display: none;"{{/unless}}>
 					<label class="control-label">{{i18n.webhooks.webhookEdition.formatLabel}}</label>
 					<div class="controls">
 						<select class="http_verb" name="format">
 						{{#select webhook.format}}
-							<option value="form-data">{{i18n.webhooks.webhookEdition.format.form_data}}</option>
+							<option value="form-data">{{i18n.webhooks.webhookEdition.format.formData}}</option>
 							<option value="json">{{i18n.webhooks.webhookEdition.format.json}}</option>
 						{{/select}}
 						</select>

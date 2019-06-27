@@ -11,6 +11,8 @@ define(function(require) {
 		_ = require('lodash'),
 		monster = require('monster');
 
+	var verbsWithFormat = ['post', 'put'];
+
 	var app = {
 		name: 'webhooks',
 
@@ -248,6 +250,7 @@ define(function(require) {
 					template = $(self.getTemplate({
 						name: 'webhooks-edit',
 						data: {
+							hasVerbWithFormat: _.includes(verbsWithFormat, webhookData.webhookDetails.http_verb),
 							webhookList: webhookList,
 							webhook: webhookData.webhookDetails,
 							groups: (_.keys(self.uiFlags.account.get('groups') || {})).sort()
