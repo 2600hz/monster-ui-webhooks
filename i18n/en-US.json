@@ -5,33 +5,6 @@
 		"delete": "DELETE",
 		"deleteRequest": "Are you sure you want to delete ",
 		"deleteTitle": "Delete?",
-		"dialogWebhook": {
-			"addTitle": "New Webhook",
-			"createWebhook": "CREATE",
-			"editTitle": "Edit Webhook",
-			"enterName": "Name",
-			"enterHook": "Hook",
-			"enterRequest": "Request",
-			"enterRetries": "Number of re-try attempts",
-			"enterURL": "URL",
-			"Hooks": {
-				"ALL": "all",
-				"ca": "channel_answer",
-				"cc": "channel_create",
-				"cd": "channel_destroy"
-			},
-			"placeholderName": "Custom Name",
-			"Request": {
-				"get": "GET",
-				"post": "POST",
-                "put": "PUT"
-			},
-            "Format": {
-                "form_data": "FORM-DATA",
-                "json": "JSON"
-            },
-			"save": "SAVE"
-		},
 		"dialogHistory": {
 			"title": "History of attempts on this webhook"
 		},
@@ -88,6 +61,7 @@
 			"groupSectionTitle": "Tag this Webhook to a Group if you want to categorize it further",
 			"nameLabel": "Hook Name",
 			"hookLabel": "Trigger Event",
+			"subAccountsLabel": "Include Sub Accounts",
 			"methodLabel": "Request Type",
 			"formatLabel": "Body Format",
 			"urlLabel": "URL",
@@ -102,6 +76,16 @@
 			"noGroupOption": "Do Not Group",
 			"newGroupOption": "+ Create a New Group",
 			"existingOptionGroup": "Existing Groups:",
+			"placeholderName": "Custom Name",
+			"request": {
+				"get": "GET",
+				"post": "POST",
+                "put": "PUT"
+			},
+			"format": {
+				"formData": "FORM-DATA",
+				"json": "JSON"
+			},
 			"newGroupLabel": "Create New Group"
 		},
 		"webhookAttempts": {
