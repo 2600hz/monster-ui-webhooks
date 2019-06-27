@@ -374,6 +374,10 @@ define(function(require) {
 			template.find('.action-bar .save').on('click', function() {
 				if (monster.ui.valid(template.find('#webhook_edition_form'))) {
 					self.getFormData(template, function(formData) {
+						if (!_.includes(verbsWithFormat, formData.http_verb)) {
+							delete formData.format;
+						}
+
 						if (_.isEmpty(webhookData)) {
 							self.addWebhook(formData, function(data) {
 								if (formData.group) {
