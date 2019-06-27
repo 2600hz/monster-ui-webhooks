@@ -341,6 +341,15 @@ define(function(require) {
 				template.find('.modifiers-webhooks[data-webhook="' + $(this).val() + '"]').addClass('active');
 			});
 
+			template.find('.select-verb').on('change', function() {
+				var $this = $(this),
+					newValue = $this.val(),
+					$formatControlGroup = template.find('#format_control_group'),
+					animationMethod = _.includes(verbsWithFormat, newValue) ? 'slideDown' : 'slideUp';
+
+				$formatControlGroup[animationMethod](250);
+			});
+
 			//Displaying tooltips for each option. Currently not working on Chrome & IE
 			// template.find('.select-hook').on('mouseover', function(e) {
 			// 	var $e = $(e.target);

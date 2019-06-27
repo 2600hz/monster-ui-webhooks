@@ -45,7 +45,7 @@
 				<div class="control-group">
 					<label class="control-label">{{i18n.webhooks.webhookEdition.methodLabel}}</label>
 					<div class="controls">
-						<select required name="http_verb" name="http_verb">
+						<select class="select-verb" required name="http_verb" name="http_verb">
 						{{#select webhook.http_verb}}
 							<option value="get">{{i18n.webhooks.webhookEdition.request.get}}</option>
 							<option value="post">{{i18n.webhooks.webhookEdition.request.post}}</option>
