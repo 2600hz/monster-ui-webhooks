@@ -5,27 +5,17 @@
 		"delete": "УДАЛИТЬ",
 		"deleteRequest": "Вы уверены что хотите удалить ",
 		"deleteTitle": "Удалить?",
-		"dialogWebhook": {
-			"addTitle": "Создать новый Webhook",
-			"createWebhook": "СОЗДАТЬ",
-			"editTitle": "Редактировать Webhook",
-			"enterName": "Название",
-			"enterHook": "Hook",
-			"enterRequest": "Запрос",
-			"enterRetries": "Количество попыток доступа",
-			"enterURL": "URL",
-			"Hooks": {
-				"ALL": "все",
-				"ca": "channel_answer",
-				"cc": "channel_create",
-				"cd": "channel_destroy"
-			},
+		"webhookEdition": {
 			"placeholderName": "Своё название",
-			"Request": {
+			"request": {
 				"get": "GET",
-				"post": "POST"
+				"put": "PUT",
+				"post": "POST",
 			},
-			"save": "СОХРАНИТЬ"
+			"format": {
+				"formData": "FORM-DATA",
+				"json": "JSON"
+			}
 		},
 		"editCD": "+ Редактировать данные",
 		"empty-row": "По вашим критерием поиска Webhook-ов не найдено.",
@@ -38,7 +28,7 @@
 		"toastr": {
 			"addSuccess": "Вы успешно добавили ",
 			"deleteSuccess": "Вы успешно удалили ",
-			"editSuccess": "Вы успешно изменили "	
+			"editSuccess": "Вы успешно изменили "
 		},
 		"warning": "Вы не можете сохранить данные с тем же идентификатором. Пожалуйста, используйте другой идентификатор."
 	}

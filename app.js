@@ -11,6 +11,8 @@ define(function(require) {
 		_ = require('lodash'),
 		monster = require('monster');
 
+	var verbsWithFormat = ['post', 'put'];
+
 	var app = {
 		name: 'webhooks',
 
@@ -248,6 +250,7 @@ define(function(require) {
 					template = $(self.getTemplate({
 						name: 'webhooks-edit',
 						data: {
+							hasVerbWithFormat: _.includes(verbsWithFormat, webhookData.webhookDetails.http_verb),
 							webhookList: webhookList,
 							webhook: webhookData.webhookDetails,
 							groups: (_.keys(self.uiFlags.account.get('groups') || {})).sort()
@@ -338,6 +341,15 @@ define(function(require) {
 				template.find('.modifiers-webhooks[data-webhook="' + $(this).val() + '"]').addClass('active');
 			});
 
+			template.find('.select-verb').on('change', function() {
+				var $this = $(this),
+					newValue = $this.val(),
+					$formatControlGroup = template.find('#format_control_group'),
+					animationMethod = _.includes(verbsWithFormat, newValue) ? 'slideDown' : 'slideUp';
+
+				$formatControlGroup[animationMethod](250);
+			});
+
 			//Displaying tooltips for each option. Currently not working on Chrome & IE
 			// template.find('.select-hook').on('mouseover', function(e) {
 			// 	var $e = $(e.target);
@@ -362,6 +374,10 @@ define(function(require) {
 			template.find('.action-bar .save').on('click', function() {
 				if (monster.ui.valid(template.find('#webhook_edition_form'))) {
 					self.getFormData(template, function(formData) {
+						if (!_.includes(verbsWithFormat, formData.http_verb)) {
+							delete formData.format;
+						}
+
 						if (_.isEmpty(webhookData)) {
 							self.addWebhook(formData, function(data) {
 								if (formData.group) {

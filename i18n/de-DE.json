@@ -1,27 +1,5 @@
 {
 	"webhooks": {
-		"dialogWebhook": {
-			"save": "SPEICHERN",
-			"enterName": "Name",
-			"editTitle": "Webhook bearbeiten",
-			"Hooks": {
-				"cc": "channel_create",
-				"ca": "channel_answer",
-				"cd": "channel_destroy",
-				"ALL": "Alle"
-			},
-			"createWebhook": "ERSTELLEN",
-			"Request": {
-				"get": "GET",
-				"post": "POST"
-			},
-			"enterRetries": "Anzahl der Wiederholungsversuche",
-			"enterRequest": "Anforderung",
-			"enterHook": "Hook",
-			"addTitle": "Neuer Webhook",
-			"enterURL": "URL",
-			"placeholderName": "Benutzerdefinierter Name"
-		},
 		"webhookAttempts": {
 			"header": "Anforderungsprotokoll von {{webhookName}}",
 			"noAttempts": "Das System hat keine Versuche an diesem Webhook bemerkt...",
@@ -37,12 +15,23 @@
 			"title": "Verlauf der Versuche an diesem Webhook"
 		},
 		"webhookEdition": {
+			"request": {
+				"get": "GET",
+				"put": "PUT",
+				"post": "POST",
+			},
+			"format": {
+				"formData": "FORM-DATA",
+				"json": "JSON"
+			},
+			"placeholderName": "Benutzerdefinierter Name",
 			"customDataSectionTitle": "Fügen Sie Ihrem Webhook benutzerdefinierte Daten hinzu (optional)",
 			"creationSaveButton": "Webhook erstellen",
 			"nameLabel": "Webhook-Name",
 			"nameSectionTitle": "Geben Sie Ihrem Webhook einen Namen und entscheiden Sie",
 			"methodSectionTitle": "Wählen Sie eine Anforderungsmethode aus",
 			"hookLabel": "Ereignis auslösen",
+			"subAccountsLabel": "Unterkonten einbeziehen",
 			"noGroupOption": "Nicht gruppieren",
 			"groupSelectLabel": "An Gruppe anheften",
 			"groupSectionTitle": "Heften Sie diesen Webhook an eine Gruppe an",

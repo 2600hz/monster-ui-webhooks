@@ -13,7 +13,7 @@
 				<div class="control-group">
 					<label class="control-label">{{i18n.webhooks.webhookEdition.nameLabel}}</label>
 					<div class="controls">
-						<input required type="text" name="name" value="{{webhook.name}}" placeholder="{{i18n.webhooks.dialogWebhook.placeholderName}}"/>
+						<input required type="text" name="name" value="{{webhook.name}}" placeholder="{{i18n.webhooks.webhookEdition.placeholderName}}"/>
 					</div>
 				</div>
 			</div>
@@ -29,14 +29,14 @@
 					</div>
 				</div>
 			</div>
-            <div class="left-col">
-                <div class="control-group">
-                    <label class="control-label">include sub-accounts</label>
-                    <div class="controls">
-                        <input type="checkbox" {{#if webhook.include_subaccounts}} checked{{/if}} name="include_subaccounts" placeholder="{{i18n.webhooks.dialogWebhook.placeholderName}}"/>
-                    </div>
-                </div>
-            </div>
+			<div class="left-col">
+				<div class="control-group">
+					<label class="control-label">{{i18n.webhooks.webhookEdition.subAccountsLabel}}</label>
+					<div class="controls">
+						<input type="checkbox" {{#if webhook.include_subaccounts}} checked{{/if}} name="include_subaccounts" placeholder="{{i18n.webhooks.webhookEdition.placeholderName}}"/>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="webhook-edition-section clearfix">
@@ -45,9 +45,12 @@
 				<div class="control-group">
 					<label class="control-label">{{i18n.webhooks.webhookEdition.methodLabel}}</label>
 					<div class="controls">
-						<select required name="http_verb" name="http_verb">
-							<option {{#compare webhook.http_verb "===" "get"}} selected{{/compare}} value="get">{{ i18n.webhooks.dialogWebhook.Request.get }}</option>
-							<option {{#compare webhook.http_verb "===" "post"}} selected{{/compare}} value="post">{{ i18n.webhooks.dialogWebhook.Request.post  }}</option>
+						<select class="select-verb" required name="http_verb" name="http_verb">
+						{{#select webhook.http_verb}}
+							<option value="get">{{i18n.webhooks.webhookEdition.request.get}}</option>
+							<option value="post">{{i18n.webhooks.webhookEdition.request.post}}</option>
+							<option value="put">{{i18n.webhooks.webhookEdition.request.put}}</option>
+						{{/select}}
 						</select>
 					</div>
 				</div>
@@ -70,6 +73,17 @@
 					<label class="control-label">{{i18n.webhooks.webhookEdition.urlLabel}}</label>
 					<div class="controls">
 						<input required type="text" name="uri" value="{{webhook.uri}}" placeholder="{{i18n.webhooks.webhookEdition.urlPlaceholder}}"/>
+					</div>
+				</div>
+				<div class="control-group" id="format_control_group"{{#unless hasVerbWithFormat}} style="display: none;"{{/unless}}>
+					<label class="control-label">{{i18n.webhooks.webhookEdition.formatLabel}}</label>
+					<div class="controls">
+						<select class="http_verb" name="format">
+						{{#select webhook.format}}
+							<option value="form-data">{{i18n.webhooks.webhookEdition.format.formData}}</option>
+							<option value="json">{{i18n.webhooks.webhookEdition.format.json}}</option>
+						{{/select}}
+						</select>
 					</div>
 				</div>
 			</div>
