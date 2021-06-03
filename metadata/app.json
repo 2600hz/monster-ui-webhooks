@@ -19,8 +19,8 @@
 		},
 		"en-US": {
 			"label": "Webhooks",
-			"description": "WebHooks is your portal to learn about KAZOO webhooks, create new webhooks, as well as manage and debug existing webhooks.",
-			"extended_description": "WebHooks enables developers to build rigorous integrations that rely on real-time, non-critical notifications from KAZOO. WebHooks sends a HTTP, GET, or POST notification to a URL defined by you when certain events occur on a system",
+			"description": "Webhooks is your portal to learn about KAZOO webhooks, create new webhooks, as well as manage and debug existing webhooks.",
+			"extended_description": "Webhooks enables developers to build rigorous integrations that rely on real-time, non-critical notifications from KAZOO. Webhooks sends a HTTP, GET, or POST notification to a URL defined by you when certain events occur on a system",
 			"features": [
 				"Log channel request",
 				"Enable/disable webhooks",
