@@ -627,7 +627,7 @@ define(function(require) {
 				customData[$(this).attr('name')] = $(this).val();
 			});
 
-			template.find('.monster-key-value-editor-row').each(function(index) {
+			template.find('.custom-data-container .monster-key-value-editor-row').each(function(index) {
 				var cdName = $(this).find('.data-key input').val(),
 					cdValue = $(this).find('.data-value input').val();
 
@@ -639,10 +639,24 @@ define(function(require) {
 				}
 			});
 
+			template.find('.custom-headers-container .monster-key-value-editor-row').each(function(index) {
+				var cdName = $(this).find('.data-key input').val(),
+					cdValue = $(this).find('.data-value input').val();
+
+				if (customHeaders.hasOwnProperty(cdName)) {
+					isValid = false;
+					return false;
+				} else {
+					customHeaders[cdName] = cdValue;
+				}
+			});
+
 			if (isValid) {
 				var formData = monster.ui.getFormData('webhook_edition_form');
 				formData.custom_data = customData;
+				formData.custom_http_headers = customHeaders;
 				delete formData.extra;
+
 				if (groupSelect === 'new') {
 					formData.group = newGroup;
 				} else if (groupSelect !== 'none') {
