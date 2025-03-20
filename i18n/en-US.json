@@ -58,6 +58,12 @@
 			"nameSectionTitle": "Let's name your Webhook and decide what event will trigger it",
 			"methodSectionTitle": "Select a request method, the server to send the info to, and how many re-try attempts the hook should make",
 			"customDataSectionTitle": "Add custom data to your Webhook (Optional)",
+			"customHeaders": {
+				"title": "Add custom headers to your Webhook (Optional)",
+				"addLink": "+ Add Header",
+				"keyPlaceholder": "Custom Header",
+				"valuePlaceholder": "Header Value"
+			},
 			"groupSectionTitle": "Tag this Webhook to a Group if you want to categorize it further",
 			"nameLabel": "Hook Name",
 			"hookLabel": "Trigger Event",
