@@ -131,6 +131,47 @@
 		</div>
 
 		<div class="webhook-edition-section clearfix">
+			<div class="webhook-edition-title">{{i18n.webhooks.webhookEdition.customHeaders.title}}</div>
+			{{#each webhookList}}
+				{{#if modifiers}}
+					<div class="modifiers-webhooks{{#compare id "===" @root.webhook.hook}} active{{/compare}}" data-webhook="{{id}}">
+						{{#each modifiers}}
+							{{#compare type "===" "array"}}
+								<div class="modifier control-group">
+									<label class="control-label">{{@key}}</label>
+									<div class="controls">
+										<select required class="select-modifier" name="{{@key}}">
+											{{#each items}}
+												<option value="{{this}}" title="{{this}}">{{this}}</option>
+											{{/each}}
+										</select>
+									</div>
+								</div>
+							{{else}}
+								{{#compare type "===" "object"}}
+									<div class="modifier control-group">
+										<label class="control-label">{{@key}}</label>
+										<div class="controls">
+											<select required class="select-modifier" name="{{@key}}">
+												{{#each items}}
+													<option value="{{@key}}" title="{{this.description}}">{{this.friendly_name}}</option>
+												{{/each}}
+											</select>
+										</div>
+									</div>
+								{{/compare}}
+							{{/compare}}
+						{{/each}}
+					</div>
+				{{/if}}
+			{{/each}}
+
+			<div>
+				<div class="custom-headers-container"></div>
+			</div>
+		</div>
+
+		<div class="webhook-edition-section clearfix">
 			<div class="webhook-edition-title">{{i18n.webhooks.webhookEdition.groupSectionTitle}}</div>
 			<div class="left-col">
 				<div class="control-group">
