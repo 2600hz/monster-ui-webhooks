@@ -256,7 +256,8 @@ define(function(require) {
 							groups: (_.keys(self.uiFlags.account.get('groups') || {})).sort()
 						}
 					})),
-					customData;
+					customData,
+					customHeaders;
 
 				// Since we don't have a "none" state for the hook, if there's no existing webhook, the first webhook of the list will be selected
 				// So we need to had this hack to display the right modifiers div
@@ -306,6 +307,20 @@ define(function(require) {
 					data: customData,
 					inputName: 'custom_data',
 					i18n: self.i18n.active().webhooks.webhookEdition.customDataLabels
+				});
+
+				customHeaders = _
+					.chain(webhookData.webhookDetails)
+					.get('custom_http_headers', {})
+					.transform(function(data, value, key) {
+						data[key] = value;
+					}, {})
+					.value();
+
+				monster.ui.keyValueEditor(template.find('.custom-headers-container'), {
+					data: customHeaders,
+					inputName: 'custom_http_headers',
+					i18n: self.i18n.active().webhooks.webhookEdition.customHeaders
 				});
 
 				monster.ui.validate(template.find('#webhook_edition_form'), {
@@ -600,6 +615,7 @@ define(function(require) {
 		getFormData: function(template, callback) {
 			var self = this,
 				customData = {},
+				customHeaders = {},
 				isValid = true,
 				groupSelect = template.find('.select-group').val(),
 				newGroup = template.find('.new-group').val();
@@ -609,7 +625,7 @@ define(function(require) {
 				customData[$(this).attr('name')] = $(this).val();
 			});
 
-			template.find('.monster-key-value-editor-row').each(function(index) {
+			template.find('.custom-data-container .monster-key-value-editor-row').each(function(index) {
 				var cdName = $(this).find('.data-key input').val(),
 					cdValue = $(this).find('.data-value input').val();
 
@@ -621,10 +637,24 @@ define(function(require) {
 				}
 			});
 
+			template.find('.custom-headers-container .monster-key-value-editor-row').each(function(index) {
+				var cdName = $(this).find('.data-key input').val(),
+					cdValue = $(this).find('.data-value input').val();
+
+				if (customHeaders.hasOwnProperty(cdName)) {
+					isValid = false;
+					return false;
+				} else {
+					customHeaders[cdName] = cdValue;
+				}
+			});
+
 			if (isValid) {
 				var formData = monster.ui.getFormData('webhook_edition_form');
 				formData.custom_data = customData;
+				formData.custom_http_headers = customHeaders;
 				delete formData.extra;
+
 				if (groupSelect === 'new') {
 					formData.group = newGroup;
 				} else if (groupSelect !== 'none') {
