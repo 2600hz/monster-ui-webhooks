@@ -313,9 +313,7 @@ define(function(require) {
 					.chain(webhookData.webhookDetails)
 					.get('custom_http_headers', {})
 					.transform(function(data, value, key) {
-						if (protectedCustomData.indexOf(key) < 0) {
-							data[key] = value;
-						}
+						data[key] = value;
 					}, {})
 					.value();
 
