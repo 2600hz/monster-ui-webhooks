@@ -311,7 +311,7 @@ define(function(require) {
 
 				customHeaders = _
 					.chain(webhookData.webhookDetails)
-					.get('custom_http_headers', {})
+					.get('custom_request_headers', {})
 					.transform(function(data, value, key) {
 						data[key] = value;
 					}, {})
@@ -319,7 +319,7 @@ define(function(require) {
 
 				monster.ui.keyValueEditor(template.find('.custom-headers-container'), {
 					data: customHeaders,
-					inputName: 'custom_http_headers',
+					inputName: 'custom_request_headers',
 					i18n: self.i18n.active().webhooks.webhookEdition.customHeaders
 				});
 
@@ -652,7 +652,7 @@ define(function(require) {
 			if (isValid) {
 				var formData = monster.ui.getFormData('webhook_edition_form');
 				formData.custom_data = customData;
-				formData.custom_http_headers = customHeaders;
+				formData.custom_request_headers = customHeaders;
 				delete formData.extra;
 
 				if (groupSelect === 'new') {
